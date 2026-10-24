@@ -25,10 +25,11 @@ from ..texts import pick_access_phrase, pick_verify_text
 from . import icons
 from .icons import IconLabel
 from .typing_widget import TypingPanel
-from .widgets import HBox, button, card, label, page_title, primary, set_status
+from .widgets import HBox, button, card, label, page_title, primary, scroll, set_status
 
 EXIT_OK, EXIT_DENIED, EXIT_UNCHECKED = 0, 1, 2
 AUTO_CLOSE_MS = 1500     # la ventana se cierra sola tras confirmar la identidad
+CONTENT_WIDTH = 980      # ancho máximo del contenido a pantalla completa (líneas cómodas de leer)
 
 
 class AccessDialog(QDialog):
@@ -40,12 +41,27 @@ class AccessDialog(QDialog):
         self.step = "phrase"              # phrase | extra
         self.setWindowTitle(f"{APP_NAME} · {_('Verificación de acceso')}")
         self.setWindowIcon(icons.app_icon())
-        self.resize(860, 640)
+        self.resize(980, 760)
 
         where = _("Para entrar en <b>{system}</b>", system=self.system) if self.system else _("Para entrar en el sistema")
-        lay = QVBoxLayout(self)
-        lay.setContentsMargins(24, 20, 24, 20)
+        # A pantalla completa (run_access): una columna centrada. Si faltara altura, se desplaza en
+        # lugar de apretar los elementos hasta montarlos (la frase quedaba tapada por la barra).
+        column = QWidget()
+        column.setObjectName("page")
+        column.setMaximumWidth(CONTENT_WIDTH)
+        lay = QVBoxLayout(column)
+        lay.setContentsMargins(24, 28, 24, 20)
         lay.setSpacing(12)
+        holder = QWidget()
+        holder.setObjectName("page")
+        row = QHBoxLayout(holder)
+        row.setContentsMargins(0, 0, 0, 0)
+        row.addStretch(1)
+        row.addWidget(column, 100)   # crece hasta CONTENT_WIDTH y queda centrada
+        row.addStretch(1)
+        outer = QVBoxLayout(self)
+        outer.setContentsMargins(0, 0, 0, 0)
+        outer.addWidget(scroll(holder))
         lay.addWidget(page_title(_("Verificación de acceso"), "", "lock"))
         self.intro = label("", "subtitle", wrap=True, rich=True)
         lay.addWidget(self.intro)
@@ -182,5 +198,6 @@ def run_access(service: BiometricService, name: str, system: str = "") -> int:
                                                "equipo.\nRegístralo primero en KeyBio.", name=clean_name(name)))
         return EXIT_UNCHECKED
     dlg = AccessDialog(service, user, system)
+    dlg.setWindowState(dlg.windowState() | Qt.WindowState.WindowFullScreen)   # como una pantalla de acceso
     dlg.exec()
     return dlg.code
