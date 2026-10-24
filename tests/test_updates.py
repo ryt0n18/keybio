@@ -3,6 +3,7 @@ descarga. Sin red: la descarga real se prueba a mano (ver docs/desarrollo.md).""
 
 import hashlib
 import os
+from pathlib import Path
 
 import pytest
 
@@ -53,6 +54,8 @@ def test_install_kind(tmp_path):
     assert k(True, str(win / "KeyBio.exe"), "win32") == updates.OTHER          # portable (.zip)
     (win / "unins000.exe").write_bytes(b"")
     assert k(True, str(win / "KeyBio.exe"), "win32") == updates.WINDOWS_SETUP
+    if os.name == "nt":   # las rutas de macOS y Linux solo tienen sentido en esos sistemas
+        return
     assert k(True, "/Applications/KeyBio.app/Contents/MacOS/KeyBio", "darwin") == updates.MAC_APP
     assert k(True, "/opt/keybio/KeyBio", "linux") == updates.LINUX_DEB
     home = tmp_path / "casa"
@@ -95,7 +98,8 @@ def controller(tmp_path, monkeypatch):
     QApplication.instance() or QApplication([])
     calls = []
     monkeypatch.setattr(updater.QProcess, "start", lambda self, prog, args: calls.append(("run", [prog, *args])))
-    monkeypatch.setattr(updater.QDesktopServices, "openUrl", lambda url: calls.append(("open", url.toLocalFile())) or True)
+    monkeypatch.setattr(updater.QDesktopServices, "openUrl",
+                        lambda url: calls.append(("open", str(Path(url.toLocalFile())))) or True)
     monkeypatch.setattr(updater.shutil, "which", lambda name: f"/usr/bin/{name}")
 
     def make(kind):
