@@ -23,8 +23,8 @@ jobs:
       QT_QPA_PLATFORM: offscreen
       PYTHONIOENCODING: utf-8
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python }}
           cache: pip
@@ -45,8 +45,8 @@ jobs:
     name: Web (demo y valoraciones)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -72,8 +72,8 @@ jobs:
       QT_QPA_PLATFORM: offscreen
       PYTHONIOENCODING: utf-8
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -136,7 +136,7 @@ jobs:
       - name: Comprimir (Linux)
         if: runner.os == 'Linux'
         run: tar -czf dist/KeyBio-linux-x64.tar.gz -C dist KeyBio
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: KeyBio-${{ runner.os }}
           path: |
@@ -155,8 +155,8 @@ jobs:
       QT_QPA_PLATFORM: offscreen
       PYTHONIOENCODING: utf-8
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
           cache: pip
@@ -184,7 +184,7 @@ jobs:
           ditto dist/KeyBio.app dmg/KeyBio.app
           ln -s /Applications dmg/Aplicaciones
           hdiutil create -volname "KeyBio $version" -srcfolder dmg -ov -format UDZO "dist/KeyBio-$version-macos-arm64.dmg"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: KeyBio-macOS
           path: dist/KeyBio-*.dmg
@@ -198,12 +198,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: La etiqueta coincide con la versión del programa
         run: |
           version=$(sed -n 's/^APP_VERSION = "\(.*\)"/\1/p' ksb/__init__.py)
           test "${GITHUB_REF_NAME}" = "v${version}" || { echo "Etiqueta ${GITHUB_REF_NAME}, versión ${version}"; exit 1; }
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: artifacts
           merge-multiple: true
