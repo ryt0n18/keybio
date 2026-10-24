@@ -38,3 +38,10 @@ def test_program_languages_shown_on_the_web_exist():
     codes = re.findall(r'"(\w+)"', re.search(r"programLanguages: \[(.*?)\]", config).group(1))
     assert codes and set(codes) <= {c for c, _, _ in build.LANGUAGES}
     assert codes == list(i18n.LANGUAGES)   # los mismos que el programa, en el mismo orden
+
+
+def test_analytics_only_on_the_published_site():
+    """El recuento de visitas solo se activa en la dirección de la web (SITE_URL en build.py)."""
+    config = (ROOT / "web" / "public" / "assets" / "js" / "config.js").read_text(encoding="utf-8")
+    host = re.search(r'analytics: \{[^}]*host: "([^"]+)"', config).group(1)
+    assert f"https://{host}" == build.SITE_URL

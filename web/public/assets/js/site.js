@@ -41,6 +41,20 @@ function setupTheme() {
 
 // --- idioma -----------------------------------------------------------------------------------
 
+// --- recuento de visitas --------------------------------------------------------------------------
+
+// Cloudflare Web Analytics: sin cookies ni datos que identifiquen a nadie (ver la página de
+// privacidad). Solo en la web publicada: ni las copias locales ni las pruebas cuentan como visitas.
+function setupAnalytics() {
+  const a = CONFIG.analytics;
+  if (!a || !a.token || location.hostname !== a.host) return;
+  const script = document.createElement("script");
+  script.type = "module";   // como lo da Cloudflare
+  script.src = "https://static.cloudflareinsights.com/beacon.min.js";
+  script.setAttribute("data-cf-beacon", JSON.stringify({ token: a.token }));
+  document.body.append(script);
+}
+
 // --- enlaces dentro de la página ------------------------------------------------------------------
 
 // #demo, #descargar…: se desplaza a la sección sin escribir el «#…» en la dirección, que queda
@@ -388,6 +402,7 @@ function setupContact() {
 
 setupTheme();
 setupCleanAnchors();
+setupAnalytics();
 setupLanguage();
 applyConfig();
 setupDownloads();
