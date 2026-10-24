@@ -10,7 +10,7 @@ export const CONFIG = {
 
   // Descargas: se activan cuando haya una versión pública de los ejecutables
   downloads: {
-    enabled: false,
+    enabled: true,
     base: "https://github.com/ryt0n18/keybio/releases/download/v2.1.0/",
     windowsSetup: "KeyBio-2.1.0-setup.exe",
     windowsZip: "KeyBio-windows-x64.zip",
