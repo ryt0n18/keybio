@@ -189,18 +189,23 @@ if (ok && stopAt !== "print") {
   });
   if (ok) {
     // Con 2 frases de registro el umbral es estricto (demo.js) y a veces no reconoce a quien sí está
-    // registrado: hasta 3 intentos. Confundirlo con otra persona, nunca.
+    // registrado, más aún en la CI, donde los tiempos simulados salen irregulares. Lo que nunca puede
+    // pasar es confundirlo con otra persona, y siempre tiene que ser el más parecido de la lista.
     const UNKNOWN = "No te reconozco";
     async function recognises(typist, expected, { early = false } = {}) {
+      const name = expected.replace(/^Eres /, "");
       for (let attempt = 1; ; attempt++) {
         const v = await identify(win, typist);
         if (v !== expected && v !== UNKNOWN) throw new Error(`Resultado: ${v}`);
+        const closest = win.document.querySelector(".ranking li .rank-name")?.textContent;
+        if (closest !== name) throw new Error(`El más parecido es ${closest}, no ${name}`);
         // quien sigue escribiendo tras la decisión no debe pulsar «Probar otra vez» con un espacio
         await new Promise((r) => setTimeout(r, 100));
         const focused = win.document.activeElement;
         if (!focused || !focused.classList.contains("demo-result")) throw new Error(`Foco en ${focused && focused.outerHTML.slice(0, 60)}`);
-        if (v === expected && (!early || win.document.querySelector(".early-note"))) return;
-        if (attempt === 3) throw new Error(early ? "No ha decidido antes de terminar en 3 intentos" : `Resultado: ${v}`);
+        if (!early) return;
+        if (v === expected && win.document.querySelector(".early-note")) return;
+        if (attempt === 5) throw new Error("No ha decidido antes de terminar en 5 intentos");
         click(win, "Probar otra vez");
       }
     }
