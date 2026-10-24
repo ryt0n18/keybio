@@ -65,6 +65,8 @@ Los nombres de los ficheros que espera la web están en `config.js` y los compru
 6. Despliega la web (ver «Web») y borra los despliegues de prueba (`vista-previa.keybio.pages.dev`
    y los de dirección aleatoria) en Cloudflare → *Workers & Pages → keybio → Deployments*, para
    que solo quede `keybio.pages.dev`.
+7. Borra las valoraciones de prueba (las de la vista previa van a la misma base de datos):
+   `npx wrangler d1 execute keybio --remote --command "DELETE FROM ratings"` desde `web/`.
 
 ## Web (`web/`)
 
