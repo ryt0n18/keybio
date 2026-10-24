@@ -1,5 +1,16 @@
 # Cambios
 
+## 2.1.1
+
+- **Verificación de acceso a pantalla completa.** En una ventana pequeña, la barra de progreso y
+  el cuadro de escritura tapaban parte de la frase; ahora se abre a pantalla completa, con el
+  contenido en una columna centrada, y si faltara altura se desplaza en lugar de apretar.
+- La sección «Accesos» explica que es una **segunda cerradura**: KeyBio no bloquea archivos ni
+  programas por sí mismo, así que se pone delante de algo con su propia protección. La
+  documentación añade ejemplos de lanzador para Linux, Windows y macOS.
+- **Banderas** junto a cada idioma en los selectores de idioma de Ajustes.
+- Dependencias al día: PySide6 6.12 también con Python 3.11 y acciones de GitHub más recientes.
+
 ## 2.1.0
 
 **Verificación de acceso al iniciar sesión** (pensada para el RGPD y el ámbito laboral)

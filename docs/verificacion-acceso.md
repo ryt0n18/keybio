@@ -4,6 +4,26 @@ Para sistemas sensibles (nóminas, banca, historiales…), KeyBio puede comproba
 **solo en el momento de iniciar sesión**, con una frase corta. No hay captura en segundo plano
 ni durante el resto de la sesión.
 
+## Una segunda cerradura
+
+KeyBio comprueba **quién escribe**, pero **no bloquea archivos ni programas por sí mismo**: la
+comprobación solo ocurre cuando algo llama a KeyBio. Quien vaya directamente a una carpeta o
+abra el programa por otro camino no pasa por ella. Tampoco puede cifrar nada: la forma de
+escribir varía un poco cada vez y no sirve como llave de cifrado.
+
+Por eso se usa como **segunda cerradura**, delante de algo que ya tenga la suya, de modo que
+haga falta superar las dos:
+
+| Primera cerradura (la que ya existe) | Segunda cerradura (KeyBio) |
+|---|---|
+| La contraseña del propio programa (nóminas, banca, historiales…) | Antes de abrirlo, un lanzador pide la frase de acceso |
+| Una carpeta cifrada: gocryptfs o Cryptomator (Linux, macOS), BitLocker o VeraCrypt (Windows) | El lanzador exige la frase antes de pedir la contraseña de la carpeta |
+| La sesión del ordenador (usuario y contraseña) | Al iniciar sesión, si la frase no coincide, se bloquea la pantalla |
+
+Si alguien conoce la contraseña pero no escribe como su dueño, la segunda cerradura lo frena y
+deja un aviso en «Accesos». Si alguien se salta el lanzador, sigue teniendo delante la primera.
+La misma explicación aparece en el programa, en la sección «Accesos».
+
 ![Ventana de verificación de acceso](img/acceso.png)
 
 ## Cómo se usa
@@ -63,8 +83,8 @@ start "" "C:\ruta\del\programa.exe"
 pantalla si la respuesta no es 0, por ejemplo `keybio --acceso "$USER" --sistema "Sesión" ||
 loginctl lock-session` en Linux, o `rundll32.exe user32.dll,LockWorkStation` en Windows.
 
-Es una **cerradura extra**, no la única: quien tenga conocimientos podría saltarse el lanzador,
-así que el programa protegido debe seguir teniendo su propia contraseña.
+Es una **segunda cerradura** (ver arriba): quien vaya directamente a lo protegido se salta el
+lanzador, así que lo protegido debe seguir teniendo su propia contraseña o cifrado.
 
 ## Qué se guarda
 

@@ -69,8 +69,11 @@ Para sistemas sensibles: `KeyBio --acceso "Ana" --sistema "Nóminas"` pide una f
 - Si no coincide, pide una verificación adicional y deja un **aviso para el administrador**
   en la sección «Accesos».
 - Los registros se borran solos a los 30 días.
+- Es una **segunda cerradura**, no la única: KeyBio no bloquea archivos ni programas por sí
+  mismo, así que se pone delante de algo que ya tenga su propia protección (la contraseña del
+  programa, una carpeta cifrada o la sesión del ordenador).
 
-Detalles, códigos de salida y qué tener en cuenta con trabajadores (RGPD):
+Detalles, ejemplos para Linux, Windows y macOS, y qué tener en cuenta con trabajadores (RGPD):
 [verificación de acceso](docs/verificacion-acceso.md).
 
 ### Perfiles que aprenden

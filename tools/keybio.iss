@@ -1,13 +1,13 @@
 ﻿; Asistente de instalación de KeyBio para Windows (Inno Setup 6).
 ; Lo genera la integración continua o se crea a mano después de "tools\build.bat":
-;   ISCC.exe /DAppVersion=2.1.0 tools\keybio.iss
+;   ISCC.exe /DAppVersion=2.1.1 tools\keybio.iss
 ; Instala el programa ya empaquetado (no hace falta Python) y muestra la licencia, que build.py
 ; deja en build\licenses. Los perfiles se guardan en
 ; %APPDATA%\KeyBio; al desinstalar se pregunta si se quieren borrar.
 
 #define AppName "KeyBio"
 #ifndef AppVersion
-  #define AppVersion "2.1.0"
+  #define AppVersion "2.1.1"
 #endif
 
 [Setup]

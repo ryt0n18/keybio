@@ -92,6 +92,15 @@ class AccessPage(QWidget):
         lay.addWidget(c)
 
         c, cl = card()
+        cl.addWidget(card_header(_("Una segunda cerradura"), "shield"))
+        cl.addWidget(label(_("KeyBio comprueba quién escribe, pero <b>no bloquea archivos ni programas por sí mismo</b>: "
+                             "quien vaya directamente a ellos no pasa por la comprobación. Por eso es una segunda "
+                             "cerradura, no la única: úsala delante de algo que ya tenga su propia protección (la "
+                             "contraseña del programa, una carpeta cifrada o la sesión del ordenador), para que haga "
+                             "falta superar las dos."), "subtitle", wrap=True, rich=True))
+        lay.addWidget(c)
+
+        c, cl = card()
         cl.addWidget(card_header(_("Cómo usarla al iniciar sesión"), "help"))
         self.usage = label("", "subtitle", wrap=True, rich=True)
         cl.addWidget(self.usage)

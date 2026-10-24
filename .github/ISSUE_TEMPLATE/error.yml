@@ -12,7 +12,7 @@ body:
     attributes:
       label: Versión de KeyBio
       description: Ajustes → «Cómo funciona», al final.
-      placeholder: "2.1.0"
+      placeholder: "2.1.1"
     validations:
       required: true
   - type: dropdown
