@@ -29,6 +29,43 @@ KeyBio --acceso "Ana" --sistema "Nóminas"      # desde el código: python main.
 
 Cualquier valor distinto de 0 debe tratarse como **no confirmado**.
 
+## Ejemplos: proteger un programa o una carpeta
+
+KeyBio no se pone solo delante de otros programas: se hace un **lanzador**, un pequeño archivo
+que primero llama a KeyBio y solo abre lo protegido si la respuesta es 0. El nombre tiene que
+ser el de un perfil registrado en ese equipo (no distingue mayúsculas).
+
+**Linux** (con el `.deb`, el comando es `keybio`; con `instalar.sh`, `~/.local/bin/keybio`):
+
+```sh
+#!/bin/sh
+keybio --acceso "Ana" --sistema "Nóminas" && exec /ruta/del/programa
+```
+
+**Windows** (`start /wait` espera a que se cierre KeyBio y deja su respuesta en `errorlevel`;
+si se instaló para todos los usuarios, la ruta es `C:\Program Files\KeyBio\KeyBio.exe`):
+
+```bat
+@echo off
+start "" /wait "%LOCALAPPDATA%\Programs\KeyBio\KeyBio.exe" --acceso "Ana" --sistema "Nóminas"
+if %errorlevel% neq 0 exit /b
+start "" "C:\ruta\del\programa.exe"
+```
+
+**macOS**:
+
+```sh
+#!/bin/sh
+/Applications/KeyBio.app/Contents/MacOS/KeyBio --acceso "Ana" --sistema "Nóminas" && open -a "Programa"
+```
+
+**Al iniciar sesión en el ordenador**: un lanzador en el inicio automático que bloquee la
+pantalla si la respuesta no es 0, por ejemplo `keybio --acceso "$USER" --sistema "Sesión" ||
+loginctl lock-session` en Linux, o `rundll32.exe user32.dll,LockWorkStation` en Windows.
+
+Es una **cerradura extra**, no la única: quien tenga conocimientos podría saltarse el lanzador,
+así que el programa protegido debe seguir teniendo su propia contraseña.
+
 ## Qué se guarda
 
 Los registros van en `access.jsonl`, dentro de la carpeta de datos, cifrados si los datos
