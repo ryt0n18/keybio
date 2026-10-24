@@ -94,6 +94,8 @@ en el panel de Web3Forms (*Spam protection*) para que sea obligatorio.
 - [ ] Al publicar con otro dominio, cambiar `SITE_URL` en `web/i18n/build.py` (enlaces para los
       buscadores) y regenerar.
 - [ ] Desplegar primero en privado (vista previa protegida con Cloudflare Access) y revisarla.
+- [x] Recuento de visitas con Cloudflare Web Analytics (sin cookies; `analytics` en `config.js`, solo
+      cuenta en `keybio.pages.dev`). Las cifras están en Cloudflare → *Web Analytics*.
 - [x] Dirección: `keybio.pages.dev`, sin dominio propio (decidido el 24-10-2026; keybio.com es de un
       laboratorio francés). Si más adelante se quiere uno, ver «Dominio propio».
 - [x] Dirección limpia: los enlaces internos no añaden `#…`, las páginas se sirven sin `.html`
