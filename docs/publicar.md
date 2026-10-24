@@ -49,6 +49,12 @@ Los nombres de los ficheros que espera la web están en `config.js` y los compru
 
 ## Día de la publicación (en este orden)
 
+**Hecho el 24-10-2026**: repositorio público con la rama `main` protegida, avisos privados de
+vulnerabilidades, alertas de Dependabot y escaneo de secretos; versión 2.1.0 publicada; descargas
+activadas; web en `keybio.pages.dev` y despliegues de prueba borrados. Pendiente: activar hCaptcha
+en el panel de Web3Forms (*Spam protection*) para que sea obligatorio.
+
+
 1. Revisa la lista de «Legal» de abajo.
 2. Repositorio público: `gh repo edit ryt0n18/keybio --visibility public
    --accept-visibility-change-consequences`.
