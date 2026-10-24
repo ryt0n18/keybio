@@ -271,6 +271,7 @@
           <textarea id="contact-message" name="message" rows="6" maxlength="3000" required></textarea>
           <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="check"><input type="checkbox" name="consent" required> {{index.contact.consent}}</label>
+          <div id="contact-captcha" class="captcha"></div>
           <div class="actions"><button class="btn primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{index.contact.submit}}</button></div>
           <p id="contact-status" class="form-status" aria-live="polite"></p>
         </form>

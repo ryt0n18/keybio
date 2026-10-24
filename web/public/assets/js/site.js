@@ -7,6 +7,7 @@ import { LANG, LANGUAGES, LOCALE, t, tn } from "./i18n.js";
 const THEME_KEY = "keybio-theme";
 const LANG_KEY = "keybio-lang";          // idioma elegido en el menú (no se vuelve a sugerir otro)
 const TURNSTILE_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+const HCAPTCHA_SRC = "https://js.hcaptcha.com/1/api.js?render=explicit&recaptchacompat=off";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -315,9 +316,38 @@ function setupContact() {
     status.className = "form-status muted";
     return;
   }
+  // Comprobación antispam (hCaptcha): se carga solo cuando alguien empieza a escribir
+  let token = "";
+  let widget = null;
+  if (CONFIG.hcaptchaSiteKey) {
+    form.addEventListener("focusin", async () => {
+      if (widget !== null) return;
+      widget = "cargando";
+      try {
+        await loadScript(`${HCAPTCHA_SRC}&hl=${LANG}`);
+        const dark = document.documentElement.dataset.theme === "dark"
+          || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+        widget = window.hcaptcha.render("contact-captcha", {
+          sitekey: CONFIG.hcaptchaSiteKey, theme: dark ? "dark" : "light",
+          callback: (value) => { token = value; },
+          "expired-callback": () => { token = ""; },
+        });
+      } catch {
+        widget = null;
+        status.textContent = t("ratings.captchaError");
+        status.className = "form-status bad";
+      }
+    });
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!form.reportValidity()) return;
+    if (CONFIG.hcaptchaSiteKey && !token) {
+      status.textContent = t("contact.needCaptcha");
+      status.className = "form-status warn";
+      return;
+    }
     const data = new FormData(form);
     const submit = $("button[type=submit]", form);
     submit.disabled = true;
@@ -335,6 +365,7 @@ function setupContact() {
           email: data.get("email"),
           message: data.get("message"),
           botcheck: data.get("botcheck") ? true : "",
+          ...(token ? { "h-captcha-response": token } : {}),
         }),
       });
       const out = await res.json().catch(() => ({}));
@@ -347,6 +378,8 @@ function setupContact() {
       status.className = "form-status bad";
     } finally {
       submit.disabled = false;
+      token = "";
+      if (window.hcaptcha && widget !== null && widget !== "cargando") window.hcaptcha.reset(widget);
     }
   });
 }

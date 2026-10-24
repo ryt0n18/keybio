@@ -27,4 +27,7 @@ export const CONFIG = {
 
   // Clave de acceso de Web3Forms para el formulario de contacto (es pública por diseño)
   web3formsKey: "dcc5a1a1-b921-4cc4-9389-e25fd9a9ef6b",
+  // hCaptcha del formulario de contacto: clave compartida del plan gratuito de Web3Forms (se exige
+  // activándolo en el panel de Web3Forms: «Spam protection» → hCaptcha)
+  hcaptchaSiteKey: "50b2fe65-b00b-4b9e-ad62-3ba471098be2",
 };
