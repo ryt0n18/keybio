@@ -62,7 +62,9 @@ Los nombres de los ficheros que espera la web están en `config.js` y los compru
    `https://github.com/ryt0n18/keybio/releases/download/v2.1.0/KeyBio-linux-x64.tar.gz`
    descarga sin iniciar sesión.
 5. Activa las descargas en la web: `downloads.enabled: true` en `config.js`, commit y subida.
-6. Despliega la web (ver «Web»).
+6. Despliega la web (ver «Web») y borra los despliegues de prueba (`vista-previa.keybio.pages.dev`
+   y los de dirección aleatoria) en Cloudflare → *Workers & Pages → keybio → Deployments*, para
+   que solo quede `keybio.pages.dev`.
 
 ## Web (`web/`)
 
@@ -84,7 +86,8 @@ Los nombres de los ficheros que espera la web están en `config.js` y los compru
 - [ ] Al publicar con otro dominio, cambiar `SITE_URL` en `web/i18n/build.py` (enlaces para los
       buscadores) y regenerar.
 - [ ] Desplegar primero en privado (vista previa protegida con Cloudflare Access) y revisarla.
-- [ ] (Opcional) Dominio propio en lugar de `keybio.pages.dev`: ver «Dominio propio».
+- [x] Dirección: `keybio.pages.dev`, sin dominio propio (decidido el 24-10-2026; keybio.com es de un
+      laboratorio francés). Si más adelante se quiere uno, ver «Dominio propio».
 - [x] Dirección limpia: los enlaces internos no añaden `#…`, las páginas se sirven sin `.html`
       y los buscadores reciben esa forma (`SITE_URL` en `web/i18n/build.py`).
 
