@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 APP_NAME = "KeyBio"
-APP_VERSION = "2.1.2"
+APP_VERSION = "2.2.0"
 APP_AUTHOR = "Álvaro Ruiz (ryt0n18)"
 COPYRIGHT = f"© 2026 {APP_AUTHOR}. Todos los derechos reservados."
 

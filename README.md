@@ -23,7 +23,8 @@
 KeyBio mide cuánto tiempo mantienes pulsada cada tecla, cuánto tardas en pasar a la
 siguiente, qué combinaciones te cuestan más, cómo usas las mayúsculas y cómo corriges los
 errores. Con eso crea una **huella de tecleo** de cada persona y la reconoce al escribir un
-texto nuevo, sin contraseñas ni cámaras. No envía nada por red.
+texto nuevo, sin contraseñas ni cámaras. Tus datos nunca salen del equipo; solo se conecta a
+internet si pulsas «Buscar actualizaciones».
 
 ## Descargar
 
@@ -36,11 +37,15 @@ hace falta instalar Python.
 | **Windows** 10/11 (64 bits) | `KeyBio-x.y.z-setup.exe` (instalador) o `KeyBio-windows-x64.zip` (portable) | La primera vez, SmartScreen avisa porque no está firmado: «Más información» → «Ejecutar de todas formas» |
 | **Linux** (64 bits): Ubuntu, Debian, Mint | `KeyBio-x.y.z-linux-amd64.deb` | Doble clic para instalarlo (o `sudo apt install ./KeyBio-x.y.z-linux-amd64.deb`) |
 | **Linux** (64 bits): otras distribuciones | `KeyBio-linux-x64.tar.gz` | `tar -xzf KeyBio-linux-x64.tar.gz && ./KeyBio/instalar.sh` (sin permisos de administrador) |
-| **macOS** 11+ (Apple Silicon) | `KeyBio-x.y.z-macos-arm64.dmg` | Arrastra KeyBio a Aplicaciones; la primera vez, clic derecho → Abrir. En pruebas: aún no se ha probado en un Mac real |
+| **macOS** 11+ (Apple Silicon) | `KeyBio-x.y.z-macos-arm64.dmg` | Arrastra KeyBio a Aplicaciones; la primera vez, clic derecho → Abrir |
 
 Una vez instalado aparece como cualquier otro programa: en el menú Inicio y el buscador de
 Windows, en Launchpad y Spotlight en macOS, y en el menú de aplicaciones en Linux. Desinstalarlo
 no borra los perfiles.
+
+Para actualizar (desde la 2.2.0): **Ajustes → Actualizaciones → Buscar actualizaciones**. Si hay
+una versión nueva, «Actualizar ahora» la descarga, comprueba que es la publicada y la instala;
+los perfiles se conservan. KeyBio solo se conecta a internet al pulsar ese botón.
 
 Cada versión incluye `SHA256SUMS.txt` para comprobar la descarga (`sha256sum -c SHA256SUMS.txt`).
 

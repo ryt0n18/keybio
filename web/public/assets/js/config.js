@@ -2,7 +2,7 @@
 // Mientras un valor esté vacío, la sección correspondiente se muestra como «próximamente».
 
 export const CONFIG = {
-  version: "2.1.2",
+  version: "2.2.0",
 
   // Responsable de la web (pie de página y política de privacidad)
   owner: "Álvaro Ruiz (ryt0n18)",
@@ -11,12 +11,12 @@ export const CONFIG = {
   // Descargas: se activan cuando haya una versión pública de los ejecutables
   downloads: {
     enabled: true,
-    base: "https://github.com/ryt0n18/keybio/releases/download/v2.1.2/",
-    windowsSetup: "KeyBio-2.1.2-setup.exe",
+    base: "https://github.com/ryt0n18/keybio/releases/download/v2.2.0/",
+    windowsSetup: "KeyBio-2.2.0-setup.exe",
     windowsZip: "KeyBio-windows-x64.zip",
-    linuxDeb: "KeyBio-2.1.2-linux-amd64.deb",
+    linuxDeb: "KeyBio-2.2.0-linux-amd64.deb",
     linuxTar: "KeyBio-linux-x64.tar.gz",
-    macDmg: "KeyBio-2.1.2-macos-arm64.dmg",
+    macDmg: "KeyBio-2.2.0-macos-arm64.dmg",
   },
 
   // Idiomas de la interfaz del programa (códigos de web/i18n/build.py); se muestran en «Descargar»

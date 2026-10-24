@@ -24,7 +24,7 @@ python -m venv .venv
 **Instalador de Windows**: después de `tools\build.bat`, con [Inno Setup 6](https://jrsoftware.org/isinfo.php):
 
 ```bat
-"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DAppVersion=2.1.2 tools\keybio.iss
+"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DAppVersion=2.2.0 tools\keybio.iss
 ```
 
 - La integración continua genera el instalador `KeyBio-x.y.z-setup.exe`, el `.zip` portable de
@@ -36,9 +36,9 @@ python -m venv .venv
   para las tiendas de aplicaciones). La CI instala los dos y comprueba que KeyBio sale en el menú
   y arranca. El identificador `io.github.ryt0n18.keybio` está en `tools/linux.py`,
   `tools/linux/instalar.sh` y `ksb/gui/app.py`: no se cambia, o las entradas instaladas se rompen.
-- **macOS** (en pruebas): el `.app` no está firmado ni notarizado por Apple, así que la primera
-  vez hay que abrirlo con clic derecho → Abrir (o en Ajustes del Sistema → Privacidad y
-  seguridad → «Abrir igualmente»). Falta probarlo en un Mac real.
+- **macOS**: el `.app` no está firmado ni notarizado por Apple, así que la primera vez hay que
+  abrirlo con clic derecho → Abrir (o en Ajustes del Sistema → Privacidad y seguridad → «Abrir
+  igualmente»). Probado por primera vez en un Mac real (Apple Silicon) con la 2.1.1.
 - Los ejecutables incluyen las licencias de terceros (carpeta `licenses`, que completa
   `tools/notices.py`). Qt for Python y Qt se distribuyen bajo la LGPL-3.0; `tools/keybio.spec`
   deja fuera las partes de Qt que el programa no usa, entre ellas Qt Virtual Keyboard, que es GPL.
@@ -93,6 +93,13 @@ python3 web/tests/run.py                              # web: demo, paridad con P
   con menos texto, la distancia de una persona a su propio perfil crece.
 - La versión se cambia solo en `ksb/__init__.py`; `tests/test_release.py` comprueba que el
   instalador, esta guía, la web y el CHANGELOG coinciden.
+- **Actualizaciones** (`ksb/updates.py`, `ksb/gui/updater.py`): el botón de Ajustes consulta
+  la última publicación de GitHub, descarga el archivo de ese sistema, lo compara con
+  `SHA256SUMS.txt` y lo instala (Windows: abre el instalador; macOS: abre el `.dmg`; `.deb`:
+  `pkexec apt-get install`; `instalar.sh`: lo vuelve a ejecutar y reinicia). Depende de los
+  nombres de los archivos de la publicación: si cambian, hay que cambiar `updates.asset_for`.
+  `tests/test_updates.py` lo prueba sin red; la descarga real se prueba a mano con una copia
+  instalada de una versión anterior, después de publicar.
 
 ## Traducciones
 

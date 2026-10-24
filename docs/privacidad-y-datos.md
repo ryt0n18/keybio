@@ -5,7 +5,10 @@ de riesgo: todo se queda en el equipo donde se usa.
 
 ## Principios
 
-- **Nada sale del equipo.** El programa no envía datos por red.
+- **Nada sale del equipo.** El programa no envía datos por red. La única conexión es la de
+  **Ajustes → Actualizaciones**, y solo al pulsar «Buscar actualizaciones»: pregunta a GitHub cuál
+  es la última versión y, si se quiere, la descarga. No envía nada de KeyBio (GitHub ve la
+  dirección IP, como en cualquier visita a una web).
 - **Permiso antes de registrar.** Al registrar a alguien hay que confirmar que esa persona está
   de acuerdo.
 - **Protección con contraseña** (Ajustes): los perfiles, el historial y los registros de acceso

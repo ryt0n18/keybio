@@ -8,8 +8,8 @@ from pathlib import Path
 
 from PySide6.QtCore import QObject, QProcess, QRunnable, Qt, QThreadPool, QUrl, Signal
 from PySide6.QtGui import QDesktopServices
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFileDialog, QFormLayout, QMessageBox, QSpinBox,
-                               QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFileDialog, QFormLayout, QMessageBox,
+                               QProgressBar, QSpinBox, QVBoxLayout, QWidget)
 
 from ... import APP_AUTHOR, APP_NAME, APP_VERSION, crypto, i18n, licenses_dir
 from ...evaluation import Calibration, calibrate
@@ -20,6 +20,7 @@ from ...texts import MIXED, text_languages
 from .. import icons
 from ..dialogs import PasswordDialog
 from ..keyboard import LAYOUTS
+from ..updater import UpdateController
 from ..widgets import (Badge, HBox, button, card, card_header, label, notify, page_title, page_widget, primary,
                        scroll)
 from .common import cell, fit_height, table
@@ -216,9 +217,40 @@ class SettingsPage(QWidget):
         restore = button(_("Restaurar usuarios desde copia…"), "upload")
         restore.clicked.connect(self._restore)
         cl.addWidget(HBox(open_btn, backup, restore))
-        cl.addWidget(label(_("Todo se guarda solo en este equipo. No se envía nada por red. Las copias (.zip) sirven "
-                             "también para pasar los perfiles entre Linux, Windows y macOS; se guardan sin cifrar."),
-                           "subtitle", wrap=True))
+        cl.addWidget(label(_("Todo se guarda solo en este equipo y tus datos nunca se envían por la red. Las copias "
+                             "(.zip) sirven también para pasar los perfiles entre Linux, Windows y macOS; se guardan "
+                             "sin cifrar."), "subtitle", wrap=True))
+        lay.addWidget(c)
+
+        # -- actualizaciones (solo se conecta al pulsar el botón)
+        c, cl = card()
+        cl.addWidget(card_header(_("Actualizaciones"), "refresh"))
+        cl.addWidget(label(_("Versión instalada: {version}", version=APP_VERSION), "subtitle"))
+        cl.addWidget(label(_("KeyBio solo se conecta a internet cuando pulsas «Buscar actualizaciones»: consulta en "
+                             "GitHub si hay una versión nueva y, si quieres, la descarga. No envía ningún dato tuyo."),
+                           "small", wrap=True))
+        self.updater = UpdateController(self)
+        self.check_btn = button(_("Buscar actualizaciones"), "refresh")
+        self.check_btn.clicked.connect(self.updater.check)
+        self.install_btn = primary(_("Actualizar ahora"), "download")
+        self.install_btn.clicked.connect(self._install_update)
+        self.notes_btn = button(_("Ver novedades"), "file")
+        self.notes_btn.clicked.connect(self.updater.open_page)
+        for b in (self.install_btn, self.notes_btn):
+            b.setVisible(False)
+        cl.addWidget(HBox(self.check_btn, self.install_btn, self.notes_btn))
+        self.update_bar = QProgressBar()
+        self.update_bar.setTextVisible(False)
+        self.update_bar.setVisible(False)
+        cl.addWidget(self.update_bar)
+        self.update_status = label("", "subtitle", wrap=True)
+        cl.addWidget(self.update_status)
+        self.updater.status.connect(self._update_status)
+        self.updater.found.connect(self._update_found)
+        self.updater.progress.connect(self._update_progress)
+        self.updater.message.connect(lambda text: QMessageBox.information(self, APP_NAME, text))
+        self.updater.quit_requested.connect(QApplication.instance().quit)
+        self.updater.restart_requested.connect(restart_app)
         lay.addWidget(c)
 
         # -- cómo funciona
@@ -421,6 +453,26 @@ class SettingsPage(QWidget):
             notify(self, _("Protección desactivada"), "warn")
 
     # -- copias -------------------------------------------------------------
+    def _update_status(self, text: str, kind: str) -> None:
+        self.update_status.setText(text)
+        if kind != "muted":   # terminó (bien o mal): se puede volver a pulsar
+            self.check_btn.setEnabled(True)
+            self.install_btn.setEnabled(True)
+
+    def _update_found(self, release) -> None:
+        for b in (self.install_btn, self.notes_btn):
+            b.setVisible(release is not None)
+
+    def _update_progress(self, pct: int) -> None:
+        self.update_bar.setVisible(pct >= 0)
+        if pct >= 0:
+            self.update_bar.setValue(pct)
+
+    def _install_update(self) -> None:
+        self.install_btn.setEnabled(False)
+        self.check_btn.setEnabled(False)
+        self.updater.update()
+
     def _backup(self):
         stamp = datetime.now().strftime("%Y%m%d_%H%M")
         path = QFileDialog.getSaveFileName(self, _("Crear copia de seguridad"),

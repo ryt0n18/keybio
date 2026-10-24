@@ -138,8 +138,10 @@ en el panel de Web3Forms (*Spam protection*) para que sea obligatorio.
 
 - [x] Captura de teclas con el código de tecla virtual (antes todas las teclas parecían la misma).
 - [x] Carpeta de datos, `.app` con icono, `.dmg` y trabajo de CI (solo al etiquetar o a mano).
-- [ ] **Probarlo en un Mac real**: registrar a alguien, escribir con mayúsculas (shift izquierdo
-      y derecho), tildes con tecla muerta y Cmd+V (no debe escribir nada), e identificar.
+- [x] Primera prueba en un Mac real (24-10-2026): arranca, registra e identifica. Encontró el
+      fallo del gráfico de ritmo (arreglado en la 2.1.2).
+- [ ] Comprobar en el Mac: mayúsculas (shift izquierdo y derecho), tildes con tecla muerta,
+      Cmd+V (no debe escribir nada) y «Actualizar ahora».
 - [ ] (Opcional, 99 $/año) Cuenta de desarrollador de Apple para firmar y notarizar la app.
 
 ## Legal

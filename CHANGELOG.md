@@ -1,5 +1,15 @@
 # Cambios
 
+## 2.2.0
+
+- **Actualizaciones desde el programa**: Ajustes → Actualizaciones → «Buscar actualizaciones».
+  Si hay una versión nueva, «Actualizar ahora» descarga la de tu sistema, comprueba que coincide
+  con la publicada (SHA-256) y la instala: en Windows abre el instalador, en macOS abre el
+  `.dmg`, en Linux instala el `.deb` pidiendo la contraseña o, con `instalar.sh`, se actualiza y
+  se reinicia solo. Los perfiles se conservan.
+- KeyBio solo se conecta a internet al pulsar ese botón, y no envía ningún dato tuyo. La
+  política de privacidad de la web lo explica.
+
 ## 2.1.2
 
 - Arreglado: al pasar el ratón por el gráfico «Ritmo de escritura» (resultado de una comprobación
