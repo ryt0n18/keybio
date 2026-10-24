@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Fallo de seguridad
+    url: https://github.com/ryt0n18/keybio/security/advisories/new
+    about: Avisa en privado de los fallos de seguridad (ver SECURITY.md), no en una issue pública.

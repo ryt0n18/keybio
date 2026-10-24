@@ -1,0 +1,25 @@
+KeyBio
+Copyright © 2026 Álvaro Ruiz (ryt0n18). Todos los derechos reservados.
+
+KeyBio (su código fuente, sus ejecutables, su documentación, su web y el resto de sus
+materiales) está protegido por la legislación de propiedad intelectual.
+
+Se permite descargar y usar gratuitamente los ejecutables que publique el titular.
+
+No se permite, sin autorización previa y por escrito del titular: copiar, modificar,
+adaptar o traducir el código fuente; redistribuir, vender o sublicenciar el programa o
+sus ejecutables; ni crear obras derivadas de ellos.
+
+EL PROGRAMA SE PROPORCIONA «TAL CUAL», SIN GARANTÍAS DE NINGÚN TIPO, NI EXPRESAS NI
+IMPLÍCITAS. EN LA MEDIDA EN QUE LA LEY LO PERMITA, EL TITULAR NO SERÁ RESPONSABLE DE LOS
+DAÑOS QUE PUEDA CAUSAR SU USO. La biometría de tecleo puede equivocarse: KeyBio no debe
+ser el único medio para proteger el acceso a sistemas o datos importantes.
+
+COMPONENTES DE TERCEROS
+
+Los ejecutables de KeyBio incluyen componentes de terceros con sus propias licencias
+(carpeta «licenses»; resumen en LEEME.txt). En particular, Qt for Python (PySide6 y
+Shiboken6) y Qt se distribuyen bajo la GNU Lesser General Public License versión 3.
+Esta licencia no limita los derechos que la LGPL te concede sobre esos componentes,
+incluidos el de sustituirlos por versiones modificadas y el de hacer la ingeniería
+inversa necesaria para depurar esas modificaciones.

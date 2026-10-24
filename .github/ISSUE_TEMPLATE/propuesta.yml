@@ -1,0 +1,19 @@
+name: Propuesta
+description: Una idea para mejorar KeyBio
+labels: ["propuesta"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Qué problema resolvería
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Cómo te lo imaginas
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Datos personales
+      description: ¿Necesitaría guardar o enviar más datos de los que ya guarda KeyBio? (la forma de teclear es un dato biométrico)

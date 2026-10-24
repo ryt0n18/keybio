@@ -1,0 +1,12 @@
+{
+  "name": "keybio-web",
+  "private": true,
+  "description": "Web de KeyBio (Cloudflare Pages). Ver README.md.",
+  "scripts": {
+    "dev": "wrangler pages dev",
+    "deploy": "wrangler pages deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.150.0"
+  }
+}

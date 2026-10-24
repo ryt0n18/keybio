@@ -1,0 +1,43 @@
+name: Error
+description: Algo no funciona como debería
+labels: ["error"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **No adjuntes perfiles, exportaciones, copias de seguridad, `history.jsonl` ni `access.jsonl`**:
+        contienen datos biométricos de personas reales. Para fallos de seguridad usa el aviso privado.
+  - type: input
+    id: version
+    attributes:
+      label: Versión de KeyBio
+      description: Ajustes → «Cómo funciona», al final.
+      placeholder: "2.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Sistema
+      options: [Windows, Linux, macOS, Web (demo en el navegador)]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: Qué ha pasado y qué esperabas
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Cómo reproducirlo
+      placeholder: |
+        1. ...
+        2. ...
+  - type: textarea
+    id: log
+    attributes:
+      label: Registro de errores (opcional)
+      description: Las últimas líneas de `logs/keybio.log` en la carpeta de datos. Revísalas antes de pegarlas.
+      render: text

@@ -1,0 +1,30 @@
+// Configuración pública de la web. Todo lo que hay aquí lo ve cualquiera: no pongas secretos.
+// Mientras un valor esté vacío, la sección correspondiente se muestra como «próximamente».
+
+export const CONFIG = {
+  version: "2.1.0",
+
+  // Responsable de la web (pie de página y política de privacidad)
+  owner: "Álvaro Ruiz (ryt0n18)",
+  year: 2026,
+
+  // Descargas: se activan cuando haya una versión pública de los ejecutables
+  downloads: {
+    enabled: false,
+    base: "https://github.com/ryt0n18/keybio/releases/download/v2.1.0/",
+    windowsSetup: "KeyBio-2.1.0-setup.exe",
+    windowsZip: "KeyBio-windows-x64.zip",
+    linuxDeb: "KeyBio-2.1.0-linux-amd64.deb",
+    linuxTar: "KeyBio-linux-x64.tar.gz",
+    macDmg: "KeyBio-2.1.0-macos-arm64.dmg",
+  },
+
+  // Idiomas de la interfaz del programa (códigos de web/i18n/build.py); se muestran en «Descargar»
+  programLanguages: ["es", "en", "ca", "gl", "eu", "fr", "pt", "de", "it"],
+
+  // Clave pública (site key) de Cloudflare Turnstile para las valoraciones
+  turnstileSiteKey: "0x4AAAAAAFi4gaJF24sdXJTe",   // widget «KeyBio web» (dominio keybio.pages.dev)
+
+  // Clave de acceso de Web3Forms para el formulario de contacto (es pública por diseño)
+  web3formsKey: "dcc5a1a1-b921-4cc4-9389-e25fd9a9ef6b",
+};

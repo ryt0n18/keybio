@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Pruebas de la web de KeyBio</title>
+</head>
+<body>
+  <pre id="results"></pre>
+  <script type="module" src="tests.js"></script>
+  <script>
+    // Errores fuera de las pruebas (por ejemplo, un fallo al importar un módulo)
+    window.addEventListener("error", (e) => {
+      const out = document.getElementById("results");
+      out.textContent = JSON.stringify([{ name: "carga", ok: false, error: String(e.message) }]);
+      out.dataset.done = "1";
+    });
+  </script>
+</body>
+</html>

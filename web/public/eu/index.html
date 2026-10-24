@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="eu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KeyBio · Idazteko moduagatik ezagutzen zaitu</title>
+  <meta name="description" content="KeyBio-k pertsonak teklatzeko moduagatik ezagutzen ditu. Probatu nabigatzailean, ikusi nola dabilen eta deskargatu programa Windows, macOS eta Linuxerako.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="KeyBio · Idazteko moduagatik ezagutzen zaitu">
+  <meta property="og:description" content="Teklatze-dinamikaren biometria. Probatu nabigatzailean: zure sakaketak ez dira zure gailutik ateratzen.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="eu_ES">
+  <link rel="alternate" hreflang="es" href="https://keybio.pages.dev/">
+  <link rel="alternate" hreflang="en" href="https://keybio.pages.dev/en/">
+  <link rel="alternate" hreflang="ca" href="https://keybio.pages.dev/ca/">
+  <link rel="alternate" hreflang="gl" href="https://keybio.pages.dev/gl/">
+  <link rel="alternate" hreflang="eu" href="https://keybio.pages.dev/eu/">
+  <link rel="alternate" hreflang="fr" href="https://keybio.pages.dev/fr/">
+  <link rel="alternate" hreflang="pt" href="https://keybio.pages.dev/pt/">
+  <link rel="alternate" hreflang="de" href="https://keybio.pages.dev/de/">
+  <link rel="alternate" hreflang="it" href="https://keybio.pages.dev/it/">
+  <link rel="alternate" hreflang="x-default" href="https://keybio.pages.dev/">
+  <link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="module" src="../assets/js/site.js"></script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M6 9.5h.01M9.5 9.5h.01M13 9.5h.01M16.5 9.5h.01M6 13h.01M18 9.5h.01M18 13h.01M8 16h8"/><path d="M9.5 13h.01M13 13h.01M16.5 13h.01"/></symbol>
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M7.5 19.5c1-2 1.5-4.2 1.5-7.5a3 3 0 0 1 6 0c0 1.2-.1 2.4-.3 3.5"/><path d="M12 12c0 3.4-.7 6.3-2 8.5M4.5 16c.6-1.3 1-2.6 1-4a6.5 6.5 0 0 1 11.3-4.4"/><path d="M18.3 10.5c.1.5.2 1 .2 1.5 0 2.7-.4 5.3-1.4 7.5M14.4 20.5c.4-1 .7-2 .9-3"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7.5V5a2 2 0 0 1 2-2h2.5M16.5 3H19a2 2 0 0 1 2 2v2.5M21 16.5V19a2 2 0 0 1-2 2h-2.5M7.5 21H5a2 2 0 0 1-2-2v-2.5"/><circle cx="12" cy="10" r="3"/><path d="M7 17.5c1-2.4 2.9-3.6 5-3.6s4 1.2 5 3.6"/></symbol>
+    <symbol id="i-user-plus" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 8v6M16 11h6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 1 0-2.3 5.6"/><path d="M20 4v7.5h-7.5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.7 12l2.4 2.4 4.3-4.6"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M3.5 17a8.5 8.5 0 1 1 17 0"/><path d="M12 17l4-5.5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.2M12 17h.01"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.4M12 16.8h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8h.01"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5L4.5 13.5H12L11 21.5l8.5-11H12z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-windows" viewBox="0 0 24 24"><path d="M3.5 5.8L10.5 5v6.5h-7zM13 4.6l7.5-1v7.9H13zM3.5 13.5h7V20l-7-.8zM13 13.5h7.5v7.9l-7.5-1z"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3 2.5-3 2.5M12.5 15h4.5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Joan edukira</a>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio" aria-label="KeyBio, hasiera">
+        <img src="../assets/img/icon.svg" alt="" width="28" height="28">
+        <span>KeyBio</span>
+      </a>
+      <nav class="nav" aria-label="Atalak">
+        <a href="#demo">Probatu</a>
+        <a href="#como-funciona">Nola dabilen</a>
+        <a href="#descargar">Deskargatu</a>
+        <a href="#opiniones">Iritziak</a>
+        <a href="#contacto">Harremana</a>
+      </nav>
+      <details class="lang-menu"><summary aria-label="Hizkuntza" title="Hizkuntza"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#D52B1E"/><path d="M0 0L30 20M30 0L0 20" stroke="#009B48" stroke-width="3"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="3"/></svg><span>EU</span></summary><ul><li><a href="../" hreflang="es" lang="es" data-lang="es"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>Español</a></li><li><a href="../en/" hreflang="en" lang="en" data-lang="en"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.4"/></svg>English</a></li><li><a href="../ca/" hreflang="ca" lang="ca" data-lang="ca"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#FCDD09"/><path d="M0 3.3H30M0 7.8H30M0 12.2H30M0 16.7H30" stroke="#DA121A" stroke-width="2.2"/></svg>Català</a></li><li><a href="../gl/" hreflang="gl" lang="gl" data-lang="gl"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#fff"/><path d="M0 0L30 20" stroke="#0099CC" stroke-width="5"/></svg>Galego</a></li><li><a href="../eu/" hreflang="eu" lang="eu" data-lang="eu" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#D52B1E"/><path d="M0 0L30 20M30 0L0 20" stroke="#009B48" stroke-width="3"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="3"/></svg>Euskara</a></li><li><a href="../fr/" hreflang="fr" lang="fr" data-lang="fr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#EF4135"/><rect width="20" height="20" fill="#fff"/><rect width="10" height="20" fill="#0055A4"/></svg>Français</a></li><li><a href="../pt/" hreflang="pt" lang="pt" data-lang="pt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#FF0000"/><rect width="12" height="20" fill="#006600"/><circle cx="12" cy="10" r="4" fill="#FFE000"/><path d="M10.4 8h3.2v3.2a1.6 1.6 0 0 1-3.2 0z" fill="#fff" stroke="#FF0000" stroke-width=".7"/></svg>Português</a></li><li><a href="../de/" hreflang="de" lang="de" data-lang="de"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#FFCE00"/><rect width="30" height="13.4" fill="#DD0000"/><rect width="30" height="6.7" fill="#000"/></svg>Deutsch</a></li><li><a href="../it/" hreflang="it" lang="it" data-lang="it"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#CE2B37"/><rect width="20" height="20" fill="#fff"/><rect width="10" height="20" fill="#009246"/></svg>Italiano</a></li></ul></details>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Aldatu gaia">
+        <svg class="icon only-light" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon only-dark" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Teklatze-dinamikaren biometria</p>
+          <h1>Idazteko moduagatik ezagutzen zaitu.</h1>
+          <p class="lead">KeyBio-k neurtzen du tekla bakoitza zenbat denboraz mantentzen duzun sakatuta, zenbat behar duzun hurrengora pasatzeko eta zein konbinazio kostatzen zaizkizun gehien. Horrekin pertsona bat beste batetik bereizten du, pasahitzik eta kamerarik gabe.</p>
+          <div class="actions">
+            <a class="btn primary large" href="#demo"><svg class="icon" aria-hidden="true"><use href="#i-fingerprint"/></svg>Probatu orain</a>
+            <a class="btn large" href="#descargar"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Deskargatu</a>
+          </div>
+          <p class="hero-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Demoa osorik zure nabigatzailean dabil: zure sakaketak ez dira inora bidaltzen.</p>
+        </div>
+        <figure class="hero-visual card">
+          <svg class="timing" viewBox="0 0 480 200" role="img" aria-labelledby="timing-title timing-desc">
+            <title id="timing-title">Zer neurtzen duen KeyBio-k «ho» idaztean</title>
+            <desc id="timing-desc">H tekla 95 milisegundoz mantentzen da sakatuta. 40 milisegundo igarotzen dira askatzen denetik O sakatzen den arte. Bi sakaketen artean 135 milisegundo igarotzen dira.</desc>
+            <rect class="tl-cap" x="14" y="52" width="32" height="30" rx="7"/>
+            <text class="tl-key" x="30" y="72">H</text>
+            <rect class="tl-cap" x="14" y="102" width="32" height="30" rx="7"/>
+            <text class="tl-key" x="30" y="122">O</text>
+            <line class="tl-guide" x1="60" y1="40" x2="60" y2="160"/>
+            <line class="tl-guide" x1="212" y1="40" x2="212" y2="132"/>
+            <line class="tl-guide" x1="276" y1="96" x2="276" y2="160"/>
+            <rect class="tl-bar a" x="60" y="54" width="152" height="26" rx="6"/>
+            <rect class="tl-bar b" x="276" y="104" width="128" height="26" rx="6"/>
+            <path class="tl-measure" d="M60 34h152M60 30v8M212 30v8"/>
+            <text class="tl-label" x="136" y="24">sakaketa · 95 ms</text>
+            <path class="tl-measure accent2" d="M212 92h64M212 88v8M276 88v8"/>
+            <text class="tl-label start" x="286" y="96">hegaldia · 40 ms</text>
+            <path class="tl-measure muted" d="M60 160h216M60 156v8M276 156v8"/>
+            <text class="tl-label" x="168" y="182">sakaketen artean · 135 ms</text>
+          </svg>
+          <figcaption class="muted small">«ho» idaztean, KeyBio-k erregistratzen du noiz sakatzen eta askatzen duzun tekla bakoitza. Pertsona bakoitzak bere denborak ditu.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="demo" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Demoa</p>
+          <h2>Probatu zure nabigatzailean</h2>
+          <p class="lead">Sortu zure teklatze-aztarna bi esaldi labur idatziz, eta egiaztatu KeyBio-k ezagutzen zaituen. Hainbat pertsona bazarete, bakoitza ordenagailu honetan erregistra daiteke «asmatu nor den» jolasteko.</p>
+        </div>
+        <div id="demo-app" class="card demo">
+          <noscript><p>Demoak JavaScript behar du.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Nola dabilen</p>
+          <h2>Ez da garrantzitsua zer idazten duzun, baizik eta nola</h2>
+          <p class="lead">Teklatzeko modua eskuz idaztekoa bezain pertsonala da. KeyBio-k aztarna bihurtzen du, eta erregistratutako pertsonenekin alderatzen du.</p>
+        </div>
+        <ol class="how">
+          <li class="card">
+            <svg class="icon big" aria-hidden="true"><use href="#i-keyboard"/></svg>
+            <h3>1. Bilketa</h3>
+            <p>Tekla bakoitza sakatzen eta askatzen duzun unea erregistratzen du. Ez du gordetzen idazten duzunaren grabaziorik irakurtzeko: denborak interesatzen zaizkio.</p>
+          </li>
+          <li class="card">
+            <svg class="icon big" aria-hidden="true"><use href="#i-activity"/></svg>
+            <h3>2. Ezaugarriak</h3>
+            <p>Hogei ezaugarritik gora kalkulatzen ditu: tekla bakoitzaren sakaketa-denbora, hegaldi-denbora, letra-bikote eta hirukote bakoitzaren abiadura, maiuskulen erabilera eta akatsak zuzentzeko modua.</p>
+          </li>
+          <li class="card">
+            <svg class="icon big" aria-hidden="true"><use href="#i-scan"/></svg>
+            <h3>3. Alderaketa</h3>
+            <p>Zure lagina aztarna bakoitzarekin alderatzen du: zein konbinazio egiten zaizkizun azkarren eta motelen (R neurria), zenbatek irauten duten berdin (A neurria) eta zure ezaugarri orokorrak zein urrun dauden.</p>
+          </li>
+          <li class="card">
+            <svg class="icon big" aria-hidden="true"><use href="#i-gauge"/></svg>
+            <h3>4. Atalase pertsonala</h3>
+            <p>Pertsona bakoitzak bere atalasea du, bere laginak elkarren artean alderatuz kalkulatua. Aztarna bat ere ez bada nahikoa antzekoa, erantzuna «erregistratu gabea» da.</p>
+          </li>
+        </ol>
+
+        <div class="split">
+          <div class="card">
+            <h3>Programak zer dakarren</h3>
+            <ul class="checklist">
+              <li>Identifikazioa (nor naiz?) eta egiaztapena (pertsona hau naiz?), testu librearekin ere bai.</li>
+              <li>Zuzeneko estimazioa idatzi bitartean, eta emaitzaren azalpena ezaugarriz ezaugarri.</li>
+              <li>Erabilerarekin egokitzen diren profilak eta zuen datuekin egindako kalibrazio automatikoa.</li>
+              <li>Ordezpenen detekzioa: idazketa automatikoa eta grabatutako laginen errepikapena.</li>
+              <li>Kontrol-panela, historia, bero-mapak eta PDF txostenak.</li>
+              <li>Pasahitz bidezko babesa eta segurtasun-kopiak.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> Zure datuak zureak dira</h3>
+            <p>Programak dena zure ordenagailuan gordetzen du, nahi izanez gero pasahitz batekin zifratuta, eta ez du ezer bidaltzen internetez. Orri honetako demoak ere ez: dena zure nabigatzailean kalkulatzen da.</p>
+            <h3>Noraino iristen den</h3>
+            <p>20 pertsona simulaturekin (ordenagailuak sortutako idazketa) eta 30 ezezagunekin egindako proba batean, «normala» sentikortasunarekin, pertsona zuzena ezagutu zuen 80 saiakeratik 79tan, eta 30 ezezagunetatik 29 baztertu zituen. Datu simulatuak dira: benetako pertsonekin emaitzak okerragoak izan daitezke; beraz, hartu erreferentzia gisa, ez berme gisa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="descargar" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Deskargatu</p>
+          <h2>Eraman KeyBio zure ordenagailura</h2>
+          <p class="lead">Programa osoak konexiorik gabe funtzionatzen du, eta ez da beste ezer instalatu behar. Bertsioa <span data-config="version"></span>.</p>
+          <p class="muted">Programaren hizkuntzak: <span id="program-languages"></span></p>
+        </div>
+        <p id="downloads-soon" class="notice info"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Deskargak laster egongo dira erabilgarri.</span></p>
+        <div class="downloads">
+          <div class="card download">
+            <svg class="icon big" aria-hidden="true"><use href="#i-windows"/></svg>
+            <h3>Windows</h3>
+            <p class="muted">Windows 10 eta 11, 64 bit.</p>
+            <div class="actions">
+              <a class="btn primary" data-download="windowsSetup" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Instalatzailea (.exe)</a>
+              <a class="btn" data-download="windowsZip" aria-disabled="true">Bertsio eramangarria (.zip)</a>
+            </div>
+            <p class="small muted">Programa oraindik digitalki sinatu gabe dagoenez, Windowsek SmartScreen-en abisu bat erakuts dezake: sakatu «Informazio gehiago» eta gero «Exekutatu hala ere».</p>
+          </div>
+          <div class="card download">
+            <svg class="icon big" aria-hidden="true"><use href="#i-laptop"/></svg>
+            <h3>macOS</h3>
+            <p class="muted">Apple Silicon duten Macak (M1 edo berriagoa), macOS 11 edo berriagoa.</p>
+            <div class="actions">
+              <a class="btn primary" data-download="macDmg" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Deskargatu (.dmg)</a>
+            </div>
+            <p class="small muted">Arrastatu KeyBio Aplikazioak karpetara. Applek oraindik sinatu ez duenez, lehen aldian ireki eskuineko klikarekin → Ireki.</p>
+          </div>
+          <div class="card download">
+            <svg class="icon big" aria-hidden="true"><use href="#i-terminal"/></svg>
+            <h3>Linux</h3>
+            <p class="muted">64 biteko banaketak, mahaigain grafikoarekin.</p>
+            <div class="actions">
+              <a class="btn primary" data-download="linuxDeb" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Ubuntu, Debian eta Mint (.deb)</a>
+              <a class="btn" data-download="linuxTar" aria-disabled="true">Beste banaketak (.tar.gz)</a>
+            </div>
+            <p class="small muted">.deb fitxategia klik bikoitzarekin instalatzen da. .tar.gz fitxategiarekin, deskonprimatu eta exekutatu <code>KeyBio/instalar.sh</code>. Bi kasuetan, KeyBio aplikazioen menuan agertzen da.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opiniones" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Iritziak</p>
+          <h2>Zer iruditu zaizu?</h2>
+          <p class="lead">Zure balorazioak KeyBio hobetzen laguntzen du. Iruzkinak berrikusi ondoren argitaratzen dira.</p>
+        </div>
+        <div class="split">
+          <div class="card">
+            <div id="ratings-summary" class="ratings-summary" aria-live="polite">Balorazioak kargatzen…</div>
+            <ul id="ratings-list" class="comments"></ul>
+          </div>
+          <form id="rating-form" class="card form" novalidate>
+            <fieldset class="star-input">
+              <legend>Zure balorazioa</legend>
+              <div class="star-options">
+                <input type="radio" id="star5" name="stars" value="5"><label for="star5" title="5 izar"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">5 izar</span></label>
+                <input type="radio" id="star4" name="stars" value="4"><label for="star4" title="4 izar"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">4 izar</span></label>
+                <input type="radio" id="star3" name="stars" value="3"><label for="star3" title="3 izar"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">3 izar</span></label>
+                <input type="radio" id="star2" name="stars" value="2"><label for="star2" title="2 izar"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">2 izar</span></label>
+                <input type="radio" id="star1" name="stars" value="1"><label for="star1" title="Izar 1"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">Izar 1</span></label>
+              </div>
+            </fieldset>
+            <label for="rating-name">Izena <span class="muted">(aukerakoa)</span></label>
+            <input id="rating-name" name="name" type="text" maxlength="40" autocomplete="nickname">
+            <label for="rating-comment">Iruzkina <span class="muted">(aukerakoa)</span></label>
+            <textarea id="rating-comment" name="comment" rows="4" maxlength="600"></textarea>
+            <p class="field-meta"><span id="rating-count" class="muted small">0/600</span></p>
+            <div id="rating-captcha" class="captcha"></div>
+            <p class="small muted">Bidaltzean <a href="privacidad.html">pribatutasun-politika</a> onartzen duzu.</p>
+            <div class="actions"><button class="btn primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>Bidali balorazioa</button></div>
+            <p id="rating-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <div class="container narrow">
+        <div class="section-head">
+          <p class="eyebrow">Harremana</p>
+          <h2>Hitz egingo dugu?</h2>
+          <p class="lead">Zalantzak, ideiak, akatsak edo lankidetza-proposamenak: idatzi iezadazu eta erantzungo dizut.</p>
+        </div>
+        <form id="contact-form" class="card form">
+          <div class="form-row">
+            <div>
+              <label for="contact-name">Izena</label>
+              <input id="contact-name" name="name" type="text" maxlength="80" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="contact-email">Helbide elektronikoa</label>
+              <input id="contact-email" name="email" type="email" maxlength="120" autocomplete="email" required>
+            </div>
+          </div>
+          <label for="contact-message">Mezua</label>
+          <textarea id="contact-message" name="message" rows="6" maxlength="3000" required></textarea>
+          <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="check"><input type="checkbox" name="consent" required> <a href="privacidad.html">Pribatutasun-politika</a> irakurri eta onartzen dut.</label>
+          <div class="actions"><button class="btn primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Bidali mezua</button></div>
+          <p id="contact-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span data-config="year"></span> KeyBio · <span data-config="owner" data-fallback="[arduraduna zehazteke]"></span>. Eskubide guztiak erreserbatuta.</p>
+      <p><a href="privacidad.html">Pribatutasuna eta lege-oharra</a> · Bertsioa <span data-config="version"></span></p>
+    </div>
+  </footer>
+  <script type="application/json" id="i18n">{"lang":"eu","locale":"eu-ES","js":{"theme.toLight":"Aldatu gai argira","theme.toDark":"Aldatu gai ilunera","lang.suggest":"Orri hau euskaraz ere badago.","lang.switch":"Ikusi euskaraz","lang.dismiss":"Ez, eskerrik asko","common.soon":"Laster erabilgarri.","common.sending":"Bidaltzen…","ratings.stars":"{total}etik {n} izar","ratings.none":"Oraindik ez dago baloraziorik. Izan zaitez iritzia ematen lehena!","ratings.count_one":"Balorazio {n}","ratings.count_other":"{n} balorazio","ratings.anonymous":"Anonimoa","ratings.closed":"Balorazioak webgunea argitaratzen denean irekiko dira.","ratings.captchaError":"Ezin izan da spamaren aurkako egiaztapena kargatu. Egiaztatu zure konexioa.","ratings.chooseStars":"Aukeratu 1 eta 5 izar artean.","ratings.waitCaptcha":"Itxaron spamaren aurkako egiaztapena amaitu arte.","ratings.sendError":"Ezin izan da balorazioa bidali.","ratings.thanksPending":"Eskerrik asko! Zure iruzkina berrikusi ondoren agertuko da.","ratings.thanks":"Eskerrik asko zure balorazioagatik!","ratings.error.not_configured":"Balorazioak ez daude konfiguratuta.","ratings.error.origin":"Jatorri hori ez dago baimenduta.","ratings.error.format":"Formatu baliogabea.","ratings.error.too_long":"Balorazioa luzeegia da.","ratings.error.stars":"Aukeratu 1 eta 5 izar artean.","ratings.error.lengths":"Izenak gehienez {name} karaktere izan ditzake, eta iruzkinak {comment}.","ratings.error.captcha":"Ezin izan da egiaztatu robot bat ez zarenik. Saiatu berriro.","ratings.error.daily_limit":"Gaur balorazio bat bidali duzu dagoeneko. Eskerrik asko!","contact.closed":"Formularioa webgunea argitaratzen denean aktibatuko da.","contact.sendError":"Ezin izan da mezua bidali. Saiatu berriro geroago.","contact.sent":"Mezua bidali da! Ahalik eta lasterren erantzungo dizut.","demo.unit.cpm":"sak./min","demo.unit.per100chars":"/100 karak.","demo.unit.per100keys":"/100 tekla","demo.trait.speed":"Abiadura","demo.trait.speed.help":"Sakaketak minutuko, eten luzeak kontatu gabe.","demo.trait.dwell":"Sakaketa","demo.trait.dwell.help":"Tekla bakoitza sakatuta mantentzen duzun batez besteko denbora.","demo.trait.flight":"Hegaldia","demo.trait.flight.help":"Tekla bat askatu eta hurrengoa sakatu arteko batez besteko denbora.","demo.trait.overlap":"Gainjartzea","demo.trait.overlap.help":"Aurrekoa askatu aurretik hurrengo tekla sakatzen duzun aldiak.","demo.trait.regularity":"Erregulartasuna","demo.trait.regularity.help":"Zure erritmoa zein konstantea den (% 100 metronomo bat litzateke).","demo.trait.errors":"Akatsak","demo.trait.errors.help":"Okerreko karaktereak idatzitako 100 bakoitzeko (zuzendu arren).","demo.key.tab":"Tab","demo.key.enter":"Sartu","demo.key.caps":"Blok","demo.key.shift":"Maius","demo.key.ctrl":"Ktrl","demo.heatmap.label":"Teklatuaren bero-mapa: tekla bakoitzaren sakaketa-denbora","demo.heatmap.key":"{key}: {ms} ms batez beste ({n} sakaketa)","demo.heatmap.shorter":"laburragoa","demo.heatmap.longer":"luzeagoa","demo.heatmap.caption":"tekla bakoitza sakatuta mantentzen duzun denbora","demo.typing.label":"Idatzi testu hau: {text}","demo.typing.start":"Hasi idazten nahi duzunean","demo.typing.caps":"Maiuskula-blokeoa aktibatuta duzu.","demo.typing.early":"Emaitza argia: ez dago esaldia amaitu beharrik.","demo.typing.blur":"Testu-koadrotik irten zara. Egin klik bertan idazten jarraitzeko.","demo.typing.speed":"{n} sakaketa/min","demo.noStorage":"Nabigatzaile honek ez du datuak gordetzen uzten: aztarnak galdu egingo dira orria ixtean.","demo.touch":"Demoak teklatu fisiko bat behar du: teklaturik gabeko mugikor edo tableta batean ezin dira sakaketak neurtu.","demo.intro.step1":"Sortu zure aztarna.","demo.intro.step1.text":"Idatzi {n} esaldi labur (minutu eta erdi gutxi gorabehera).","demo.intro.step2":"Jarri proban.","demo.intro.step2.text":"Idatzi esaldi berri bat, eta KeyBio zu ezagutzen saiatuko da.","demo.intro.step3":"Jolastu «asmatu nor den».","demo.intro.step3.text":"Erregistra daitezela pertsona gehiago ordenagailu honetan, eta egiaztatu bereizten zaituzten.","demo.create":"Sortu nire aztarna","demo.local":"Sakaketak nabigatzaile honetan geratzen dira: ez dira inora bidaltzen.","demo.samples_one":"Lagin {n}","demo.samples_other":"{n} lagin","demo.deletePerson":"Ezabatu {name}","demo.delete":"Ezabatu","demo.home.title":"Nabigatzaile honetan erregistratutako pertsonak","demo.home.one":"Idatzi esaldi berri bat eta egiaztatu KeyBio-k ezagutzen zaituen. Pertsona gehiago erregistratuta, «asmatu nor den» jolastu ahal izango duzue.","demo.home.many":"Norbaitek idatz dezala esaldi bat nor den esan gabe: KeyBio asmatzen saiatuko da.","demo.recognizeMe":"Ezagutzen nau?","demo.whoTypes":"Nork idazten du?","demo.addPerson":"Gehitu pertsona","demo.addAnother":"Gehitu beste pertsona bat","demo.clearAll":"Ezabatu datu guztiak","demo.confirmDelete":"{name}(r)en aztarna ezabatu?","demo.confirmClear":"Nabigatzaile honetan gordetako aztarna guztiak ezabatu?","demo.name.placeholder":"Adibidez, Ane","demo.name.empty":"Idatzi izen edo ezizen bat.","demo.name.taken":"Badago izen hori duen norbait.","demo.name.label":"Zein da zure izena?","demo.name.help":"Pantaila honetan emaitzak erakusteko baino ez da erabiltzen.","demo.start":"Hasi","demo.cancel":"Utzi","demo.back":"Itzuli","demo.again":"Saiatu berriro","demo.enroll.step":"{i}. esaldia ({n}tik)","demo.enroll.intro":"Kaixo, {name}. Kopiatu beheko testua zure ohiko erritmoan: ez dago presarik, eta akatsak zuzen daitezke.","demo.enroll.retry":"Idatzi berriro esaldi hau.","demo.print.ready":"Eginda, {name}! Hau da zure teklatze-aztarna.","demo.print.addHint":"Gehiago zarete? Erregistratu beste pertsona bat eta egiaztatu KeyBio-k bereizten zaituzten.","demo.print.title":"{name}(r)en aztarna","demo.print.fastest":"Zure konbinaziorik azkarrenak","demo.print.slowest":"Gehien kostatzen zaizkizunak","demo.identify.step":"Esaldi berria","demo.identify.one":"Idatzi esaldi hau, erregistroan ez zegoena. KeyBio-k zure idazteko modua zure aztarnarekin alderatuko du.","demo.identify.many":"Erregistratutako pertsonetako batek (edo norbait berrik) idatz dezala esaldi hau. KeyBio-k esango du nor dela uste duen.","demo.identify.retry":"Saiatu berriro.","demo.result.robot":"Ez dirudi pertsona batek idatzia","demo.result.youAre":"{name} zara","demo.result.confidence":"Konfiantza: % {n}. Zure idazteko modua bere aztarnarekin bat dator.","demo.result.ambiguous":"Kontuz: beste pertsona baten antza ere badu nahikoa, beraz emaitza ez da erabakigarria.","demo.result.notYou":"Ez dirudi {name} zarenik","demo.result.unknown":"Ez zaitut ezagutzen","demo.result.closest":"{name}(r)en antza duzu gehien, baina ez nahikoa pertsona hori zarela esateko.","demo.result.noData":"Ez dago alderatzeko adina datu.","demo.result.threshold":"Onarpen-atalasea % 50ean dago","demo.result.ranking":"Aztarna bakoitzarekiko antza","demo.result.early":"{n} sakaketarekin erabakia: emaitza argia zen eta ez da esaldia amaitu behar izan.","demo.result.disclaimer":"Esaldi laburrekin eta lagin gutxirekin, demoak programak baino gehiago huts egiten du; programak testu luzeagoak eta hainbat saio erabiltzen ditu, eta erabilerarekin egokitzen da.","demo.why.title":"Zergatik? {name}(r)en aztarnarekin alderaketa","demo.why.similar":"Antz handiena duena","demo.why.different":"Gehien desberdintzen dena","demo.why.note":"Ezaugarri hauez gain, KeyBio-k tekla-konbinazio bakoitzaren abiadura-ordena alderatzen du (R eta A neurriak).","demo.why.values":"{now} orain · {print} aztarnan","demo.feature.dwell_med":"Sakaketa-denbora","demo.feature.dwell_iqr":"Sakaketaren aldakortasuna","demo.feature.dd_med":"Teklen arteko tartea","demo.feature.dd_iqr":"Tartearen aldakortasuna","demo.feature.ud_med":"Hegaldi-denbora","demo.feature.overlap":"Teklen gainjartzea","demo.feature.space_dwell":"Zuriune-barraren sakaketa","demo.feature.dd_to_space":"Letra → zuriunea","demo.feature.dd_from_space":"Zuriunea → letra","demo.feature.speed_cpm":"Abiadura","demo.feature.pause_rate":"Etenen maiztasuna","demo.feature.bs_rate":"Atzera-teklaren maiztasuna","demo.feature.err_rate":"Akatsen maiztasuna","demo.feature.shift_right":"Eskuineko maiuskula-teklaren erabilera","demo.feature.shift_lead":"Maiuskula → letra","demo.feature.shift_hold":"Maiuskula-teklaren iraupena","demo.feature.bs_dwell":"Atzera-teklaren sakaketa","demo.feature.bs_latency":"Akats baten aurreko erreakzioa","demo.check.robotic":"Erritmo erregularregia pertsona batentzat.","demo.check.repeated":"Sakaketa askok iraupen bera dute zehazki.","demo.check.instant":"Berehala askatzen diren teklak.","demo.check.accuracy":"Zehaztasuna % {accuracy}ekoa izan da (gutxienez % {min}).","demo.check.fewKeys":"Sakaketa gutxiegi erregistratu dira.","demo.check.focus":"Ezin izan dira sakaketa-denborak neurtu (fokua galdu da?)."},"texts":{"enroll":["Gaur goizean korrika egitera atera naiz parkera. Hotza egiten zuen, baina eguzkiak pixka bat berotzen zuen eta jende asko zebilen txakurrekin.","Amonak latorrizko kutxa batean gordetzen ditu errezetak. Batzuk eskuz idatzita daude, letra txikiz, eta olio eta irin orbanak dituzte.","Hamabigarren autobusa hamabost minuturo pasatzen da. Galtzen baduzu, onena plazaraino oinez joatea da eta han metroa hartzea erdigunera.","Apalategia muntatzeko bihurkin bat besterik ez duzu behar. Lehenik jarri alboak, gero apalak eta, azkenik, estutu torloju guztiak.","Igande arratsaldeetan film bat ikusten dugu etxean. Astero beste norbaitek aukeratzen du, beraz batzuetan komedia tokatzen da eta besteetan zientzia-fikzioa.","Gure taldeak azken minutuan irabazi zuen partida. Mirenek buruz sartu zuen gola korner baten ondoren, eta estadio osoa zutitu zen ospatzeko."],"verify":["Atzo liburu-denda zahar bat aurkitu nuen kale estu batean. Jabeak abentura-eleberri bat gomendatu zidan, eta pentsatu gabe erosi nuen.","Euria ari duenean, katua leihora igotzen da eta tantei begira egoten da orduz. Gero sofan lokartzen da, koadrodun mantaren gainean.","Udan herrira joaten gara lehengusuak ikustera. Gauean plazara ateratzen gara, kartetan jolasten dugu eta izozkia jaten dugu oso berandu arte.","Zientzia-museoak pendulu erraldoi bat duen gela bat du. Haurrak begira geratzen dira egunean zehar nola aldatzen duen norabidez."]},"languages":[{"code":"es","name":"Español","suggest":"Esta página también está disponible en español.","switch":"Ver en español","dismiss":"No, gracias"},{"code":"en","name":"English","suggest":"This page is also available in English.","switch":"View in English","dismiss":"No, thanks"},{"code":"ca","name":"Català","suggest":"Aquesta pàgina també està disponible en català.","switch":"Mostra-la en català","dismiss":"No, gràcies"},{"code":"gl","name":"Galego","suggest":"Esta páxina tamén está dispoñible en galego.","switch":"Ver en galego","dismiss":"Non, grazas"},{"code":"eu","name":"Euskara","suggest":"Orri hau euskaraz ere badago.","switch":"Ikusi euskaraz","dismiss":"Ez, eskerrik asko"},{"code":"fr","name":"Français","suggest":"Cette page est aussi disponible en français.","switch":"Voir en français","dismiss":"Non, merci"},{"code":"pt","name":"Português","suggest":"Esta página também está disponível em português.","switch":"Ver em português","dismiss":"Não, obrigado"},{"code":"de","name":"Deutsch","suggest":"Diese Seite gibt es auch auf Deutsch.","switch":"Auf Deutsch ansehen","dismiss":"Nein, danke"},{"code":"it","name":"Italiano","suggest":"Questa pagina è disponibile anche in italiano.","switch":"Vedi in italiano","dismiss":"No, grazie"}]}</script>
+</body>
+</html>

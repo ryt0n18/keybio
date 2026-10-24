@@ -1,0 +1,29 @@
+# entorno y cachés
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# empaquetado
+build/
+dist/
+*.spec
+!tools/keybio.spec
+
+# editores y sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# datos locales (los perfiles nunca se guardan en el repositorio)
+*.keybio.json
+keybio_copia_*.zip
+*.log
+
+# web (Cloudflare): secretos locales y cachés de wrangler
+web/.dev.vars
+web/.wrangler/
+web/node_modules/

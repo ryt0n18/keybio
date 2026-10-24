@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="{{@lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{privacy.meta.title|attr}}</title>
+  <meta name="description" content="{{privacy.meta.description|attr}}">
+  <meta name="color-scheme" content="light dark">
+  {{@alternates}}
+  <link rel="icon" href="{{@root}}assets/img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{@root}}assets/css/site.css">
+  <script type="module" src="{{@root}}assets/js/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">{{common.skip}}</a>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="./" aria-label="{{common.homeLabel|attr}}">
+        <img src="{{@root}}assets/img/icon.svg" alt="" width="28" height="28">
+        <span>KeyBio</span>
+      </a>
+      <nav class="nav" aria-label="{{common.sections|attr}}">
+        <a href="./#demo">{{common.nav.demo}}</a>
+        <a href="./#descargar">{{common.nav.download}}</a>
+        <a href="./#contacto">{{common.nav.contact}}</a>
+      </nav>
+      {{@langmenu}}
+    </div>
+  </header>
+
+  <main id="main" class="container prose">
+    <h1>{{common.privacyLink}}</h1>
+    <p class="muted">{{privacy.updated}} <time datetime="2026-10-24">{{privacy.updatedDate}}</time>.</p>
+    <p class="notice info">{{privacy.translation}}</p>
+
+    <h2>{{privacy.controller.title}}</h2>
+    <p>{{privacy.controller.text}}</p>
+
+    <h2>{{privacy.demo.title}}</h2>
+    <p>{{privacy.demo.text}}</p>
+
+    <h2>{{privacy.data.title}}</h2>
+    <ul>
+      <li>{{privacy.data.ratings}}</li>
+      <li>{{privacy.data.contact}}</li>
+      <li>{{privacy.data.preferences}}</li>
+    </ul>
+    <p>{{privacy.data.noTracking}}</p>
+
+    <h2>{{privacy.purposes.title}}</h2>
+    <ul>
+      <li>{{privacy.purposes.ratings}}</li>
+      <li>{{privacy.purposes.contact}}</li>
+      <li>{{privacy.purposes.abuse}}</li>
+    </ul>
+
+    <h2>{{privacy.retention.title}}</h2>
+    <p>{{privacy.retention.text}}</p>
+
+    <h2>{{privacy.providers.title}}</h2>
+    <ul>
+      <li>{{privacy.providers.cloudflare}}</li>
+      <li>{{privacy.providers.web3forms}}</li>
+    </ul>
+    <p>{{privacy.providers.transfers}}</p>
+
+    <h2>{{privacy.rights.title}}</h2>
+    <p>{{privacy.rights.text}}</p>
+
+    <h2>{{privacy.program.title}}</h2>
+    <p>{{privacy.program.text}}</p>
+
+    <h2>{{privacy.ip.title}}</h2>
+    <p>© <span data-config="year"></span> KeyBio. {{privacy.ip.text}}</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span data-config="year"></span> KeyBio · <span data-config="owner" data-fallback="{{common.ownerPending|attr}}"></span>. {{common.rights}}</p>
+      <p><a href="./">{{privacy.back}}</a></p>
+    </div>
+  </footer>
+  {{@i18n}}
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KeyBio · Te reconoce por cómo escribes</title>
+  <meta name="description" content="KeyBio reconoce a las personas por su forma de teclear. Pruébalo en el navegador, descubre cómo funciona y descarga el programa para Windows, macOS y Linux.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="KeyBio · Te reconoce por cómo escribes">
+  <meta property="og:description" content="Biometría de la dinámica de tecleo. Pruébalo en el navegador: tus pulsaciones no salen de tu equipo.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <link rel="alternate" hreflang="es" href="https://keybio.pages.dev/">
+  <link rel="alternate" hreflang="en" href="https://keybio.pages.dev/en/">
+  <link rel="alternate" hreflang="ca" href="https://keybio.pages.dev/ca/">
+  <link rel="alternate" hreflang="gl" href="https://keybio.pages.dev/gl/">
+  <link rel="alternate" hreflang="eu" href="https://keybio.pages.dev/eu/">
+  <link rel="alternate" hreflang="fr" href="https://keybio.pages.dev/fr/">
+  <link rel="alternate" hreflang="pt" href="https://keybio.pages.dev/pt/">
+  <link rel="alternate" hreflang="de" href="https://keybio.pages.dev/de/">
+  <link rel="alternate" hreflang="it" href="https://keybio.pages.dev/it/">
+  <link rel="alternate" hreflang="x-default" href="https://keybio.pages.dev/">
+  <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script type="module" src="assets/js/site.js"></script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M6 9.5h.01M9.5 9.5h.01M13 9.5h.01M16.5 9.5h.01M6 13h.01M18 9.5h.01M18 13h.01M8 16h8"/><path d="M9.5 13h.01M13 13h.01M16.5 13h.01"/></symbol>
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M7.5 19.5c1-2 1.5-4.2 1.5-7.5a3 3 0 0 1 6 0c0 1.2-.1 2.4-.3 3.5"/><path d="M12 12c0 3.4-.7 6.3-2 8.5M4.5 16c.6-1.3 1-2.6 1-4a6.5 6.5 0 0 1 11.3-4.4"/><path d="M18.3 10.5c.1.5.2 1 .2 1.5 0 2.7-.4 5.3-1.4 7.5M14.4 20.5c.4-1 .7-2 .9-3"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7.5V5a2 2 0 0 1 2-2h2.5M16.5 3H19a2 2 0 0 1 2 2v2.5M21 16.5V19a2 2 0 0 1-2 2h-2.5M7.5 21H5a2 2 0 0 1-2-2v-2.5"/><circle cx="12" cy="10" r="3"/><path d="M7 17.5c1-2.4 2.9-3.6 5-3.6s4 1.2 5 3.6"/></symbol>
+    <symbol id="i-user-plus" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 8v6M16 11h6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 1 0-2.3 5.6"/><path d="M20 4v7.5h-7.5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.7 12l2.4 2.4 4.3-4.6"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M3.5 17a8.5 8.5 0 1 1 17 0"/><path d="M12 17l4-5.5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.2M12 17h.01"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.4M12 16.8h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8h.01"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5L4.5 13.5H12L11 21.5l8.5-11H12z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-windows" viewBox="0 0 24 24"><path d="M3.5 5.8L10.5 5v6.5h-7zM13 4.6l7.5-1v7.9H13zM3.5 13.5h7V20l-7-.8zM13 13.5h7.5v7.9l-7.5-1z"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M7 9.5l3 2.5-3 2.5M12.5 15h4.5"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio" aria-label="KeyBio, inicio">
+        <img src="assets/img/icon.svg" alt="" width="28" height="28">
+        <span>KeyBio</span>
+      </a>
+      <nav class="nav" aria-label="Secciones">
+        <a href="#demo">Pruébalo</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#descargar">Descargar</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <details class="lang-menu"><summary aria-label="Idioma" title="Idioma"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg><span>ES</span></summary><ul><li><a href="./" hreflang="es" lang="es" data-lang="es" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>Español</a></li><li><a href="en/" hreflang="en" lang="en" data-lang="en"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.4"/></svg>English</a></li><li><a href="ca/" hreflang="ca" lang="ca" data-lang="ca"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#FCDD09"/><path d="M0 3.3H30M0 7.8H30M0 12.2H30M0 16.7H30" stroke="#DA121A" stroke-width="2.2"/></svg>Català</a></li><li><a href="gl/" hreflang="gl" lang="gl" data-lang="gl"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#fff"/><path d="M0 0L30 20" stroke="#0099CC" stroke-width="5"/></svg>Galego</a></li><li><a href="eu/" hreflang="eu" lang="eu" data-lang="eu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#D52B1E"/><path d="M0 0L30 20M30 0L0 20" stroke="#009B48" stroke-width="3"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="3"/></svg>Euskara</a></li><li><a href="fr/" hreflang="fr" lang="fr" data-lang="fr"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#EF4135"/><rect width="20" height="20" fill="#fff"/><rect width="10" height="20" fill="#0055A4"/></svg>Français</a></li><li><a href="pt/" hreflang="pt" lang="pt" data-lang="pt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#FF0000"/><rect width="12" height="20" fill="#006600"/><circle cx="12" cy="10" r="4" fill="#FFE000"/><path d="M10.4 8h3.2v3.2a1.6 1.6 0 0 1-3.2 0z" fill="#fff" stroke="#FF0000" stroke-width=".7"/></svg>Português</a></li><li><a href="de/" hreflang="de" lang="de" data-lang="de"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#FFCE00"/><rect width="30" height="13.4" fill="#DD0000"/><rect width="30" height="6.7" fill="#000"/></svg>Deutsch</a></li><li><a href="it/" hreflang="it" lang="it" data-lang="it"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#CE2B37"/><rect width="20" height="20" fill="#fff"/><rect width="10" height="20" fill="#009246"/></svg>Italiano</a></li></ul></details>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambiar tema">
+        <svg class="icon only-light" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon only-dark" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Biometría de la dinámica de tecleo</p>
+          <h1>Te reconoce por cómo escribes.</h1>
+          <p class="lead">KeyBio mide cuánto tiempo mantienes pulsada cada tecla, cuánto tardas en pasar a la siguiente y qué combinaciones te cuestan más. Con eso distingue a una persona de otra, sin contraseñas ni cámaras.</p>
+          <div class="actions">
+            <a class="btn primary large" href="#demo"><svg class="icon" aria-hidden="true"><use href="#i-fingerprint"/></svg>Pruébalo ahora</a>
+            <a class="btn large" href="#descargar"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Descargar</a>
+          </div>
+          <p class="hero-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>La demo funciona entera en tu navegador: tus pulsaciones no se envían a ningún sitio.</p>
+        </div>
+        <figure class="hero-visual card">
+          <svg class="timing" viewBox="0 0 480 200" role="img" aria-labelledby="timing-title timing-desc">
+            <title id="timing-title">Qué mide KeyBio al escribir «ho»</title>
+            <desc id="timing-desc">La tecla H se mantiene pulsada 95 milisegundos. Pasan 40 milisegundos desde que se suelta hasta que se pulsa la O. Entre las dos pulsaciones pasan 135 milisegundos.</desc>
+            <rect class="tl-cap" x="14" y="52" width="32" height="30" rx="7"/>
+            <text class="tl-key" x="30" y="72">H</text>
+            <rect class="tl-cap" x="14" y="102" width="32" height="30" rx="7"/>
+            <text class="tl-key" x="30" y="122">O</text>
+            <line class="tl-guide" x1="60" y1="40" x2="60" y2="160"/>
+            <line class="tl-guide" x1="212" y1="40" x2="212" y2="132"/>
+            <line class="tl-guide" x1="276" y1="96" x2="276" y2="160"/>
+            <rect class="tl-bar a" x="60" y="54" width="152" height="26" rx="6"/>
+            <rect class="tl-bar b" x="276" y="104" width="128" height="26" rx="6"/>
+            <path class="tl-measure" d="M60 34h152M60 30v8M212 30v8"/>
+            <text class="tl-label" x="136" y="24">pulsación · 95 ms</text>
+            <path class="tl-measure accent2" d="M212 92h64M212 88v8M276 88v8"/>
+            <text class="tl-label start" x="286" y="96">vuelo · 40 ms</text>
+            <path class="tl-measure muted" d="M60 160h216M60 156v8M276 156v8"/>
+            <text class="tl-label" x="168" y="182">entre pulsaciones · 135 ms</text>
+          </svg>
+          <figcaption class="muted small">Al escribir «ho», KeyBio registra cuándo pulsas y sueltas cada tecla. Cada persona tiene sus propios tiempos.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="demo" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Demo</p>
+          <h2>Pruébalo en tu navegador</h2>
+          <p class="lead">Crea tu huella de tecleo escribiendo dos frases cortas y comprueba si KeyBio te reconoce. Si sois varias personas, cada una puede registrarse en este ordenador para jugar a «adivina quién».</p>
+        </div>
+        <div id="demo-app" class="card demo">
+          <noscript><p>La demo necesita JavaScript.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Cómo funciona</p>
+          <h2>No importa qué escribes, sino cómo</h2>
+          <p class="lead">La forma de teclear es tan personal como la letra a mano. KeyBio la convierte en una huella y la compara con las de las personas registradas.</p>
+        </div>
+        <ol class="how">
+          <li class="card">
+            <svg class="icon big" aria-hidden="true"><use href="#i-keyboard"/></svg>
+            <h3>1. Captura</h3>
+            <p>Registra el instante en que pulsas y sueltas cada tecla. No guarda una grabación de lo que escribes para leerlo: le interesan los tiempos.</p>
+          </li>
+          <li class="card">
+            <svg class="icon big" aria-hidden="true"><use href="#i-activity"/></svg>
+            <h3>2. Rasgos</h3>
+            <p>Calcula más de veinte rasgos: tiempo de pulsación de cada tecla, tiempo de vuelo, rapidez de cada pareja y trío de letras, uso de las mayúsculas y forma de corregir los errores.</p>
+          </li>
+          <li class="card">
+            <svg class="icon big" aria-hidden="true"><use href="#i-scan"/></svg>
+            <h3>3. Comparación</h3>
+            <p>Compara tu muestra con cada huella: qué combinaciones te salen más rápidas y más lentas (medida R), cuántas duran lo mismo (medida A) y lo lejos que están tus rasgos generales.</p>
+          </li>
+          <li class="card">
+            <svg class="icon big" aria-hidden="true"><use href="#i-gauge"/></svg>
+            <h3>4. Umbral personal</h3>
+            <p>Cada persona tiene su propio umbral, calculado comparando sus muestras entre sí. Si ninguna huella se parece lo suficiente, la respuesta es «no registrado».</p>
+          </li>
+        </ol>
+
+        <div class="split">
+          <div class="card">
+            <h3>Qué incluye el programa</h3>
+            <ul class="checklist">
+              <li>Identificación (¿quién soy?) y verificación (¿soy esta persona?), también con texto libre.</li>
+              <li>Estimación en directo mientras escribes y explicación rasgo a rasgo del resultado.</li>
+              <li>Perfiles que se adaptan con el uso y calibración automática con vuestros datos.</li>
+              <li>Detección de suplantaciones: escritura automática y repetición de muestras grabadas.</li>
+              <li>Panel de control, historial, mapas de calor e informes en PDF.</li>
+              <li>Protección con contraseña y copias de seguridad.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> Tus datos son tuyos</h3>
+            <p>El programa guarda todo en tu propio equipo, opcionalmente cifrado con contraseña, y no envía nada por internet. La demo de esta página tampoco: todo se calcula en tu navegador.</p>
+            <h3>Hasta dónde llega</h3>
+            <p>En una prueba con 20 personas simuladas (escritura generada por ordenador) y 30 desconocidos, con la sensibilidad «normal», reconoció a la persona correcta en 79 de 80 intentos y rechazó a 29 de los 30 desconocidos. Son datos simulados: con personas reales los resultados pueden ser peores, así que tómalo como una referencia, no como una garantía.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="descargar" class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Descargar</p>
+          <h2>Llévate KeyBio a tu ordenador</h2>
+          <p class="lead">El programa completo funciona sin conexión y no necesita instalar nada más. Versión <span data-config="version"></span>.</p>
+          <p class="muted">Idiomas del programa: <span id="program-languages"></span></p>
+        </div>
+        <p id="downloads-soon" class="notice info"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Las descargas estarán disponibles muy pronto.</span></p>
+        <div class="downloads">
+          <div class="card download">
+            <svg class="icon big" aria-hidden="true"><use href="#i-windows"/></svg>
+            <h3>Windows</h3>
+            <p class="muted">Windows 10 y 11 de 64 bits.</p>
+            <div class="actions">
+              <a class="btn primary" data-download="windowsSetup" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Instalador (.exe)</a>
+              <a class="btn" data-download="windowsZip" aria-disabled="true">Versión portable (.zip)</a>
+            </div>
+            <p class="small muted">Como el programa todavía no está firmado digitalmente, Windows puede mostrar un aviso de SmartScreen: pulsa «Más información» y después «Ejecutar de todas formas».</p>
+          </div>
+          <div class="card download">
+            <svg class="icon big" aria-hidden="true"><use href="#i-laptop"/></svg>
+            <h3>macOS</h3>
+            <p class="muted">Macs con Apple Silicon (M1 o posterior), macOS 11 o superior.</p>
+            <div class="actions">
+              <a class="btn primary" data-download="macDmg" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Descargar (.dmg)</a>
+            </div>
+            <p class="small muted">Arrastra KeyBio a Aplicaciones. Como aún no está firmado por Apple, la primera vez ábrelo con clic derecho → Abrir.</p>
+          </div>
+          <div class="card download">
+            <svg class="icon big" aria-hidden="true"><use href="#i-terminal"/></svg>
+            <h3>Linux</h3>
+            <p class="muted">Distribuciones de 64 bits con escritorio gráfico.</p>
+            <div class="actions">
+              <a class="btn primary" data-download="linuxDeb" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Ubuntu, Debian y Mint (.deb)</a>
+              <a class="btn" data-download="linuxTar" aria-disabled="true">Otras distribuciones (.tar.gz)</a>
+            </div>
+            <p class="small muted">El .deb se instala con doble clic. Con el .tar.gz, descomprímelo y ejecuta <code>KeyBio/instalar.sh</code>. En los dos casos, KeyBio aparece en el menú de aplicaciones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opiniones" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Opiniones</p>
+          <h2>¿Qué te ha parecido?</h2>
+          <p class="lead">Tu valoración ayuda a mejorar KeyBio. Los comentarios se publican después de revisarlos.</p>
+        </div>
+        <div class="split">
+          <div class="card">
+            <div id="ratings-summary" class="ratings-summary" aria-live="polite">Cargando valoraciones…</div>
+            <ul id="ratings-list" class="comments"></ul>
+          </div>
+          <form id="rating-form" class="card form" novalidate>
+            <fieldset class="star-input">
+              <legend>Tu valoración</legend>
+              <div class="star-options">
+                <input type="radio" id="star5" name="stars" value="5"><label for="star5" title="5 estrellas"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">5 estrellas</span></label>
+                <input type="radio" id="star4" name="stars" value="4"><label for="star4" title="4 estrellas"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">4 estrellas</span></label>
+                <input type="radio" id="star3" name="stars" value="3"><label for="star3" title="3 estrellas"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">3 estrellas</span></label>
+                <input type="radio" id="star2" name="stars" value="2"><label for="star2" title="2 estrellas"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">2 estrellas</span></label>
+                <input type="radio" id="star1" name="stars" value="1"><label for="star1" title="1 estrella"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span class="visually-hidden">1 estrella</span></label>
+              </div>
+            </fieldset>
+            <label for="rating-name">Nombre <span class="muted">(opcional)</span></label>
+            <input id="rating-name" name="name" type="text" maxlength="40" autocomplete="nickname">
+            <label for="rating-comment">Comentario <span class="muted">(opcional)</span></label>
+            <textarea id="rating-comment" name="comment" rows="4" maxlength="600"></textarea>
+            <p class="field-meta"><span id="rating-count" class="muted small">0/600</span></p>
+            <div id="rating-captcha" class="captcha"></div>
+            <p class="small muted">Al enviar aceptas la <a href="privacidad.html">política de privacidad</a>.</p>
+            <div class="actions"><button class="btn primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>Enviar valoración</button></div>
+            <p id="rating-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <div class="container narrow">
+        <div class="section-head">
+          <p class="eyebrow">Contacto</p>
+          <h2>¿Hablamos?</h2>
+          <p class="lead">Dudas, ideas, errores o propuestas de colaboración: escríbeme y te responderé.</p>
+        </div>
+        <form id="contact-form" class="card form">
+          <div class="form-row">
+            <div>
+              <label for="contact-name">Nombre</label>
+              <input id="contact-name" name="name" type="text" maxlength="80" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="contact-email">Correo electrónico</label>
+              <input id="contact-email" name="email" type="email" maxlength="120" autocomplete="email" required>
+            </div>
+          </div>
+          <label for="contact-message">Mensaje</label>
+          <textarea id="contact-message" name="message" rows="6" maxlength="3000" required></textarea>
+          <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="check"><input type="checkbox" name="consent" required> He leído y acepto la <a href="privacidad.html">política de privacidad</a>.</label>
+          <div class="actions"><button class="btn primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Enviar mensaje</button></div>
+          <p id="contact-status" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span data-config="year"></span> KeyBio · <span data-config="owner" data-fallback="[responsable pendiente]"></span>. Todos los derechos reservados.</p>
+      <p><a href="privacidad.html">Privacidad y aviso legal</a> · Versión <span data-config="version"></span></p>
+    </div>
+  </footer>
+  <script type="application/json" id="i18n">{"lang":"es","locale":"es-ES","js":{"theme.toLight":"Cambiar a tema claro","theme.toDark":"Cambiar a tema oscuro","lang.suggest":"Esta página también está disponible en español.","lang.switch":"Ver en español","lang.dismiss":"No, gracias","common.soon":"Disponible próximamente.","common.sending":"Enviando…","ratings.stars":"{n} de {total} estrellas","ratings.none":"Todavía no hay valoraciones. ¡Sé la primera persona en opinar!","ratings.count_one":"{n} valoración","ratings.count_other":"{n} valoraciones","ratings.anonymous":"Anónimo","ratings.closed":"Las valoraciones se abrirán cuando la web esté publicada.","ratings.captchaError":"No se ha podido cargar la comprobación antispam. Revisa tu conexión.","ratings.chooseStars":"Elige de 1 a 5 estrellas.","ratings.waitCaptcha":"Espera a que termine la comprobación antispam.","ratings.sendError":"No se ha podido enviar la valoración.","ratings.thanksPending":"¡Gracias! Tu comentario aparecerá cuando se revise.","ratings.thanks":"¡Gracias por tu valoración!","ratings.error.not_configured":"Las valoraciones no están configuradas.","ratings.error.origin":"Origen no permitido.","ratings.error.format":"Formato no válido.","ratings.error.too_long":"La valoración es demasiado larga.","ratings.error.stars":"Elige entre 1 y 5 estrellas.","ratings.error.lengths":"El nombre admite hasta {name} caracteres y el comentario hasta {comment}.","ratings.error.captcha":"No se ha podido comprobar que no eres un robot. Inténtalo de nuevo.","ratings.error.daily_limit":"Ya has enviado una valoración hoy. ¡Gracias!","contact.closed":"El formulario se activará cuando la web esté publicada.","contact.sendError":"No se ha podido enviar el mensaje. Inténtalo más tarde.","contact.sent":"¡Mensaje enviado! Te responderé lo antes posible.","demo.unit.cpm":"puls./min","demo.unit.per100chars":"/100 car.","demo.unit.per100keys":"/100 teclas","demo.trait.speed":"Velocidad","demo.trait.speed.help":"Pulsaciones por minuto, sin contar las pausas largas.","demo.trait.dwell":"Pulsación","demo.trait.dwell.help":"Tiempo medio que mantienes pulsada cada tecla.","demo.trait.flight":"Vuelo","demo.trait.flight.help":"Tiempo medio entre soltar una tecla y pulsar la siguiente.","demo.trait.overlap":"Solapamiento","demo.trait.overlap.help":"Veces que pulsas la siguiente tecla antes de soltar la anterior.","demo.trait.regularity":"Regularidad","demo.trait.regularity.help":"Lo constante que es tu ritmo (100 % sería un metrónomo).","demo.trait.errors":"Errores","demo.trait.errors.help":"Caracteres equivocados por cada 100 escritos (aunque los corrijas).","demo.key.tab":"Tab","demo.key.enter":"Intro","demo.key.caps":"Bloq","demo.key.shift":"Shift","demo.key.ctrl":"Ctrl","demo.heatmap.label":"Mapa de calor del teclado: tiempo de pulsación de cada tecla","demo.heatmap.key":"{key}: {ms} ms de media ({n} pulsaciones)","demo.heatmap.shorter":"más corta","demo.heatmap.longer":"más larga","demo.heatmap.caption":"tiempo que mantienes pulsada cada tecla","demo.typing.label":"Escribe este texto: {text}","demo.typing.start":"Empieza a escribir cuando quieras","demo.typing.caps":"Tienes activado Bloq Mayús.","demo.typing.early":"Resultado claro: no hace falta terminar la frase.","demo.typing.blur":"Has salido del cuadro de texto. Haz clic en él para seguir escribiendo.","demo.typing.speed":"{n} pulsaciones/min","demo.noStorage":"Este navegador no permite guardar datos: las huellas se perderán al cerrar la página.","demo.touch":"La demo necesita un teclado físico: en un móvil o tableta sin teclado no se pueden medir las pulsaciones.","demo.intro.step1":"Crea tu huella.","demo.intro.step1.text":"Escribe {n} frases cortas (un minuto y medio, más o menos).","demo.intro.step2":"Ponla a prueba.","demo.intro.step2.text":"Escribe una frase nueva y KeyBio intentará reconocerte.","demo.intro.step3":"Juega a «adivina quién».","demo.intro.step3.text":"Que más personas se registren en este ordenador y comprobad si os distingue.","demo.create":"Crear mi huella","demo.local":"Las pulsaciones se quedan en este navegador: no se envían a ningún sitio.","demo.samples_one":"{n} muestra","demo.samples_other":"{n} muestras","demo.deletePerson":"Borrar a {name}","demo.delete":"Borrar","demo.home.title":"Personas registradas en este navegador","demo.home.one":"Escribe una frase nueva y comprueba si KeyBio te reconoce. Con más personas registradas, podréis jugar a «adivina quién».","demo.home.many":"Que alguien escriba una frase sin decir quién es: KeyBio intentará adivinarlo.","demo.recognizeMe":"¿Me reconoce?","demo.whoTypes":"¿Quién escribe?","demo.addPerson":"Añadir persona","demo.addAnother":"Añadir otra persona","demo.clearAll":"Borrar todos los datos","demo.confirmDelete":"¿Borrar la huella de {name}?","demo.confirmClear":"¿Borrar todas las huellas guardadas en este navegador?","demo.name.placeholder":"Por ejemplo, Lucía","demo.name.empty":"Escribe un nombre o un apodo.","demo.name.taken":"Ya hay alguien con ese nombre.","demo.name.label":"¿Cómo te llamas?","demo.name.help":"Solo se usa para mostrar los resultados en esta pantalla.","demo.start":"Empezar","demo.cancel":"Cancelar","demo.back":"Volver","demo.again":"Probar otra vez","demo.enroll.step":"Frase {i} de {n}","demo.enroll.intro":"Hola, {name}. Copia el texto de abajo a tu ritmo normal: no hace falta ir rápido y los errores se pueden corregir.","demo.enroll.retry":"Vuelve a escribir esta frase.","demo.print.ready":"¡Listo, {name}! Esta es tu huella de tecleo.","demo.print.addHint":"¿Sois más? Registra a otra persona y comprobad si KeyBio os distingue.","demo.print.title":"Huella de {name}","demo.print.fastest":"Tus combinaciones más rápidas","demo.print.slowest":"Las que más te cuestan","demo.identify.step":"Frase nueva","demo.identify.one":"Escribe esta frase, que no estaba en el registro. KeyBio comparará tu forma de escribir con tu huella.","demo.identify.many":"Que una de las personas registradas (o alguien nuevo) escriba esta frase. KeyBio dirá quién cree que es.","demo.identify.retry":"Vuelve a intentarlo.","demo.result.robot":"Esto no parece escrito por una persona","demo.result.youAre":"Eres {name}","demo.result.confidence":"Confianza del {n} %. Tu forma de escribir encaja con su huella.","demo.result.ambiguous":"Ojo: también se parece bastante a otra persona, así que el resultado es poco concluyente.","demo.result.notYou":"No pareces {name}","demo.result.unknown":"No te reconozco","demo.result.closest":"A quien más te pareces es a {name}, pero no lo bastante para decir que eres esa persona.","demo.result.noData":"No hay suficientes datos para comparar.","demo.result.threshold":"El umbral de aceptación está en el 50 %","demo.result.ranking":"Parecido con cada huella","demo.result.early":"Decidido con {n} pulsaciones: el resultado estaba claro y no ha hecho falta terminar la frase.","demo.result.disclaimer":"Con frases cortas y pocas muestras, la demo se equivoca más que el programa, que usa textos más largos, varias sesiones y se adapta con el uso.","demo.why.title":"¿Por qué? Comparación con la huella de {name}","demo.why.similar":"Lo que más se parece","demo.why.different":"Lo que más difiere","demo.why.note":"Además de estos rasgos, KeyBio compara el orden de rapidez de cada combinación de teclas (medidas R y A).","demo.why.values":"{now} ahora · {print} en la huella","demo.feature.dwell_med":"Tiempo de pulsación","demo.feature.dwell_iqr":"Variabilidad de pulsación","demo.feature.dd_med":"Intervalo entre teclas","demo.feature.dd_iqr":"Variabilidad del intervalo","demo.feature.ud_med":"Tiempo de vuelo","demo.feature.overlap":"Solapamiento de teclas","demo.feature.space_dwell":"Pulsación de la barra espaciadora","demo.feature.dd_to_space":"Letra → espacio","demo.feature.dd_from_space":"Espacio → letra","demo.feature.speed_cpm":"Velocidad","demo.feature.pause_rate":"Frecuencia de pausas","demo.feature.bs_rate":"Frecuencia de retrocesos","demo.feature.err_rate":"Frecuencia de errores","demo.feature.shift_right":"Uso del shift derecho","demo.feature.shift_lead":"Shift → letra","demo.feature.shift_hold":"Duración del shift","demo.feature.bs_dwell":"Pulsación del retroceso","demo.feature.bs_latency":"Reacción ante un error","demo.check.robotic":"Ritmo demasiado regular para una persona.","demo.check.repeated":"Muchas pulsaciones duran exactamente lo mismo.","demo.check.instant":"Teclas que se sueltan instantáneamente.","demo.check.accuracy":"La precisión ha sido del {accuracy} % (mínimo {min} %).","demo.check.fewKeys":"Se han registrado muy pocas pulsaciones.","demo.check.focus":"No se han podido medir los tiempos de pulsación (¿se perdió el foco?)."},"texts":{"enroll":["Esta mañana he salido a correr por el parque. Hacía frío, pero el sol ya calentaba un poco y había mucha gente paseando con sus perros.","Mi abuela guarda las recetas en una caja de latón. Algunas están escritas a mano, con letra pequeña, y tienen manchas de aceite y harina.","El autobús número doce pasa cada quince minutos. Si lo pierdes, lo mejor es ir andando hasta la plaza y coger allí el metro hacia el centro.","Para montar la estantería solo necesitas un destornillador. Primero coloca los laterales, después las baldas y, por último, aprieta los tornillos.","Los domingos por la tarde vemos una película en casa. Cada semana elige alguien distinto, así que a veces toca comedia y otras, ciencia ficción.","Nuestro equipo ganó el partido en el último minuto. Lucía marcó de cabeza después de un córner y todo el estadio se levantó para celebrarlo."],"verify":["Ayer encontré una librería antigua en una calle estrecha. El dueño me recomendó una novela de aventuras y me la llevé sin pensarlo dos veces.","Cuando llueve, el gato se sube a la ventana y mira las gotas durante horas. Luego se queda dormido en el sofá, encima de la manta de cuadros.","En verano vamos al pueblo a ver a mis primos. Por la noche salimos a la plaza, jugamos a las cartas y comemos helado hasta muy tarde.","El museo de ciencias tiene una sala con un péndulo enorme. Los niños se quedan mirando cómo cambia de dirección a lo largo del día."]},"languages":[{"code":"es","name":"Español","suggest":"Esta página también está disponible en español.","switch":"Ver en español","dismiss":"No, gracias"},{"code":"en","name":"English","suggest":"This page is also available in English.","switch":"View in English","dismiss":"No, thanks"},{"code":"ca","name":"Català","suggest":"Aquesta pàgina també està disponible en català.","switch":"Mostra-la en català","dismiss":"No, gràcies"},{"code":"gl","name":"Galego","suggest":"Esta páxina tamén está dispoñible en galego.","switch":"Ver en galego","dismiss":"Non, grazas"},{"code":"eu","name":"Euskara","suggest":"Orri hau euskaraz ere badago.","switch":"Ikusi euskaraz","dismiss":"Ez, eskerrik asko"},{"code":"fr","name":"Français","suggest":"Cette page est aussi disponible en français.","switch":"Voir en français","dismiss":"Non, merci"},{"code":"pt","name":"Português","suggest":"Esta página também está disponível em português.","switch":"Ver em português","dismiss":"Não, obrigado"},{"code":"de","name":"Deutsch","suggest":"Diese Seite gibt es auch auf Deutsch.","switch":"Auf Deutsch ansehen","dismiss":"Nein, danke"},{"code":"it","name":"Italiano","suggest":"Questa pagina è disponibile anche in italiano.","switch":"Vedi in italiano","dismiss":"No, grazie"}]}</script>
+</body>
+</html>
