@@ -46,6 +46,8 @@ Los nombres de los ficheros que espera la web están en `config.js` y los compru
       completo sigue en local (rama `historial-completo`) y en `ryt0n18/keybio-antiguo` (privado;
       se puede borrar desde *Settings → Delete this repository*). Los commits nuevos usan el correo
       privado de GitHub (`git config user.email`).
+- [x] Ticket enviado al soporte de GitHub (24-10-2026) para borrar de su caché los commits
+      antiguos que llevaban el correo personal.
 
 ## Día de la publicación (en este orden)
 
@@ -89,8 +91,8 @@ en el panel de Web3Forms (*Spam protection*) para que sea obligatorio.
 - [x] Descargas apuntando a la versión 2.1.0 (desactivadas hasta que la versión sea pública: con el
       repositorio privado los enlaces darían error).
 - [x] Nueve idiomas, generados desde `web/i18n` (ver `web/README.md`).
-- [ ] Que una persona nativa revise las traducciones, sobre todo el euskera y las páginas de
-      privacidad (son textos legales; la española es la que vale).
+- [x] Traducciones revisadas (24-10-2026). En las páginas de privacidad, la española es la que
+      vale (son textos legales).
 - [ ] Al publicar con otro dominio, cambiar `SITE_URL` en `web/i18n/build.py` (enlaces para los
       buscadores) y regenerar.
 - [ ] Desplegar primero en privado (vista previa protegida con Cloudflare Access) y revisarla.
@@ -130,9 +132,8 @@ en el panel de Web3Forms (*Spam protection*) para que sea obligatorio.
 - [x] Programa en nueve idiomas, con textos para escribir y teclado de cada uno (`tools/i18n.py check`).
 - [x] Linux: `.deb` y `instalar.sh` que añaden KeyBio al menú de aplicaciones (comprobado en la CI).
 - [ ] Probar el `.deb` con doble clic en un Ubuntu con escritorio y buscar «KeyBio» en el menú.
-- [ ] Que personas nativas revisen las traducciones del programa (sobre todo euskera y gallego) y
-      prueben los textos para escribir en su idioma.
-- [ ] (Opcional, de pago) Firma de código para Windows, para evitar el aviso de SmartScreen.
+- [x] Traducciones del programa revisadas (24-10-2026).
+- Firma de código para Windows (de pago): descartada por ahora; SmartScreen avisa la primera vez.
 
 ## macOS
 
@@ -142,7 +143,8 @@ en el panel de Web3Forms (*Spam protection*) para que sea obligatorio.
       fallo del gráfico de ritmo (arreglado en la 2.1.2).
 - [ ] Comprobar en el Mac: mayúsculas (shift izquierdo y derecho), tildes con tecla muerta,
       Cmd+V (no debe escribir nada) y «Actualizar ahora».
-- [ ] (Opcional, 99 $/año) Cuenta de desarrollador de Apple para firmar y notarizar la app.
+- Firmar y notarizar con Apple (99 $/año): descartado por ahora; la primera vez se abre con clic
+  derecho → Abrir.
 
 ## Legal
 
