@@ -7,6 +7,6 @@
     "deploy": "wrangler pages deploy"
   },
   "devDependencies": {
-    "wrangler": "4.150.0"
+    "wrangler": "4.151.3"
   }
 }
