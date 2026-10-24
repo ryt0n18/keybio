@@ -65,7 +65,7 @@ function setupCleanAnchors() {
   if (location.hash.length > 1) {
     const id = decodeURIComponent(location.hash.slice(1));
     history.replaceState(history.state, "", location.pathname + location.search);
-    requestAnimationFrame(() => go(id, false));
+    go(id, false);
   }
 }
 

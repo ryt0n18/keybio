@@ -256,14 +256,12 @@ if (stopAt !== "print") {
 
   await step("los enlaces internos no ponen «#…» en la dirección", async () => {
     let w = await load("../public/index.html#descargar");
-    await new Promise((r) => setTimeout(r, 200));
+    await waitFor(() => w.document.activeElement?.id === "descargar", "ir a «Descargar» al entrar", 3000);
     if (w.location.hash) throw new Error(`Al entrar queda ${w.location.hash}`);
-    if (w.document.activeElement.id !== "descargar") throw new Error("No ha ido a «Descargar»");
     w = await load("../public/index.html");
     w.document.querySelector('.nav a[href="#opiniones"]').click();
-    await new Promise((r) => setTimeout(r, 200));
+    await waitFor(() => w.document.activeElement?.id === "opiniones", "ir a «Opiniones» desde el menú", 3000);
     if (w.location.hash) throw new Error(`El menú deja ${w.location.hash}`);
-    if (w.document.activeElement.id !== "opiniones") throw new Error("No ha ido a «Opiniones»");
   });
 
   await step("demo completa en inglés", async () => {
