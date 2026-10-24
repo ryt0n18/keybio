@@ -242,7 +242,7 @@ class RhythmChart(QWidget):
     def mouseMoveEvent(self, e):
         if len(self.values) < 2:
             return
-        w, _, _ = self._geom()
+        w = self._geom()[0]   # no desempaquetar en «_»: taparía la traducción _() de abajo
         i = round((e.position().x() - self.LEFT) / max(w, 1) * (len(self.values) - 1))
         if 0 <= i < len(self.values):
             self._hover = i

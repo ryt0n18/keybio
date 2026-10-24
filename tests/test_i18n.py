@@ -107,3 +107,62 @@ def test_window_in_every_language(code, tmp_path, language):
             assert labels != [title for title, _icon in NAV]
     finally:
         win.close()
+
+
+def _own_scope_names(fn):
+    """Nombres asignados en el ámbito propio de una función (sin comprensiones ni funciones anidadas)."""
+    import ast
+    names = {a.arg for a in fn.args.posonlyargs + fn.args.args + fn.args.kwonlyargs}
+    names |= {a.arg for a in (fn.args.vararg, fn.args.kwarg) if a}
+    stack = list(ast.iter_child_nodes(fn))
+    while stack:
+        node = stack.pop()
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.Lambda, ast.ClassDef,
+                             ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)):
+            continue
+        if isinstance(node, ast.Name) and isinstance(node.ctx, ast.Store):
+            names.add(node.id)
+        stack.extend(ast.iter_child_nodes(node))
+    return names
+
+
+def test_translation_function_never_shadowed():
+    """Si una función asigna algo a «_» (p. ej. ``w, _, _ = ...``), su _() deja de traducir y falla
+    («'int' object is not callable» al pasar el ratón por el ritmo de escritura, en la 2.1.1)."""
+    import ast
+    bad = []
+    for path in (ROOT / "ksb").rglob("*.py"):
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        for fn in ast.walk(tree):
+            if not isinstance(fn, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                continue
+            calls = any(isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "_"
+                        for n in ast.walk(fn))
+            if calls and "_" in _own_scope_names(fn):
+                bad.append(f"{path.relative_to(ROOT)}:{fn.lineno} {fn.name}")
+    assert not bad, bad
+
+
+def test_rhythm_chart_hover(language):
+    """Pasar el ratón por el gráfico de ritmo muestra el intervalo sin errores, en cualquier idioma."""
+    os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+    pytest.importorskip("PySide6.QtWidgets")
+    from PySide6.QtCore import QEvent, QPointF, Qt
+    from PySide6.QtGui import QMouseEvent
+    from PySide6.QtWidgets import QApplication
+
+    from ksb.gui.charts import RhythmChart
+
+    QApplication.instance() or QApplication([])
+    for code in ("es", "de"):
+        language(code)
+        chart = RhythmChart()
+        chart.resize(600, 200)
+        chart.set_data([120, 180, 90, 2400, 150, 130])
+        chart.show()
+        pos = QPointF(300, 100)
+        event = QMouseEvent(QEvent.Type.MouseMove, pos, chart.mapToGlobal(pos), Qt.MouseButton.NoButton,
+                            Qt.MouseButton.NoButton, Qt.KeyboardModifier.NoModifier)
+        chart.mouseMoveEvent(event)
+        assert chart._hover is not None
+        chart.close()

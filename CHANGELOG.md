@@ -1,5 +1,12 @@
 # Cambios
 
+## 2.1.2
+
+- Arreglado: al pasar el ratón por el gráfico «Ritmo de escritura» (resultado de una comprobación
+  e informe de usuario) salía «Ha ocurrido un error inesperado: 'int' object is not callable».
+  Lo encontró la primera prueba en un Mac real; pasaba en todos los sistemas.
+- Pruebas nuevas que revisan todo el programa para que no vuelva a pasar.
+
 ## 2.1.1
 
 - **Verificación de acceso a pantalla completa.** En una ventana pequeña, la barra de progreso y

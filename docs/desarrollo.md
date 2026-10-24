@@ -24,7 +24,7 @@ python -m venv .venv
 **Instalador de Windows**: después de `tools\build.bat`, con [Inno Setup 6](https://jrsoftware.org/isinfo.php):
 
 ```bat
-"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DAppVersion=2.1.1 tools\keybio.iss
+"C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DAppVersion=2.1.2 tools\keybio.iss
 ```
 
 - La integración continua genera el instalador `KeyBio-x.y.z-setup.exe`, el `.zip` portable de
