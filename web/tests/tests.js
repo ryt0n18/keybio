@@ -229,6 +229,10 @@ await test("valoraciones: validación de la entrada", async () => {
   assert(await call({ stars: 4, comment: "x".repeat(601), token: "token-bueno" }) === 400, "comentario largo");
   assert(await call({ stars: 4, name: ["x"], token: "token-bueno" }) === 400, "nombre que no es texto");
   assert(await call({ stars: 4, comment: "y".repeat(5000), token: "token-bueno" }) === 413, "cuerpo enorme");
+  const huge = post({ stars: 4, token: "token-bueno" });
+  huge.headers.set("Content-Length", "100000000");
+  huge.text = async () => { throw new Error("no debería leer el cuerpo"); };
+  assert((await ratings.onRequestPost({ request: huge, env: e })).status === 413, "tamaño anunciado enorme, sin leerlo");
   assert(await call({ stars: 4, token: "token-malo" }) === 403, "antispam fallido");
   assert(await call({ stars: 4 }) === 403, "sin token");
   assert(e.DB.rows.length === 0, "no se guarda nada inválido");

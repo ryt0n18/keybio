@@ -57,6 +57,10 @@ export async function onRequestPost({ request, env }) {
   if (!(request.headers.get("Content-Type") || "").startsWith("application/json")) {
     return fail("format", 415, "Formato no válido.");
   }
+  // Un envío que anuncia ser enorme se rechaza sin leerlo (no se llega a cargar en memoria)
+  if (Number(request.headers.get("Content-Length")) > LIMITS.body) {
+    return fail("too_long", 413, "La valoración es demasiado larga.");
+  }
   const raw = await request.text();
   if (raw.length > LIMITS.body) return fail("too_long", 413, "La valoración es demasiado larga.");
   let data;
