@@ -41,13 +41,11 @@ Los nombres de los ficheros que espera la web están en `config.js` y los compru
 - [x] README con capturas, descargas, funciones por bloques y enlaces a `docs/`; plantillas de
       *issues* (avisan de no adjuntar datos biométricos) y Dependabot.
 - [x] La CI publica las versiones como borrador, con sumas SHA-256 y notas del CHANGELOG.
-- [x] Historial reescrito con el correo privado de GitHub (`…@users.noreply.github.com`) en lugar
-      del personal, que ya no aparece en ningún commit de `main`; los commits nuevos usan el
-      privado (`git config user.email`).
-- [ ] **Antes de hacerlo público**: GitHub aún guarda los commits antiguos (con el correo
-      personal) en su caché y en las propuestas de Dependabot abiertas antes de la reescritura
-      (#1, #2 y #3). Cerrar esas propuestas y pedir a GitHub Support que borre las vistas en
-      caché y las referencias antiguas, o crear el repositorio de nuevo con el historial limpio.
+- [x] Repositorio rehecho el 24-10-2026 con un único commit («KeyBio 2.1.0»): sin el correo
+      personal, sin enlaces a sesiones y sin cifras de pruebas con personas reales. El historial
+      completo sigue en local (rama `historial-completo`) y en `ryt0n18/keybio-antiguo` (privado;
+      se puede borrar desde *Settings → Delete this repository*). Los commits nuevos usan el correo
+      privado de GitHub (`git config user.email`).
 
 ## Día de la publicación (en este orden)
 
