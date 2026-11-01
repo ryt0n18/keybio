@@ -7,7 +7,7 @@
     "deploy": "wrangler pages deploy"
   },
   "devDependencies": {
-    "wrangler": "4.151.3"
+    "wrangler": "4.155.0"
   },
   "overrides": {
     "undici": "7.30.1"
