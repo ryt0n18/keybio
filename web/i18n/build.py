@@ -46,7 +46,7 @@ GOOGLE_SITE_VERIFICATION = "lL4GGpe9A3IzhxJicUZHmfnYnKR1zXxR4ecwjxcmyhY"
 # Google AdSense: el identificador de editor («ca-pub-…»). Vacío: sin anuncios. Con él, las guías
 # cargan los anuncios, se genera ads.txt y la política de privacidad lo explica (docs/promocion.md).
 # La portada nunca los lleva: ahí está la demo, donde se teclea.
-ADSENSE_CLIENT = ""
+ADSENSE_CLIENT = "ca-pub-1330395831191911"
 # IndexNow (Bing, DuckDuckGo, Yandex…): clave pública que se publica en /<clave>.txt para avisar de
 # páginas nuevas o cambiadas sin cuenta. El aviso se manda con web/i18n/indexnow.py.
 INDEXNOW_KEY = "0eea9e3cc451277e24d520e79b3616b8"
