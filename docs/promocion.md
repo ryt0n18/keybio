@@ -39,6 +39,12 @@ Tras cualquier cambio: `python web/i18n/build.py`, commit, subida y despliegue
 Es gratis y es lo primero: le dice a Google que la web existe y muestra con qué búsquedas sale,
 en qué posición y cuántos clics recibe.
 
+**Hecho el 08-11-2026** con la cuenta de Google del responsable: propiedad
+`https://keybio.pages.dev/` verificada con la etiqueta HTML (`GOOGLE_SITE_VERIFICATION`; no la
+quites o se pierde la verificación) y `sitemap.xml` enviado. Pedir la indexación a mano dio «Cuota
+superada» (pasa con propiedades recién creadas): se puede repetir otro día con la portada y las
+guías. Pasos, por si hay que rehacerlo con otra dirección:
+
 1. Entra en [search.google.com/search-console](https://search.google.com/search-console) con tu
    cuenta de Google → *Añadir propiedad* → **Prefijo de la URL** → `https://keybio.pages.dev/`.
    (La opción «Dominio» no sirve con `pages.dev`: pide tocar unos DNS que no son tuyos).
@@ -56,8 +62,12 @@ la descripción de esa página o escribe una guía sobre ella.
 
 Bing también alimenta DuckDuckGo, Ecosia, Yahoo y las búsquedas de Copilot y ChatGPT.
 
-1. [bing.com/webmasters](https://www.bing.com/webmasters) → **Importar desde Google Search
-   Console** (copia el sitio y el sitemap de un clic).
+- **Avisar de páginas nuevas (sin cuenta)**: `python web/i18n/indexnow.py` después de desplegar
+  manda todas las direcciones del sitemap a IndexNow (Bing, Yandex, Seznam, Naver…). La clave
+  está publicada en `/<INDEXNOW_KEY>.txt`. Hecho por primera vez el 08-11-2026.
+- **Ver estadísticas de Bing**: date de alta en [bing.com/webmasters](https://www.bing.com/webmasters)
+  con tu cuenta de Google → **Importar desde Google Search Console** (copia el sitio y el
+  sitemap de un clic).
 
 ## 3. Dominio propio
 
