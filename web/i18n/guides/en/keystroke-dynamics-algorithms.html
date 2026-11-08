@@ -1,0 +1,76 @@
+<!--
+id: keystroke-algorithms
+slug: keystroke-dynamics-algorithms
+title: Keystroke dynamics algorithms, explained · KeyBio
+heading: Keystroke dynamics algorithms: from Manhattan distance to neural networks
+description: How keystroke dynamics algorithms compare two typing styles: scaled Manhattan distance, Gunetti and Picardi's R and A measures, thresholds, EER and deep learning.
+published: 2026-11-08
+updated: 2026-11-08
+-->
+<p class="lead">A <a href="keystroke-dynamics.html">keystroke dynamics</a> system has to answer one question: <strong>is this typing close enough to this person’s?</strong> This guide walks through how that question is answered, from classic distances to neural networks, and how to tell whether an algorithm actually works.</p>
+
+<h2 id="features">From keystrokes to numbers</h2>
+<p>The starting point is a list of events: for each key, the moment it is pressed and the moment it is released. From these come the hold times (dwell), the latencies between keys (DD and UD) and the duration of each letter combination (digraphs and trigraphs).</p>
+<p>If everybody types <strong>the same text</strong> (a password, say), each sample becomes a vector of numbers that always has the same length: the hold time of the first key, the latency between the first and second, and so on. If the text is <strong>free</strong>, there are no fixed positions to compare, so the comparison uses the key combinations that appear in both samples.</p>
+
+<h2 id="distances">Fixed text: distances</h2>
+<p>The simplest way to compare is to measure the distance between the new sample <code>x</code> and the profile mean <code>μ</code>:</p>
+<ul>
+  <li><strong>Euclidean:</strong> the straight‑line distance, <code>√Σ(xᵢ − μᵢ)²</code>. It punishes large differences heavily.</li>
+  <li><strong>Manhattan:</strong> the sum of the differences, <code>Σ|xᵢ − μᵢ|</code>. More robust to a single, unusually slow key.</li>
+  <li><strong>Scaled Manhattan:</strong> <code>Σ|xᵢ − μᵢ| / aᵢ</code>, where <code>aᵢ</code> is the mean absolute deviation of that feature in the profile. Each difference is divided by how much that person usually varies on that key, so an erratic key counts for less.</li>
+  <li><strong>Mahalanobis:</strong> also accounts for how features relate to each other, but needs many samples to estimate well.</li>
+</ul>
+<p>In Carnegie Mellon University’s benchmark (Killourhy and Maxion, 2009), 51 people typed the password <code>.tie5Roanl</code> 400 times over eight sessions. Of the fourteen detectors tested, the best was <strong>scaled Manhattan</strong>, with an equal error rate of 9.6%: a one‑line method beat far more complex ones.</p>
+
+<h2 id="free-text">Free text: the R and A measures</h2>
+<p>For free text, the classic work is by Daniele Gunetti and Claudia Picardi (<em>Keystroke analysis of free text</em>, 2005). They compare two samples using only the digraphs and trigraphs they <strong>share</strong>, with two measures:</p>
+<h3>The R measure: relative order</h3>
+<p>The shared combinations are sorted from fastest to slowest in each sample, and the measure captures how different those orderings are. For example:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Position</th><th>Sample A</th><th>Sample B</th></tr></thead>
+  <tbody>
+    <tr><td>1 (fastest)</td><td>th</td><td>he</td></tr>
+    <tr><td>2</td><td>he</td><td>th</td></tr>
+    <tr><td>3</td><td>in</td><td>er</td></tr>
+    <tr><td>4 (slowest)</td><td>er</td><td>in</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Each combination has moved one place, so the disorder is 1 + 1 + 1 + 1 = 4. The maximum possible disorder with 4 items is 8, so <strong>R = 4 / 8 = 0.5</strong>. The nice thing about R is that absolute speed does not affect it: if you type a little slower one day, the order stays the same.</p>
+<h3>The A measure: durations</h3>
+<p>A complements R by looking at the timings: it is the share of common combinations whose durations differ by more than a given margin (25% in the original paper). The lower it is, the more alike the two samples are.</p>
+<p>Both measures are computed for digraphs, trigraphs and, optionally, individual key timings, and combined into a single distance. With texts of a few hundred characters, this approach reached very low error rates.</p>
+
+<h2 id="threshold">The threshold: when to say yes</h2>
+<p>A distance is useless without a threshold. There are two strategies:</p>
+<ul>
+  <li><strong>Global threshold:</strong> the same for everyone. Simple, but some people are far more consistent than others.</li>
+  <li><strong>Per‑user threshold:</strong> based on how similar each person is to themselves. A common technique is <strong>leave‑one‑out</strong> validation: each enrolment sample is set aside and compared with the rest, giving the mean <code>m</code> and standard deviation <code>s</code> of those distances. A sample is accepted if <code>distance ≤ m + K·s</code>, where <code>K</code> sets how strict the system is.</li>
+</ul>
+<p>Moving the threshold changes both errors at once: <strong>false acceptances</strong> (FAR) and <strong>false rejections</strong> (FRR). The point where they are equal is the <strong>equal error rate</strong> (EER). The curve showing every possible trade‑off is called the DET (or ROC) curve.</p>
+
+<h2 id="machine-learning">Machine learning and neural networks</h2>
+<p>Besides distances, almost every machine learning technique has been tried: nearest neighbours (k‑NN), one‑class support vector machines, random forests and neural networks. One‑class methods are useful because in practice there are almost never impostor samples to train with.</p>
+<p>The big leap came with <strong>deep learning</strong> and massive datasets. In 2018 a team at Aalto University published a study of 136 million keystrokes from about 168,000 volunteers. With data like that, researchers at the Autonomous University of Madrid trained <strong>TypeNet</strong>, a recurrent network that turns any snippet of free text into a vector and compares vectors with each other, making it possible to recognise people the network never saw during training and to scale to hundreds of thousands of users.</p>
+<p>The trade‑off is that these models need a lot of data to train and are harder to explain. For a local program with a handful of people, well‑calibrated classic methods are still very competitive.</p>
+
+<h2 id="evaluation">How to evaluate an algorithm properly</h2>
+<ul>
+  <li><strong>Use different sessions.</strong> Comparing samples typed in the same session gives overly optimistic results: the person was in the same conditions.</li>
+  <li><strong>Keep enrolment and testing separate.</strong> Never test with the samples used to build the profile.</li>
+  <li><strong>Include impostors who try to imitate.</strong> A random stranger is not the same as someone trying to copy your rhythm.</li>
+  <li><strong>Report both error rates,</strong> not just accuracy: a system that rejects everyone has 0% false acceptances.</li>
+</ul>
+
+<h2 id="keybio">How KeyBio does it</h2>
+<p>KeyBio combines several of these ideas:</p>
+<ol>
+  <li>The <strong>R and A measures</strong> on digraphs, trigraphs, hold times and flight times, between the new sample and each sample in the profile.</li>
+  <li>The <strong>scaled Manhattan distance</strong> on global features: speed, pauses, use of capitals, corrections.</li>
+  <li>A <strong>per‑user threshold</strong> with leave‑one‑out validation (leaving out whole sessions when there are several) and an adjustable sensitivity that can calibrate itself with the data on the computer.</li>
+  <li>A <strong>progressive decision</strong>: from 60 keystrokes on it can answer early if the result is already clear.</li>
+  <li><strong>Spoofing detection</strong> that rejects robotic rhythms, exactly repeated timings and replays of stored samples.</li>
+</ol>
+<p>The <a href="../#demo">demo on this website</a> uses the same algorithm, translated to JavaScript, and shows you the feature‑by‑feature comparison. Try it and see which letter combinations give you away.</p>

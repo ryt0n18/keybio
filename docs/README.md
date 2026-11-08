@@ -8,5 +8,6 @@
 | [Desarrollo](desarrollo.md) | Ejecutar desde el código, ejecutables, estructura y pruebas |
 | [Publicar una versión](publicar.md) | Pasos para preparar y publicar una versión |
 | [La web](../web/README.md) | Web del proyecto y demo en el navegador |
+| [Promoción](promocion.md) | Buscadores, anuncios en las guías y seguimiento |
 | [Cambios](../CHANGELOG.md) | Novedades de cada versión |
 | [Contribuir](../.github/CONTRIBUTING.md) · [Seguridad](../.github/SECURITY.md) | Errores, propuestas y fallos de seguridad |

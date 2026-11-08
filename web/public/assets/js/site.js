@@ -55,6 +55,23 @@ function setupAnalytics() {
   document.body.append(script);
 }
 
+// --- anuncios -------------------------------------------------------------------------------------
+
+// Google AdSense, solo en las guías: build.py pone data-ads-client en su <body> cuando hay
+// identificador de editor (ADSENSE_CLIENT). La portada nunca lo lleva: ahí se teclea en la demo y
+// ningún código de terceros debe poder leerlo. Solo en la web publicada (la dirección canónica).
+// Google muestra su propio aviso de consentimiento (RGPD) antes de usar cookies.
+function setupAds() {
+  const client = document.body.dataset.adsClient;
+  const canonical = $('link[rel="canonical"]');
+  if (!client || !canonical || new URL(canonical.href).host !== location.host) return;
+  const script = document.createElement("script");
+  script.async = true;
+  script.crossOrigin = "anonymous";
+  script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(client)}`;
+  document.head.append(script);
+}
+
 // --- enlaces dentro de la página ------------------------------------------------------------------
 
 // #demo, #descargar…: se desplaza a la sección sin escribir el «#…» en la dirección, que queda
@@ -97,7 +114,8 @@ function suggestLanguage(menu) {
   if (storageGet(LANG_KEY)) return;
   const codes = new Map(LANGUAGES.map((l) => [l.code, l]));
   const wanted = (navigator.languages || [navigator.language]).map((x) => String(x).toLowerCase().split("-")[0]);
-  const first = wanted.find((c) => codes.has(c));
+  // Solo los idiomas del menú: las guías no están en todos
+  const first = wanted.find((c) => codes.has(c) && $(`a[data-lang="${c}"]`, menu));
   if (!first || first === LANG) return;
   const other = codes.get(first);
   const link = $(`a[data-lang="${first}"]`, menu);
@@ -403,6 +421,7 @@ function setupContact() {
 setupTheme();
 setupCleanAnchors();
 setupAnalytics();
+setupAds();
 setupLanguage();
 applyConfig();
 setupDownloads();

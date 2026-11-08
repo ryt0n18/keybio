@@ -113,8 +113,10 @@ en el panel de Web3Forms (*Spam protection*) para que sea obligatorio.
    registrador y pasar sus DNS a Cloudflare.
 2. *Workers & Pages → keybio → Custom domains*: añadir `keybio.app` (y `www.keybio.app`). Cloudflare
    crea los DNS y el certificado.
-3. `SITE_URL = "https://keybio.app"` en `web/i18n/build.py`, regenerar las páginas
-   (`python web/i18n/build.py`), commit y desplegar. El `.deb` también la toma de ahí.
+3. `SITE_URL = "https://keybio.app"` en `web/i18n/build.py` (enlaces canónicos, sitemap,
+   `robots.txt`) y `analytics.host` en `config.js`, regenerar las páginas
+   (`python web/i18n/build.py`), commit y desplegar. El `.deb` también la toma de ahí. En Search
+   Console, *Cambio de dirección* (ver `docs/promocion.md`).
 4. Turnstile (*Turnstile → KeyBio web → Hostnames*): añadir `keybio.app`. Web3Forms: el dominio.
 5. **Una sola dirección**: *Rules → Bulk Redirects* (o una regla de redirección) de
    `keybio.pages.dev` y `www.keybio.app` a `https://keybio.app`, con código 301 y conservando la

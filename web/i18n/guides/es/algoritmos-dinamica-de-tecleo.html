@@ -1,0 +1,76 @@
+<!--
+id: keystroke-algorithms
+slug: algoritmos-dinamica-de-tecleo
+title: Algoritmos de dinámica de tecleo, explicados · KeyBio
+heading: Algoritmos de dinámica de tecleo: de la distancia Manhattan a las redes neuronales
+description: Cómo comparan los algoritmos de dinámica de tecleo dos formas de escribir: distancia Manhattan escalada, medidas R y A de Gunetti y Picardi, umbrales, EER y aprendizaje profundo.
+published: 2026-11-08
+updated: 2026-11-08
+-->
+<p class="lead">Un sistema de <a href="dinamica-de-tecleo.html">dinámica de tecleo</a> tiene que responder a una pregunta: <strong>¿esta forma de escribir se parece lo bastante a la de esta persona?</strong> Esta guía repasa cómo se contesta, desde las distancias clásicas hasta las redes neuronales, y cómo se mide si un algoritmo funciona.</p>
+
+<h2 id="vector">De pulsaciones a números</h2>
+<p>El punto de partida es una lista de eventos: para cada tecla, el instante en que se pulsa y el instante en que se suelta. Con ellos se calculan los tiempos de pulsación (<em>dwell</em>), los intervalos entre teclas (DD y UD) y la duración de cada combinación de letras (dígrafos y trígrafos).</p>
+<p>Si todo el mundo escribe <strong>el mismo texto</strong> (una contraseña, por ejemplo), cada muestra se convierte en un vector de números siempre igual de largo: el tiempo de la primera tecla, el intervalo entre la primera y la segunda, y así sucesivamente. Si el texto es <strong>libre</strong>, no hay posiciones fijas que comparar, y se trabaja con las combinaciones de teclas que aparecen en las dos muestras.</p>
+
+<h2 id="distancias">Texto fijo: distancias</h2>
+<p>La forma más sencilla de comparar es medir la distancia entre la muestra nueva <code>x</code> y la media del perfil <code>μ</code>:</p>
+<ul>
+  <li><strong>Euclídea:</strong> la distancia «en línea recta», <code>√Σ(xᵢ − μᵢ)²</code>. Castiga mucho las diferencias grandes.</li>
+  <li><strong>Manhattan:</strong> la suma de las diferencias, <code>Σ|xᵢ − μᵢ|</code>. Es más robusta frente a una tecla aislada muy lenta.</li>
+  <li><strong>Manhattan escalada:</strong> <code>Σ|xᵢ − μᵢ| / aᵢ</code>, donde <code>aᵢ</code> es la desviación media de esa medida en el perfil. Divide cada diferencia por lo que suele variar esa persona en esa tecla, así que una tecla muy irregular pesa menos.</li>
+  <li><strong>Mahalanobis:</strong> tiene en cuenta además cómo se relacionan las medidas entre sí, pero necesita muchas muestras para estimarlo bien.</li>
+</ul>
+<p>En la comparación de referencia de la Universidad Carnegie Mellon (Killourhy y Maxion, 2009), 51 personas teclearon 400 veces la contraseña <code>.tie5Roanl</code> en ocho sesiones. De los catorce detectores probados, el mejor fue la <strong>Manhattan escalada</strong>, con una tasa de error igual del 9,6 %: un método de una línea batía a otros mucho más complejos.</p>
+
+<h2 id="texto-libre">Texto libre: las medidas R y A</h2>
+<p>Con texto libre, el trabajo clásico es el de Daniele Gunetti y Claudia Picardi (<em>Keystroke analysis of free text</em>, 2005). Proponen comparar dos muestras usando solo los dígrafos y trígrafos que tienen <strong>en común</strong>, con dos medidas:</p>
+<h3>Medida R: el orden relativo</h3>
+<p>Se ordenan las combinaciones comunes de la más rápida a la más lenta en cada muestra y se mide cuánto difieren esas ordenaciones. Por ejemplo:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Posición</th><th>Muestra A</th><th>Muestra B</th></tr></thead>
+  <tbody>
+    <tr><td>1 (más rápido)</td><td>de</td><td>en</td></tr>
+    <tr><td>2</td><td>en</td><td>de</td></tr>
+    <tr><td>3</td><td>la</td><td>es</td></tr>
+    <tr><td>4 (más lento)</td><td>es</td><td>la</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Cada combinación se ha movido un puesto, así que el desorden es 1 + 1 + 1 + 1 = 4. El desorden máximo posible con 4 elementos es 8, de modo que <strong>R = 4 / 8 = 0,5</strong>. Lo interesante de R es que no le afecta la velocidad absoluta: si un día escribes todo un poco más lento, el orden se mantiene.</p>
+<h3>Medida A: las duraciones</h3>
+<p>Complementa a R mirando los tiempos: es la proporción de combinaciones comunes cuya duración difiere más de un cierto margen (en el trabajo original, un 25 %). Cuanto más baja, más se parecen las dos muestras.</p>
+<p>Las dos medidas se calculan para dígrafos, trígrafos y, si se quiere, para los tiempos de cada tecla, y se combinan en una sola distancia. Con textos de varios cientos de caracteres, este enfoque logró tasas de error muy bajas.</p>
+
+<h2 id="umbral">El umbral: cuándo decir que sí</h2>
+<p>Una distancia no sirve de nada sin un umbral. Hay dos estrategias:</p>
+<ul>
+  <li><strong>Umbral global:</strong> el mismo para todos. Es sencillo, pero algunas personas son mucho más regulares que otras.</li>
+  <li><strong>Umbral propio de cada persona:</strong> se calcula cuánto se parece cada persona a sí misma. Una técnica habitual es la validación <strong>deja‑uno‑fuera</strong>: se aparta cada muestra del registro, se compara con el resto y se obtienen la media <code>m</code> y la desviación <code>s</code> de esas distancias. Se acepta si <code>distancia ≤ m + K·s</code>, donde <code>K</code> marca lo estricto que es el sistema.</li>
+</ul>
+<p>Mover el umbral cambia los dos errores a la vez: las <strong>falsas aceptaciones</strong> (FAR) y los <strong>falsos rechazos</strong> (FRR). El punto en que se igualan es la <strong>tasa de error igual</strong> (EER). La curva que muestra todos los equilibrios posibles se llama curva DET (o ROC).</p>
+
+<h2 id="aprendizaje">Aprendizaje automático y redes neuronales</h2>
+<p>Además de las distancias, se han usado casi todas las técnicas de aprendizaje automático: vecinos más cercanos (k‑NN), máquinas de vectores de soporte de una clase, bosques aleatorios y redes neuronales. Las de una clase son útiles porque en la práctica casi nunca hay muestras de impostores con las que entrenar.</p>
+<p>El gran salto llegó con el <strong>aprendizaje profundo</strong> y los conjuntos de datos masivos. En 2018, un equipo de la Universidad Aalto publicó un estudio con 136 millones de pulsaciones de unos 168.000 voluntarios. Con datos así, investigadores de la Universidad Autónoma de Madrid entrenaron <strong>TypeNet</strong>, una red recurrente que convierte cualquier fragmento de texto libre en un vector y compara vectores entre sí, lo que permite reconocer a personas que la red nunca había visto durante el entrenamiento y escalar a cientos de miles de usuarios.</p>
+<p>La contrapartida es que estos modelos necesitan muchos datos para entrenarse y son más difíciles de explicar. Para un programa local con pocas personas, los métodos clásicos bien calibrados siguen siendo muy competitivos.</p>
+
+<h2 id="evaluar">Cómo evaluar bien un algoritmo</h2>
+<ul>
+  <li><strong>Usa sesiones distintas.</strong> Comparar muestras escritas en la misma sesión da resultados demasiado optimistas: la persona estaba en las mismas condiciones.</li>
+  <li><strong>Separa registro y prueba.</strong> Nunca compruebes con las mismas muestras con las que creaste el perfil.</li>
+  <li><strong>Incluye impostores que intenten imitar.</strong> No es lo mismo un desconocido cualquiera que alguien que intenta copiar tu ritmo.</li>
+  <li><strong>Da las dos tasas de error,</strong> no solo la precisión: un sistema que rechaza a todo el mundo tiene un 0 % de falsas aceptaciones.</li>
+</ul>
+
+<h2 id="keybio">Cómo lo hace KeyBio</h2>
+<p>KeyBio combina varias de estas ideas:</p>
+<ol>
+  <li>Las <strong>medidas R y A</strong> sobre dígrafos, trígrafos, tiempos de pulsación y tiempos de vuelo, entre la muestra nueva y cada muestra del perfil.</li>
+  <li>La <strong>distancia Manhattan escalada</strong> sobre rasgos globales: velocidad, pausas, uso de las mayúsculas, correcciones.</li>
+  <li>Un <strong>umbral propio de cada persona</strong> con validación deja‑uno‑fuera (apartando sesiones enteras cuando hay varias) y una sensibilidad ajustable que puede calibrarse sola con los datos del equipo.</li>
+  <li>Una <strong>decisión progresiva</strong>: a partir de 60 pulsaciones puede responder antes si el resultado ya está claro.</li>
+  <li>Una <strong>detección de suplantaciones</strong> que rechaza ritmos robóticos, tiempos repetidos exactos y réplicas de muestras guardadas.</li>
+</ol>
+<p>La <a href="../#demo">demo de la web</a> usa el mismo algoritmo, traducido a JavaScript, y te enseña la comparación rasgo a rasgo. Pruébala y mira qué combinaciones de letras te delatan.</p>

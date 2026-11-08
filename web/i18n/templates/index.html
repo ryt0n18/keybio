@@ -11,6 +11,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="{{@locale}}">
   {{@alternates}}
+  {{@seo}}
+  {{@jsonld}}
   <link rel="icon" href="{{@root}}assets/img/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="{{@root}}assets/css/site.css">
   <script type="module" src="{{@root}}assets/js/site.js"></script>
@@ -54,6 +56,7 @@
       <nav class="nav" aria-label="{{common.sections|attr}}">
         <a href="#demo">{{common.nav.demo}}</a>
         <a href="#como-funciona">{{common.nav.how}}</a>
+        {{@guidesnav}}
         <a href="#descargar">{{common.nav.download}}</a>
         <a href="#opiniones">{{common.nav.reviews}}</a>
         <a href="#contacto">{{common.nav.contact}}</a>
@@ -277,7 +280,7 @@
         </form>
       </div>
     </section>
-  </main>
+{{@guides}}  </main>
 
   <footer class="footer">
     <div class="container footer-inner">

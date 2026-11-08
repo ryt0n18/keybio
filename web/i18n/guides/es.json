@@ -1,0 +1,20 @@
+{
+  "folder": "guias",
+  "nav": "Guías",
+  "title": "Guías de biometría del comportamiento y dinámica de tecleo · KeyBio",
+  "description": "Guías claras sobre biometría del comportamiento y dinámica de tecleo: qué son, qué se mide, cómo funcionan los algoritmos, qué precisión tienen y qué dice el RGPD.",
+  "heading": "Guías sobre biometría de tecleo",
+  "lead": "Qué es la biometría del comportamiento, cómo se reconoce a alguien por su forma de escribir y qué hay detrás de los algoritmos, explicado sin jerga y con una demo para probarlo.",
+  "updated": "actualizado el",
+  "minutes": "{n} min de lectura",
+  "toc": "En esta guía",
+  "ctaTitle": "Pruébalo con tu forma de escribir",
+  "ctaText": "La demo de KeyBio crea tu huella de tecleo con dos frases y luego intenta reconocerte. Funciona entera en tu navegador: tus pulsaciones no se envían a ningún sitio.",
+  "ctaButton": "Probar la demo",
+  "more": "Más guías",
+  "breadcrumb": "Ruta de navegación",
+  "by": "Por",
+  "date": "{d} de {month} de {y}",
+  "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+  "order": ["keystroke-dynamics", "behavioral-biometrics", "keystroke-algorithms"]
+}

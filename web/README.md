@@ -8,11 +8,15 @@ gallego, euskera, francés, portugués, alemán e italiano). **Todavía no está
 i18n/                       textos de la web en cada idioma
   templates/                páginas con marcas {{clave}} en lugar de los textos
   es.json, en.json…         un catálogo por idioma: páginas, JavaScript y frases de la demo
-  build.py                  genera public/ a partir de las plantillas y los catálogos
+  guides/                   guías (artículos) en español e inglés: es.json/en.json y una página por guía
+  build.py                  genera public/ a partir de las plantillas, los catálogos y las guías
+  social.py                 imágenes para redes sociales (public/assets/img/social/)
 public/                     lo que se publica (HTML, CSS y JS sin dependencias)
   index.html                página principal (generada; el español en la raíz)
   privacidad.html           privacidad y aviso legal (generada)
+  guias/, en/guides/        guías (generadas); son las únicas páginas que pueden llevar anuncios
   en/, ca/, gl/, eu/…       las mismas páginas en cada idioma (generadas)
+  sitemap.xml, robots.txt   para los buscadores (generados; ads.txt también, si hay anuncios)
   _headers                  cabeceras de seguridad (Content-Security-Policy...)
   assets/js/keybio.js       algoritmo de la demo: traducción de ksb/features.py y ksb/matcher.py
   assets/js/demo.js         interfaz de la demo
@@ -76,6 +80,41 @@ python3 web/i18n/build.py
   aviso para cambiar, en ese idioma. La elección se recuerda en el navegador.
 - `config.js` → `programLanguages` dice en qué idiomas está la interfaz del programa (se muestra
   en «Descargar»).
+
+## Guías
+
+Las guías son artículos sobre biometría del comportamiento y dinámica de tecleo para que la web
+salga en los buscadores (ver `docs/promocion.md`). Solo existen en los idiomas que tienen
+`i18n/guides/<idioma>.json`; ahí están los textos de alrededor (menú, índice, llamada a la demo)
+y el orden en que aparecen. Cada guía es un fichero `i18n/guides/<idioma>/<dirección>.html` que
+empieza con una cabecera:
+
+```html
+<!--
+id: keystroke-dynamics          el mismo en todas las traducciones: las enlaza entre sí
+slug: dinamica-de-tecleo         la dirección (/guias/dinamica-de-tecleo) y el nombre del fichero
+title: …                         título para el buscador (unos 60 caracteres)
+heading: …                       título de la página
+description: …                   resumen para el buscador (unos 155 caracteres)
+published: 2026-11-08
+updated: 2026-11-08              cámbialo al revisar la guía (va al sitemap)
+-->
+<p class="lead">Entradilla…</p>
+<h2 id="que-es">…</h2>            los <h2> con id forman el índice de la guía
+```
+
+Para añadir una: crea el fichero, añade su `id` a `order` en `i18n/guides/<idioma>.json` y
+ejecuta `python3 web/i18n/build.py`. Las tablas van dentro de `<div class="table-wrap">`. Para
+añadir guías a otro idioma: su `<idioma>.json` (con `folder`, la carpeta de su dirección), sus
+guías y una regla para esa carpeta en `public/_headers` (las pruebas avisan si falta).
+
+## Anuncios
+
+Están preparados pero apagados: se activan poniendo el identificador de editor de AdSense en
+`ADSENSE_CLIENT` (`i18n/build.py`). Entonces las guías cargan AdSense desde `site.js`, se genera
+`ads.txt` y la política de privacidad añade el apartado de anuncios. La portada nunca los lleva:
+ahí está la demo, y ningún código de terceros debe poder leer las pulsaciones. Las guías tienen por
+eso su propia política de seguridad en `public/_headers`. Pasos completos en `docs/promocion.md`.
 
 ## Privacidad y seguridad
 

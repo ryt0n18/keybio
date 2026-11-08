@@ -1,0 +1,6 @@
+# Generado por web/i18n/build.py
+User-agent: *
+Disallow: /api/
+Allow: /
+
+Sitemap: https://keybio.pages.dev/sitemap.xml

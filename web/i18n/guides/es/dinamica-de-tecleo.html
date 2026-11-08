@@ -1,0 +1,88 @@
+<!--
+id: keystroke-dynamics
+slug: dinamica-de-tecleo
+title: Dinámica de tecleo: qué es y cómo funciona · KeyBio
+heading: Dinámica de tecleo (keystroke dynamics): qué es y cómo funciona
+description: Qué es la dinámica de tecleo, qué tiempos se miden al escribir, cómo reconoce a una persona, qué precisión tiene, para qué se usa y qué dice el RGPD.
+published: 2026-11-08
+updated: 2026-11-08
+-->
+<p class="lead">La <strong>dinámica de tecleo</strong> (en inglés, <em>keystroke dynamics</em>) es una técnica de biometría del comportamiento que reconoce a las personas por <strong>cómo escriben</strong> en un teclado, no por lo que escriben: cuánto tiempo mantienen pulsada cada tecla, cuánto tardan en pasar a la siguiente y qué combinaciones de letras les cuestan más.</p>
+
+<h2 id="que-es">Qué es la dinámica de tecleo</h2>
+<p>Cada persona escribe con un ritmo propio. Dos personas pueden teclear la misma frase a la misma velocidad y, aun así, una mantiene las teclas pulsadas un poco más, otra encadena «de» o «que» mucho más rápido o usa siempre el Shift izquierdo. Esas diferencias, de unas decenas de milisegundos, se repiten de forma bastante estable y forman una especie de <strong>huella de tecleo</strong>.</p>
+<p>La dinámica de tecleo mide esos tiempos, construye con ellos un perfil de cada persona y, cuando alguien escribe un texto nuevo, calcula cuánto se parece a ese perfil. Es una forma de <a href="biometria-del-comportamiento.html">biometría del comportamiento</a>: en lugar de una característica física, como la huella dactilar o la cara, usa un hábito.</p>
+<p>Su gran ventaja es que <strong>no necesita hardware especial</strong>: basta con el teclado que ya se usa. Y puede funcionar sin que la persona haga nada distinto de escribir.</p>
+
+<h2 id="historia">De los telegrafistas a los teclados</h2>
+<p>La idea es más antigua que los ordenadores. A finales del siglo XIX, los psicólogos William Bryan y Noble Harter estudiaron cómo aprendían los telegrafistas y observaron que los operadores se reconocían entre sí por su forma de transmitir en Morse, a la que llamaban su «puño» (<em>fist</em>). Durante la Segunda Guerra Mundial, los servicios de escucha aliados usaban ese mismo «puño» para seguir a operadores de radio concretos.</p>
+<p>Con los teclados llegaron los primeros estudios formales: en 1980, un informe de la RAND Corporation (Gaines y otros) comprobó que siete mecanógrafas profesionales podían distinguirse por los tiempos entre pares de letras. En 1990, Joyce y Gupta propusieron usarlo para reforzar el inicio de sesión con contraseña, y desde entonces la técnica se ha investigado y aplicado sin parar, sobre todo en banca y seguridad.</p>
+
+<h2 id="que-se-mide">Qué se mide al escribir</h2>
+<p>Por cada tecla se registran dos instantes: cuándo se <strong>pulsa</strong> y cuándo se <strong>suelta</strong>. De ahí salen casi todas las medidas:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Medida</th><th>Qué es</th></tr></thead>
+  <tbody>
+    <tr><td>Tiempo de pulsación (<em>dwell</em> o <em>hold time</em>)</td><td>Cuánto tiempo se mantiene pulsada una tecla. Suele rondar los 70–130 ms.</td></tr>
+    <tr><td>Intervalo pulsación‑pulsación (DD, <em>down‑down</em>)</td><td>Tiempo entre pulsar una tecla y pulsar la siguiente.</td></tr>
+    <tr><td>Tiempo de vuelo (UD, <em>up‑down</em> o <em>flight time</em>)</td><td>Entre soltar una tecla y pulsar la siguiente. Es negativo cuando se pulsa la siguiente antes de soltar la anterior, algo muy habitual al escribir rápido.</td></tr>
+    <tr><td>Dígrafos y trígrafos (<em>n‑grams</em>)</td><td>Cuánto se tarda en escribir cada combinación de 2 o 3 teclas: «en», «de», «que», «ión»… Son de lo más característico de cada persona.</td></tr>
+    <tr><td>Ritmo</td><td>Velocidad media, pausas largas y regularidad.</td></tr>
+    <tr><td>Mayúsculas</td><td>Qué Shift se usa, cuánto se adelanta a la letra y cuánto se mantiene.</td></tr>
+    <tr><td>Errores y correcciones</td><td>Cuántas veces se usa el retroceso, cuánto se tarda en reaccionar ante un error y qué precisión queda al final.</td></tr>
+  </tbody>
+</table>
+</div>
+<p>En el móvil se pueden añadir otras señales, como el punto exacto donde se toca la pantalla o lo que registran el acelerómetro y el giroscopio, pero la idea es la misma.</p>
+
+<h2 id="como-reconoce">Cómo se reconoce a una persona</h2>
+<ol>
+  <li><strong>Registro.</strong> La persona escribe varias muestras (frases, una contraseña repetida o texto libre) y con ellas se calcula su perfil: la media y la variación de cada medida.</li>
+  <li><strong>Comparación.</strong> Cuando escribe de nuevo, se calcula una <strong>distancia</strong> o puntuación entre la muestra nueva y el perfil.</li>
+  <li><strong>Decisión.</strong> Si la distancia queda por debajo de un <strong>umbral</strong>, se acepta. El umbral decide el equilibrio entre dejar pasar a un impostor y rechazar a la persona correcta.</li>
+</ol>
+<p>Con ese esquema se pueden hacer dos cosas distintas:</p>
+<ul>
+  <li><strong>Verificación (1:1):</strong> «¿eres quien dices ser?». Se compara con un solo perfil, como un segundo factor al iniciar sesión.</li>
+  <li><strong>Identificación (1:N):</strong> «¿quién eres?». Se compara con todos los perfiles y se elige el más parecido, o se responde que la persona no está registrada.</li>
+</ul>
+<p>También se distingue entre <strong>texto fijo</strong> (siempre la misma frase o contraseña, más fácil de comparar) y <strong>texto libre</strong> (cualquier texto, más cómodo y útil para vigilar una sesión entera, pero que necesita más pulsaciones). Si quieres ver las fórmulas, lo explicamos en la guía de <a href="algoritmos-dinamica-de-tecleo.html">algoritmos de dinámica de tecleo</a>.</p>
+
+<h2 id="precision">¿Es fiable? Precisión y errores</h2>
+<p>Ningún sistema biométrico es perfecto. Se miden dos tipos de error:</p>
+<ul>
+  <li><strong>Falsa aceptación</strong> (FAR o FMR): se acepta a alguien que no es la persona.</li>
+  <li><strong>Falso rechazo</strong> (FRR o FNMR): se rechaza a la persona correcta.</li>
+</ul>
+<p>Al mover el umbral, uno baja y el otro sube. El punto en que ambos coinciden es la <strong>tasa de error igual</strong> (EER), la cifra que suele usarse para comparar sistemas. En el estudio de referencia de la Universidad Carnegie Mellon (Killourhy y Maxion, 2009), con 51 personas tecleando la misma contraseña, el mejor de los catorce métodos clásicos comparados, la distancia Manhattan escalada, tuvo una EER del 9,6 %. Con textos más largos, varias sesiones de registro y métodos modernos, los errores bajan mucho.</p>
+<p>La precisión depende sobre todo de:</p>
+<ul>
+  <li><strong>La cantidad de texto:</strong> unas pocas palabras dan poca información; un párrafo da bastante más.</li>
+  <li><strong>Cuándo se registró:</strong> registrarse en días distintos refleja mejor la variación normal de una persona.</li>
+  <li><strong>El teclado y la situación:</strong> otro teclado, el cansancio, el frío o una lesión cambian los tiempos.</li>
+</ul>
+
+<h2 id="usos">Para qué se usa</h2>
+<ul>
+  <li><strong>Autenticación reforzada:</strong> un segundo factor «invisible» al escribir la contraseña o una frase corta.</li>
+  <li><strong>Banca y prevención del fraude:</strong> detectar que quien está dentro de una cuenta no es su dueño, o que quien escribe es un programa y no una persona.</li>
+  <li><strong>Autenticación continua:</strong> comprobar durante toda la sesión, sin interrupciones, que sigue escribiendo la misma persona.</li>
+  <li><strong>Formación y exámenes en línea:</strong> plataformas como Coursera llegaron a usar el patrón de tecleo para verificar a quien hacía las tareas.</li>
+  <li><strong>Investigación:</strong> desde la atribución de textos hasta estudios sobre cómo cambia la forma de escribir con algunas enfermedades neurológicas.</li>
+</ul>
+
+<h2 id="limites">Limitaciones</h2>
+<ul>
+  <li><strong>Variabilidad:</strong> la forma de escribir cambia más que una huella dactilar. Los buenos sistemas actualizan el perfil con el tiempo.</li>
+  <li><strong>Imitación:</strong> los estudios muestran que, con entrenamiento y la ayuda de un programa, algunas personas logran imitar el ritmo de otras lo bastante para engañar a sistemas sencillos. También existen programas que generan pulsaciones con tiempos falsos.</li>
+  <li><strong>Muestras cortas:</strong> con muy pocas pulsaciones la decisión es poco fiable.</li>
+</ul>
+<p>Por eso la dinámica de tecleo funciona mejor como <strong>una capa más</strong> de seguridad, junto a una contraseña u otro factor, que como única protección.</p>
+
+<h2 id="privacidad">Privacidad y RGPD</h2>
+<p>El Reglamento General de Protección de Datos define los datos biométricos como los obtenidos de las características físicas, fisiológicas o <strong>conductuales</strong> de una persona que permiten o confirman su identificación (artículo 4.14). Cuando se usan para identificar a alguien de forma unívoca, son una categoría especial de datos (artículo 9): por regla general hace falta el <strong>consentimiento explícito</strong> u otra excepción prevista en la ley, además de informar bien y no guardar más de lo necesario. En el trabajo, las autoridades de protección de datos, como la AEPD, piden además justificar que el sistema es necesario y proporcionado.</p>
+<p>Una forma sencilla de reducir riesgos es <strong>no enviar las pulsaciones a ningún servidor</strong>. Es lo que hace KeyBio: el programa guarda los perfiles solo en el equipo y la demo de esta web procesa todo en el navegador.</p>
+
+<h2 id="probar">Pruébalo</h2>
+<p>La mejor forma de entenderlo es verlo. En la <a href="../#demo">demo de KeyBio</a> escribes dos frases para crear tu huella de tecleo y luego compruebas si te reconoce, con un mapa de tus tiempos tecla a tecla. Si quieres usarlo de verdad, <a href="../#descargar">KeyBio para Windows, macOS y Linux</a> es gratuito, funciona sin conexión y añade identificación con texto libre, verificación al iniciar sesión e informes en PDF.</p>

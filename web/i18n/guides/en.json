@@ -1,0 +1,20 @@
+{
+  "folder": "guides",
+  "nav": "Guides",
+  "title": "Behavioural biometrics and keystroke dynamics guides · KeyBio",
+  "description": "Clear guides to behavioural biometrics and keystroke dynamics: what they are, what is measured, how the algorithms work, how accurate they are and what the GDPR says.",
+  "heading": "Guides to keystroke biometrics",
+  "lead": "What behavioural biometrics is, how a person can be recognised by the way they type and what lies behind the algorithms, explained without jargon and with a demo to try it.",
+  "updated": "updated",
+  "minutes": "{n} min read",
+  "toc": "In this guide",
+  "ctaTitle": "Try it with your own typing",
+  "ctaText": "The KeyBio demo builds your typing fingerprint from two sentences and then tries to recognise you. It runs entirely in your browser: your keystrokes are never sent anywhere.",
+  "ctaButton": "Try the demo",
+  "more": "More guides",
+  "breadcrumb": "Breadcrumb",
+  "by": "By",
+  "date": "{d} {month} {y}",
+  "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  "order": ["keystroke-dynamics", "behavioral-biometrics", "keystroke-algorithms"]
+}

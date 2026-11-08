@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KeyBio · Te reconoce por cómo escribes</title>
-  <meta name="description" content="KeyBio reconoce a las personas por su forma de teclear. Pruébalo en el navegador, descubre cómo funciona y descarga el programa para Windows, macOS y Linux.">
+  <title>KeyBio · Dinámica de tecleo: te reconoce por cómo escribes</title>
+  <meta name="description" content="Biometría del comportamiento por dinámica de tecleo: KeyBio te reconoce por cómo escribes. Pruébalo gratis en el navegador y descarga el programa para Windows, macOS y Linux.">
   <meta name="color-scheme" content="light dark">
-  <meta property="og:title" content="KeyBio · Te reconoce por cómo escribes">
+  <meta property="og:title" content="KeyBio · Dinámica de tecleo: te reconoce por cómo escribes">
   <meta property="og:description" content="Biometría de la dinámica de tecleo. Pruébalo en el navegador: tus pulsaciones no salen de tu equipo.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_ES">
@@ -20,6 +20,14 @@
   <link rel="alternate" hreflang="de" href="https://keybio.pages.dev/de/">
   <link rel="alternate" hreflang="it" href="https://keybio.pages.dev/it/">
   <link rel="alternate" hreflang="x-default" href="https://keybio.pages.dev/">
+  <link rel="canonical" href="https://keybio.pages.dev/">
+  <meta property="og:url" content="https://keybio.pages.dev/">
+  <meta property="og:site_name" content="KeyBio">
+  <meta property="og:image" content="https://keybio.pages.dev/assets/img/social/es.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"KeyBio","url":"https://keybio.pages.dev/","description":"Biometría del comportamiento por dinámica de tecleo: KeyBio te reconoce por cómo escribes. Pruébalo gratis en el navegador y descarga el programa para Windows, macOS y Linux.","applicationCategory":"SecurityApplication","operatingSystem":"Windows 10, Windows 11, macOS 11+, Linux","inLanguage":"es","image":"https://keybio.pages.dev/assets/img/social/es.png","downloadUrl":"https://github.com/ryt0n18/keybio/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Álvaro Ruiz","url":"https://github.com/ryt0n18"},"sameAs":["https://github.com/ryt0n18/keybio"]}</script>
   <link rel="icon" href="assets/img/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/site.css">
   <script type="module" src="assets/js/site.js"></script>
@@ -63,6 +71,7 @@
       <nav class="nav" aria-label="Secciones">
         <a href="#demo">Pruébalo</a>
         <a href="#como-funciona">Cómo funciona</a>
+        <a href="guias/">Guías</a>
         <a href="#descargar">Descargar</a>
         <a href="#opiniones">Opiniones</a>
         <a href="#contacto">Contacto</a>
@@ -284,6 +293,21 @@
           <div class="actions"><button class="btn primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Enviar mensaje</button></div>
           <p id="contact-status" class="form-status" aria-live="polite"></p>
         </form>
+      </div>
+    </section>
+
+    <section id="guias" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Guías</p>
+          <h2>Guías sobre biometría de tecleo</h2>
+          <p class="lead">Qué es la biometría del comportamiento, cómo se reconoce a alguien por su forma de escribir y qué hay detrás de los algoritmos, explicado sin jerga y con una demo para probarlo.</p>
+        </div>
+        <ul class="guide-cards">
+          <li class="card"><h3><a href="guias/dinamica-de-tecleo.html">Dinámica de tecleo (keystroke dynamics): qué es y cómo funciona</a></h3><p>Qué es la dinámica de tecleo, qué tiempos se miden al escribir, cómo reconoce a una persona, qué precisión tiene, para qué se usa y qué dice el RGPD.</p></li>
+          <li class="card"><h3><a href="guias/biometria-del-comportamiento.html">Biometría del comportamiento: qué es, tipos y ejemplos</a></h3><p>Qué es la biometría del comportamiento (o conductual), en qué se diferencia de la física, qué tipos hay, para qué se usa y qué riesgos tiene para la privacidad.</p></li>
+          <li class="card"><h3><a href="guias/algoritmos-dinamica-de-tecleo.html">Algoritmos de dinámica de tecleo: de la distancia Manhattan a las redes neuronales</a></h3><p>Cómo comparan los algoritmos de dinámica de tecleo dos formas de escribir: distancia Manhattan escalada, medidas R y A de Gunetti y Picardi, umbrales, EER y aprendizaje profundo.</p></li>
+        </ul>
       </div>
     </section>
   </main>

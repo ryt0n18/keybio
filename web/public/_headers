@@ -10,6 +10,24 @@
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
+# Guías (web/i18n/guides): llevan los anuncios de Google AdSense, que cargan scripts, marcos e
+# imágenes de muchos dominios de Google que cambian sin aviso, así que aquí la política se abre a
+# https. Son páginas de solo lectura, sin formularios ni demo: la portada, donde se teclea, mantiene
+# la política estricta de arriba. «!» quita la cabecera heredada de «/*» antes de poner la nueva
+# (si no, Cloudflare uniría las dos y valdría la más estricta). Una regla por carpeta de guías:
+# lo comprueba tests/test_web.py.
+/guias/*
+  ! Content-Security-Policy
+  ! Cross-Origin-Opener-Policy
+  Content-Security-Policy: default-src 'self' https:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:; form-action 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+/en/guides/*
+  ! Content-Security-Policy
+  ! Cross-Origin-Opener-Policy
+  Content-Security-Policy: default-src 'self' https:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data:; font-src 'self' https: data:; connect-src 'self' https:; frame-src https:; form-action 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
 # Sin nombres con versión, el navegador tiene que preguntar siempre si el fichero ha cambiado
 # (responde 304 si no): con una hora de caché, tras actualizar la web se mezclaban la página nueva
 # y los scripts viejos.

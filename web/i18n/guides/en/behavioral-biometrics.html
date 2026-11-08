@@ -1,0 +1,78 @@
+<!--
+id: behavioral-biometrics
+slug: behavioral-biometrics
+title: Behavioral biometrics: what it is, types and examples · KeyBio
+heading: Behavioural biometrics: what it is, types and examples
+description: What behavioural (behavioral) biometrics is, how it differs from physical biometrics, the main types, what it is used for and the privacy risks it raises.
+published: 2026-11-08
+updated: 2026-11-08
+-->
+<p class="lead"><strong>Behavioural biometrics</strong> (also spelt behavioral biometrics) recognises people by <strong>how they do things</strong>: how they type on a keyboard, move a mouse, swipe across a screen or walk. It does not look at what you are physically, but at your habits.</p>
+
+<h2 id="what-is-it">What is behavioural biometrics?</h2>
+<p>Biometrics is the automatic recognition of people from their characteristics. It is usually split into two families:</p>
+<ul>
+  <li><strong>Physical or physiological biometrics:</strong> traits of the body, such as fingerprints, the face, the iris or the veins of the hand.</li>
+  <li><strong>Behavioural biometrics:</strong> learned, repeated patterns of behaviour, such as typing rhythm, the way someone signs or the way they walk.</li>
+</ul>
+<p>Some techniques sit between the two. Voice, for example, depends on the anatomy of the throat but also on the way a person speaks.</p>
+<p>The key difference is that behaviour <strong>varies more</strong> than a physical trait: it changes with tiredness, mood or the device. In exchange, it can be measured <strong>without special hardware</strong> and <strong>continuously</strong>, while the person uses their computer or phone normally.</p>
+
+<h2 id="types">Types of behavioural biometrics</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Type</th><th>What is measured</th><th>Where it is used</th></tr></thead>
+  <tbody>
+    <tr><td><a href="keystroke-dynamics.html">Keystroke dynamics</a></td><td>Key hold times, time between keys, letter combinations, corrections</td><td>Login, banking, continuous authentication</td></tr>
+    <tr><td>Mouse dynamics</td><td>Paths, speed, acceleration, clicks and pauses</td><td>Fraud and bot detection</td></tr>
+    <tr><td>Touch gestures</td><td>Pressure, touch size, speed and shape of swipes</td><td>Mobile banking apps</td></tr>
+    <tr><td>Phone handling</td><td>How the phone is held (accelerometer and gyroscope), angle, tremor</td><td>Mobile fraud prevention</td></tr>
+    <tr><td>Gait</td><td>Rhythm and movement when walking, from cameras or sensors</td><td>Research, surveillance</td></tr>
+    <tr><td>Dynamic signature</td><td>Stroke, speed and pressure when signing on a tablet</td><td>Signing documents in banks and shops</td></tr>
+    <tr><td>Voice</td><td>Timbre, intonation and rhythm of speech</td><td>Call centres, voice assistants</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="how-it-works">How it works</h2>
+<p>All systems follow the same pattern:</p>
+<ol>
+  <li><strong>Capture:</strong> events (keys, movements, touches) are recorded with their exact timestamps.</li>
+  <li><strong>Feature extraction:</strong> measures that describe the behaviour are computed, for example the average time between “q” and “u”.</li>
+  <li><strong>Profile:</strong> several samples are used to build the person’s usual pattern.</li>
+  <li><strong>Comparison:</strong> each new sample is compared with the profile to obtain a similarity or risk score.</li>
+  <li><strong>Decision:</strong> accept, reject or ask for an extra check.</li>
+</ol>
+<p>In banking and e‑commerce the decision is rarely a plain yes or no. It is usually a <strong>risk score</strong> combined with other signals: if it is high, the system asks for an extra code or blocks the transaction.</p>
+
+<h2 id="pros-and-cons">Advantages and disadvantages</h2>
+<p><strong>Advantages:</strong></p>
+<ul>
+  <li>No readers or cameras needed: it uses the keyboard, mouse or screen that are already there.</li>
+  <li>It can run in the background and protect the whole session, not just the login.</li>
+  <li>It is hard to steal: it cannot be copied like a password or photographed like a face.</li>
+  <li>It tells people apart from automated programs (bots).</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+  <li>It is less accurate than fingerprints or iris recognition, because behaviour varies.</li>
+  <li>It needs data from each person and the profile has to be updated over time.</li>
+  <li>It can be captured without the person knowing, which raises privacy concerns.</li>
+  <li>An injury, a disability or a new device can cause rejections.</li>
+</ul>
+
+<h2 id="uses">What it is used for</h2>
+<ul>
+  <li><strong>Banking and payments:</strong> its most widespread use. It detects account takeovers, bot attacks and scams where a fraudster talks the victim through a transfer over the phone.</li>
+  <li><strong>Companies:</strong> continuous authentication on work computers and extra checks before accessing sensitive systems.</li>
+  <li><strong>E‑commerce:</strong> telling real customers from bots that buy up tickets or test stolen cards.</li>
+  <li><strong>Online education:</strong> checking who is sitting an exam or submitting coursework.</li>
+  <li><strong>Health (research):</strong> several studies look at whether changes in typing could help detect conditions such as Parkinson’s disease early.</li>
+</ul>
+
+<h2 id="privacy">Privacy and the law</h2>
+<p>In the European Union, the GDPR explicitly includes <strong>behavioural</strong> characteristics in its definition of biometric data. When used to uniquely identify a person it is special category data: as a rule it needs explicit consent or another legal basis provided by law, clear information, data minimisation and often a data protection impact assessment. The EU AI Act also treats remote biometric identification much more strictly than simple verification that someone is who they claim to be.</p>
+<p>From a design point of view, good practice is clear: store only what is needed, process on the device whenever possible, encrypt profiles and let people delete them. KeyBio follows that approach: everything stays on the computer or in the browser.</p>
+
+<h2 id="try-it">Try it with your own typing</h2>
+<p>Keystroke dynamics is the easiest way to try behavioural biometrics, because all it needs is a keyboard. In the <a href="../#demo">KeyBio demo</a> you create your typing fingerprint with two sentences and check whether it recognises you. To see what is under the hood, carry on with the guide to <a href="keystroke-dynamics-algorithms.html">keystroke dynamics algorithms</a>.</p>

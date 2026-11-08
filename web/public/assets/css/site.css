@@ -365,12 +365,44 @@ textarea { resize: vertical; min-height: 110px; }
 .prose h2 { font-size: 1.35rem; margin-top: 2em; }
 .prose p, .prose li { color: var(--text-2); }
 .prose ul { padding-left: 1.3em; display: grid; gap: 6px; }
+.prose ol { padding-left: 1.4em; display: grid; gap: 6px; }
+.prose h3 { margin-top: 1.6em; }
+.prose code { background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: .05em .35em; }
+
+/* --- guías --------------------------------------------------------------------------------------- */
+
+.guide { padding-top: 32px; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; font-size: .9rem; color: var(--muted); }
+.breadcrumbs a { color: var(--muted); }
+.guide-meta { color: var(--muted); font-size: .92rem; }
+.guide-meta a { color: inherit; }
+.guide .lead { margin-bottom: 1.5em; }
+.toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin: 24px 0 8px; }
+.toc p { margin: 0 0 .4em; font-weight: 650; color: var(--text); }
+.toc ol { margin: 0; gap: 2px; }
+.toc a { text-decoration: none; }
+.table-wrap { overflow-x: auto; margin: 0 0 1.2em; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.table-wrap table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.table-wrap th, .table-wrap td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+.table-wrap th { background: var(--surface-2); color: var(--text); font-weight: 650; }
+.table-wrap tr:last-child td { border-bottom: 0; }
+.table-wrap td { color: var(--text-2); }
+.guide-cta { margin: 48px 0 8px; }
+.guide-cta h2 { margin-top: 0; }
+.guide-cta .actions { margin-top: 12px; }
+.guide-list, .guide-cards { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.guide-cards { grid-template-columns: repeat(3, 1fr); }
+.guide-list h3, .guide-cards h3 { margin: 0 0 .4em; font-size: 1.1rem; }
+.guide-list h3 a, .guide-cards h3 a { color: var(--text); text-decoration: none; }
+.guide-list h3 a:hover, .guide-cards h3 a:hover { color: var(--accent); }
+.guide-list p, .guide-cards p { margin: 0 0 .4em; }
 
 /* --- pantallas estrechas ------------------------------------------------------------------------ */
 
 @media (max-width: 960px) {
   .hero-grid { grid-template-columns: 1fr; gap: 32px; }
   .how { grid-template-columns: 1fr 1fr; }
+  .guide-cards { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {

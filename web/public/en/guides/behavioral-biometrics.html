@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Behavioral biometrics: what it is, types and examples · KeyBio</title>
+  <meta name="description" content="What behavioural (behavioral) biometrics is, how it differs from physical biometrics, the main types, what it is used for and the privacy risks it raises.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Behavioral biometrics: what it is, types and examples · KeyBio">
+  <meta property="og:description" content="What behavioural (behavioral) biometrics is, how it differs from physical biometrics, the main types, what it is used for and the privacy risks it raises.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_GB">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <link rel="alternate" hreflang="es" href="https://keybio.pages.dev/guias/biometria-del-comportamiento">
+  <link rel="alternate" hreflang="en" href="https://keybio.pages.dev/en/guides/behavioral-biometrics">
+  <link rel="alternate" hreflang="x-default" href="https://keybio.pages.dev/guias/biometria-del-comportamiento">
+  <link rel="canonical" href="https://keybio.pages.dev/en/guides/behavioral-biometrics">
+  <meta property="og:url" content="https://keybio.pages.dev/en/guides/behavioral-biometrics">
+  <meta property="og:site_name" content="KeyBio">
+  <meta property="og:image" content="https://keybio.pages.dev/assets/img/social/en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Behavioural biometrics: what it is, types and examples","description":"What behavioural (behavioral) biometrics is, how it differs from physical biometrics, the main types, what it is used for and the privacy risks it raises.","inLanguage":"en","datePublished":"2026-11-08","dateModified":"2026-11-08","author":{"@type":"Person","name":"Álvaro Ruiz","url":"https://github.com/ryt0n18"},"publisher":{"@type":"Person","name":"Álvaro Ruiz","url":"https://github.com/ryt0n18"},"image":"https://keybio.pages.dev/assets/img/social/en.png","mainEntityOfPage":"https://keybio.pages.dev/en/guides/behavioral-biometrics","about":{"@type":"SoftwareApplication","name":"KeyBio","url":"https://keybio.pages.dev/en/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KeyBio","item":"https://keybio.pages.dev/en/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://keybio.pages.dev/en/guides/"},{"@type":"ListItem","position":3,"name":"Behavioural biometrics: what it is, types and examples","item":"https://keybio.pages.dev/en/guides/behavioral-biometrics"}]}]}</script>
+  <link rel="icon" href="../../assets/img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+  <script type="module" src="../../assets/js/site.js"></script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M7.5 19.5c1-2 1.5-4.2 1.5-7.5a3 3 0 0 1 6 0c0 1.2-.1 2.4-.3 3.5"/><path d="M12 12c0 3.4-.7 6.3-2 8.5M4.5 16c.6-1.3 1-2.6 1-4a6.5 6.5 0 0 1 11.3-4.4"/><path d="M18.3 10.5c.1.5.2 1 .2 1.5 0 2.7-.4 5.3-1.4 7.5M14.4 20.5c.4-1 .7-2 .9-3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Las guías cuelgan de la portada de su idioma: «../» es esa portada. -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../" aria-label="KeyBio, home">
+        <img src="../../assets/img/icon.svg" alt="" width="28" height="28">
+        <span>KeyBio</span>
+      </a>
+      <nav class="nav" aria-label="Sections">
+        <a href="../#demo">Try it</a>
+        <a href="./">Guides</a>
+        <a href="../#descargar">Download</a>
+        <a href="../#contacto">Contact</a>
+      </nav>
+      <details class="lang-menu"><summary aria-label="Language" title="Language"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.4"/></svg><span>EN</span></summary><ul><li><a href="../../guias/biometria-del-comportamiento.html" hreflang="es" lang="es" data-lang="es"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>Español</a></li><li><a href="../../en/guides/behavioral-biometrics.html" hreflang="en" lang="en" data-lang="en" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.4"/></svg>English</a></li></ul></details>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Change theme">
+        <svg class="icon only-light" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon only-dark" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container prose guide">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">KeyBio</a><span aria-hidden="true">›</span><a href="./">Guides</a></nav>
+    <article>
+      <h1>Behavioural biometrics: what it is, types and examples</h1>
+      <p class="guide-meta">By <a href="https://github.com/ryt0n18" rel="author">Álvaro Ruiz</a> · updated <time datetime="2026-11-08">8 November 2026</time> · 4 min read</p>
+      <p class="lead"><strong>Behavioural biometrics</strong> (also spelt behavioral biometrics) recognises people by <strong>how they do things</strong>: how they type on a keyboard, move a mouse, swipe across a screen or walk. It does not look at what you are physically, but at your habits.</p>
+<nav class="toc" aria-label="In this guide"><p>In this guide</p><ol><li><a href="#what-is-it">What is behavioural biometrics?</a></li><li><a href="#types">Types of behavioural biometrics</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#pros-and-cons">Advantages and disadvantages</a></li><li><a href="#uses">What it is used for</a></li><li><a href="#privacy">Privacy and the law</a></li><li><a href="#try-it">Try it with your own typing</a></li></ol></nav>
+
+<h2 id="what-is-it">What is behavioural biometrics?</h2>
+<p>Biometrics is the automatic recognition of people from their characteristics. It is usually split into two families:</p>
+<ul>
+  <li><strong>Physical or physiological biometrics:</strong> traits of the body, such as fingerprints, the face, the iris or the veins of the hand.</li>
+  <li><strong>Behavioural biometrics:</strong> learned, repeated patterns of behaviour, such as typing rhythm, the way someone signs or the way they walk.</li>
+</ul>
+<p>Some techniques sit between the two. Voice, for example, depends on the anatomy of the throat but also on the way a person speaks.</p>
+<p>The key difference is that behaviour <strong>varies more</strong> than a physical trait: it changes with tiredness, mood or the device. In exchange, it can be measured <strong>without special hardware</strong> and <strong>continuously</strong>, while the person uses their computer or phone normally.</p>
+
+<h2 id="types">Types of behavioural biometrics</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Type</th><th>What is measured</th><th>Where it is used</th></tr></thead>
+  <tbody>
+    <tr><td><a href="keystroke-dynamics.html">Keystroke dynamics</a></td><td>Key hold times, time between keys, letter combinations, corrections</td><td>Login, banking, continuous authentication</td></tr>
+    <tr><td>Mouse dynamics</td><td>Paths, speed, acceleration, clicks and pauses</td><td>Fraud and bot detection</td></tr>
+    <tr><td>Touch gestures</td><td>Pressure, touch size, speed and shape of swipes</td><td>Mobile banking apps</td></tr>
+    <tr><td>Phone handling</td><td>How the phone is held (accelerometer and gyroscope), angle, tremor</td><td>Mobile fraud prevention</td></tr>
+    <tr><td>Gait</td><td>Rhythm and movement when walking, from cameras or sensors</td><td>Research, surveillance</td></tr>
+    <tr><td>Dynamic signature</td><td>Stroke, speed and pressure when signing on a tablet</td><td>Signing documents in banks and shops</td></tr>
+    <tr><td>Voice</td><td>Timbre, intonation and rhythm of speech</td><td>Call centres, voice assistants</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="how-it-works">How it works</h2>
+<p>All systems follow the same pattern:</p>
+<ol>
+  <li><strong>Capture:</strong> events (keys, movements, touches) are recorded with their exact timestamps.</li>
+  <li><strong>Feature extraction:</strong> measures that describe the behaviour are computed, for example the average time between “q” and “u”.</li>
+  <li><strong>Profile:</strong> several samples are used to build the person’s usual pattern.</li>
+  <li><strong>Comparison:</strong> each new sample is compared with the profile to obtain a similarity or risk score.</li>
+  <li><strong>Decision:</strong> accept, reject or ask for an extra check.</li>
+</ol>
+<p>In banking and e‑commerce the decision is rarely a plain yes or no. It is usually a <strong>risk score</strong> combined with other signals: if it is high, the system asks for an extra code or blocks the transaction.</p>
+
+<h2 id="pros-and-cons">Advantages and disadvantages</h2>
+<p><strong>Advantages:</strong></p>
+<ul>
+  <li>No readers or cameras needed: it uses the keyboard, mouse or screen that are already there.</li>
+  <li>It can run in the background and protect the whole session, not just the login.</li>
+  <li>It is hard to steal: it cannot be copied like a password or photographed like a face.</li>
+  <li>It tells people apart from automated programs (bots).</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+  <li>It is less accurate than fingerprints or iris recognition, because behaviour varies.</li>
+  <li>It needs data from each person and the profile has to be updated over time.</li>
+  <li>It can be captured without the person knowing, which raises privacy concerns.</li>
+  <li>An injury, a disability or a new device can cause rejections.</li>
+</ul>
+
+<h2 id="uses">What it is used for</h2>
+<ul>
+  <li><strong>Banking and payments:</strong> its most widespread use. It detects account takeovers, bot attacks and scams where a fraudster talks the victim through a transfer over the phone.</li>
+  <li><strong>Companies:</strong> continuous authentication on work computers and extra checks before accessing sensitive systems.</li>
+  <li><strong>E‑commerce:</strong> telling real customers from bots that buy up tickets or test stolen cards.</li>
+  <li><strong>Online education:</strong> checking who is sitting an exam or submitting coursework.</li>
+  <li><strong>Health (research):</strong> several studies look at whether changes in typing could help detect conditions such as Parkinson’s disease early.</li>
+</ul>
+
+<h2 id="privacy">Privacy and the law</h2>
+<p>In the European Union, the GDPR explicitly includes <strong>behavioural</strong> characteristics in its definition of biometric data. When used to uniquely identify a person it is special category data: as a rule it needs explicit consent or another legal basis provided by law, clear information, data minimisation and often a data protection impact assessment. The EU AI Act also treats remote biometric identification much more strictly than simple verification that someone is who they claim to be.</p>
+<p>From a design point of view, good practice is clear: store only what is needed, process on the device whenever possible, encrypt profiles and let people delete them. KeyBio follows that approach: everything stays on the computer or in the browser.</p>
+
+<h2 id="try-it">Try it with your own typing</h2>
+<p>Keystroke dynamics is the easiest way to try behavioural biometrics, because all it needs is a keyboard. In the <a href="../#demo">KeyBio demo</a> you create your typing fingerprint with two sentences and check whether it recognises you. To see what is under the hood, carry on with the guide to <a href="keystroke-dynamics-algorithms.html">keystroke dynamics algorithms</a>.</p>
+    </article>
+
+    <aside class="card guide-cta">
+      <h2>Try it with your own typing</h2>
+      <p>The KeyBio demo builds your typing fingerprint from two sentences and then tries to recognise you. It runs entirely in your browser: your keystrokes are never sent anywhere.</p>
+      <div class="actions">
+        <a class="btn primary" href="../#demo"><svg class="icon" aria-hidden="true"><use href="#i-fingerprint"/></svg>Try the demo</a>
+        <a class="btn" href="../#descargar"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Download</a>
+      </div>
+    </aside>
+
+    <h2>More guides</h2>
+    <ul class="guide-list"><li class="card"><h3><a href="keystroke-dynamics.html">Keystroke dynamics: what it is and how it works</a></h3><p>What keystroke dynamics is, which timings are measured as you type, how it recognises a person, how accurate it is, what it is used for and what the GDPR says.</p><p class="small muted">6 min read</p></li><li class="card"><h3><a href="keystroke-dynamics-algorithms.html">Keystroke dynamics algorithms: from Manhattan distance to neural networks</a></h3><p>How keystroke dynamics algorithms compare two typing styles: scaled Manhattan distance, Gunetti and Picardi's R and A measures, thresholds, EER and deep learning.</p><p class="small muted">5 min read</p></li></ul>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span data-config="year"></span> KeyBio · <span data-config="owner" data-fallback="[owner pending]"></span>. All rights reserved.</p>
+      <p><a href="../privacidad.html">Privacy and legal notice</a> · <a href="../">Back to home</a></p>
+    </div>
+  </footer>
+  <script type="application/json" id="i18n">{"lang":"en","locale":"en-GB","js":{"theme.toLight":"Switch to light theme","theme.toDark":"Switch to dark theme","lang.suggest":"This page is also available in English.","lang.switch":"View in English","lang.dismiss":"No, thanks","common.soon":"Coming soon.","common.sending":"Sending…","ratings.stars":"{n} out of {total} stars","ratings.none":"No ratings yet. Be the first to share your opinion!","ratings.count_one":"{n} rating","ratings.count_other":"{n} ratings","ratings.anonymous":"Anonymous","ratings.closed":"Ratings will open when the website is published.","ratings.captchaError":"The anti-spam check could not be loaded. Please check your connection.","ratings.chooseStars":"Choose from 1 to 5 stars.","ratings.waitCaptcha":"Please wait for the anti-spam check to finish.","ratings.sendError":"Your rating could not be sent.","ratings.thanksPending":"Thank you! Your comment will appear once it has been reviewed.","ratings.thanks":"Thank you for your rating!","ratings.error.not_configured":"Ratings are not set up.","ratings.error.origin":"Origin not allowed.","ratings.error.format":"Invalid format.","ratings.error.too_long":"The rating is too long.","ratings.error.stars":"Choose between 1 and 5 stars.","ratings.error.lengths":"The name can have up to {name} characters and the comment up to {comment}.","ratings.error.captcha":"We could not verify that you are not a robot. Please try again.","ratings.error.daily_limit":"You have already sent a rating today. Thank you!","contact.closed":"The form will be enabled when the website is published.","contact.sendError":"The message could not be sent. Please try again later.","contact.needCaptcha":"Tick the anti-spam check box before sending.","contact.sent":"Message sent! I will reply as soon as possible.","demo.unit.cpm":"keys/min","demo.unit.per100chars":"/100 chars","demo.unit.per100keys":"/100 keys","demo.trait.speed":"Speed","demo.trait.speed.help":"Keystrokes per minute, not counting long pauses.","demo.trait.dwell":"Hold","demo.trait.dwell.help":"Average time you hold down each key.","demo.trait.flight":"Flight","demo.trait.flight.help":"Average time between releasing a key and pressing the next one.","demo.trait.overlap":"Overlap","demo.trait.overlap.help":"How often you press the next key before releasing the previous one.","demo.trait.regularity":"Regularity","demo.trait.regularity.help":"How steady your rhythm is (100 % would be a metronome).","demo.trait.errors":"Mistakes","demo.trait.errors.help":"Wrong characters per 100 typed (even if you correct them).","demo.key.tab":"Tab","demo.key.enter":"Enter","demo.key.caps":"Caps","demo.key.shift":"Shift","demo.key.ctrl":"Ctrl","demo.heatmap.label":"Keyboard heat map: how long each key is held down","demo.heatmap.key":"{key}: {ms} ms on average ({n} presses)","demo.heatmap.shorter":"shorter","demo.heatmap.longer":"longer","demo.heatmap.caption":"how long you hold down each key","demo.typing.label":"Type this text: {text}","demo.typing.start":"Start typing whenever you like","demo.typing.caps":"Caps Lock is on.","demo.typing.early":"Clear result: no need to finish the sentence.","demo.typing.blur":"You have left the text box. Click on it to carry on typing.","demo.typing.speed":"{n} keystrokes/min","demo.noStorage":"This browser does not allow saving data: fingerprints will be lost when you close the page.","demo.touch":"The demo needs a physical keyboard: keystrokes cannot be measured on a phone or tablet without one.","demo.intro.step1":"Create your fingerprint.","demo.intro.step1.text":"Type {n} short sentences (about a minute and a half).","demo.intro.step2":"Put it to the test.","demo.intro.step2.text":"Type a new sentence and KeyBio will try to recognise you.","demo.intro.step3":"Play “guess who”.","demo.intro.step3.text":"Get more people to enrol on this computer and see if it can tell you apart.","demo.create":"Create my fingerprint","demo.local":"Your keystrokes stay in this browser: they are never sent anywhere.","demo.samples_one":"{n} sample","demo.samples_other":"{n} samples","demo.deletePerson":"Delete {name}","demo.delete":"Delete","demo.home.title":"People enrolled in this browser","demo.home.one":"Type a new sentence and see whether KeyBio recognises you. With more people enrolled, you can play “guess who”.","demo.home.many":"Have someone type a sentence without saying who they are: KeyBio will try to guess.","demo.recognizeMe":"Does it recognise me?","demo.whoTypes":"Who is typing?","demo.addPerson":"Add person","demo.addAnother":"Add another person","demo.clearAll":"Delete all data","demo.confirmDelete":"Delete {name}'s fingerprint?","demo.confirmClear":"Delete all the fingerprints saved in this browser?","demo.name.placeholder":"For example, Lucy","demo.name.empty":"Type a name or a nickname.","demo.name.taken":"There is already someone with that name.","demo.name.label":"What's your name?","demo.name.help":"It is only used to show the results on this screen.","demo.start":"Start","demo.cancel":"Cancel","demo.back":"Back","demo.again":"Try again","demo.enroll.step":"Sentence {i} of {n}","demo.enroll.intro":"Hello, {name}. Copy the text below at your normal pace: there is no need to hurry and you can correct mistakes.","demo.enroll.retry":"Please type this sentence again.","demo.print.ready":"All done, {name}! This is your typing fingerprint.","demo.print.addHint":"More of you? Enrol another person and see whether KeyBio can tell you apart.","demo.print.title":"{name}'s fingerprint","demo.print.fastest":"Your fastest combinations","demo.print.slowest":"The ones that slow you down","demo.identify.step":"New sentence","demo.identify.one":"Type this sentence, which was not part of the enrolment. KeyBio will compare the way you type with your fingerprint.","demo.identify.many":"Have one of the enrolled people (or someone new) type this sentence. KeyBio will say who it thinks it is.","demo.identify.retry":"Please try again.","demo.result.robot":"This does not look like it was typed by a person","demo.result.youAre":"You are {name}","demo.result.confidence":"{n} % confidence. The way you type matches their fingerprint.","demo.result.ambiguous":"Note: it also looks quite like someone else, so the result is not conclusive.","demo.result.notYou":"You don't seem to be {name}","demo.result.unknown":"I don't recognise you","demo.result.closest":"You are most similar to {name}, but not enough to say that you are that person.","demo.result.noData":"There is not enough data to compare.","demo.result.threshold":"The acceptance threshold is at 50 %","demo.result.ranking":"Similarity to each fingerprint","demo.result.early":"Decided with {n} keystrokes: the result was clear and there was no need to finish the sentence.","demo.result.disclaimer":"With short sentences and few samples, the demo makes more mistakes than the program, which uses longer texts and several sessions and adapts with use.","demo.why.title":"Why? Comparison with {name}'s fingerprint","demo.why.similar":"Most similar","demo.why.different":"Most different","demo.why.note":"Besides these features, KeyBio compares how fast you type each key combination relative to the others (R and A measures).","demo.why.values":"{now} now · {print} in the fingerprint","demo.feature.dwell_med":"Key hold time","demo.feature.dwell_iqr":"Hold time variability","demo.feature.dd_med":"Interval between keys","demo.feature.dd_iqr":"Interval variability","demo.feature.ud_med":"Flight time","demo.feature.overlap":"Key overlap","demo.feature.space_dwell":"Space bar hold","demo.feature.dd_to_space":"Letter → space","demo.feature.dd_from_space":"Space → letter","demo.feature.speed_cpm":"Speed","demo.feature.pause_rate":"Pause rate","demo.feature.bs_rate":"Backspace rate","demo.feature.err_rate":"Mistake rate","demo.feature.shift_right":"Right Shift use","demo.feature.shift_lead":"Shift → letter","demo.feature.shift_hold":"Shift hold time","demo.feature.bs_dwell":"Backspace hold","demo.feature.bs_latency":"Reaction to a mistake","demo.check.robotic":"The rhythm is too regular for a person.","demo.check.repeated":"Many keystrokes last exactly the same time.","demo.check.instant":"Keys released instantly.","demo.check.accuracy":"Accuracy was {accuracy} % (minimum {min} %).","demo.check.fewKeys":"Too few keystrokes were recorded.","demo.check.focus":"Key hold times could not be measured (did the box lose focus?)."},"texts":{"enroll":["This morning I went for a run in the park. It was cold, but the sun was already warm and lots of people were out walking their dogs.","My grandmother keeps her recipes in an old tin box. Some are handwritten in tiny letters, and most have stains of oil and flour on them.","The number twelve bus comes every fifteen minutes. If you miss it, walk down to the square and take the underground into the city centre.","To build the bookshelf you only need a screwdriver. First fit the sides, then the shelves and, finally, tighten all the screws properly.","On Sunday evenings we watch a film at home. Someone different chooses each week, so sometimes it is a comedy and sometimes science fiction.","Our team won the match in the very last minute. Lucy scored a header after a corner and the whole stadium stood up to celebrate it."],"verify":["Yesterday I found an old bookshop on a narrow street. The owner recommended an adventure novel, and I bought it without a second thought.","When it rains, the cat climbs onto the windowsill and watches the drops for hours. Then it falls asleep on the sofa, on the checked blanket.","In summer we visit my cousins in the village. At night we go out to the square, play cards and eat ice cream until very late.","The science museum has a room with a huge pendulum. Children stand there watching it slowly change direction throughout the day."]},"languages":[{"code":"es","name":"Español","suggest":"Esta página también está disponible en español.","switch":"Ver en español","dismiss":"No, gracias"},{"code":"en","name":"English","suggest":"This page is also available in English.","switch":"View in English","dismiss":"No, thanks"},{"code":"ca","name":"Català","suggest":"Aquesta pàgina també està disponible en català.","switch":"Mostra-la en català","dismiss":"No, gràcies"},{"code":"gl","name":"Galego","suggest":"Esta páxina tamén está dispoñible en galego.","switch":"Ver en galego","dismiss":"Non, grazas"},{"code":"eu","name":"Euskara","suggest":"Orri hau euskaraz ere badago.","switch":"Ikusi euskaraz","dismiss":"Ez, eskerrik asko"},{"code":"fr","name":"Français","suggest":"Cette page est aussi disponible en français.","switch":"Voir en français","dismiss":"Non, merci"},{"code":"pt","name":"Português","suggest":"Esta página também está disponível em português.","switch":"Ver em português","dismiss":"Não, obrigado"},{"code":"de","name":"Deutsch","suggest":"Diese Seite gibt es auch auf Deutsch.","switch":"Auf Deutsch ansehen","dismiss":"Nein, danke"},{"code":"it","name":"Italiano","suggest":"Questa pagina è disponibile anche in italiano.","switch":"Vedi in italiano","dismiss":"No, grazie"}]}</script>
+</body>
+</html>

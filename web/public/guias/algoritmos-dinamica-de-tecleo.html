@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Algoritmos de dinámica de tecleo, explicados · KeyBio</title>
+  <meta name="description" content="Cómo comparan los algoritmos de dinámica de tecleo dos formas de escribir: distancia Manhattan escalada, medidas R y A de Gunetti y Picardi, umbrales, EER y aprendizaje profundo.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Algoritmos de dinámica de tecleo, explicados · KeyBio">
+  <meta property="og:description" content="Cómo comparan los algoritmos de dinámica de tecleo dos formas de escribir: distancia Manhattan escalada, medidas R y A de Gunetti y Picardi, umbrales, EER y aprendizaje profundo.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_ES">
+  <meta property="article:published_time" content="2026-11-08">
+  <meta property="article:modified_time" content="2026-11-08">
+  <link rel="alternate" hreflang="es" href="https://keybio.pages.dev/guias/algoritmos-dinamica-de-tecleo">
+  <link rel="alternate" hreflang="en" href="https://keybio.pages.dev/en/guides/keystroke-dynamics-algorithms">
+  <link rel="alternate" hreflang="x-default" href="https://keybio.pages.dev/guias/algoritmos-dinamica-de-tecleo">
+  <link rel="canonical" href="https://keybio.pages.dev/guias/algoritmos-dinamica-de-tecleo">
+  <meta property="og:url" content="https://keybio.pages.dev/guias/algoritmos-dinamica-de-tecleo">
+  <meta property="og:site_name" content="KeyBio">
+  <meta property="og:image" content="https://keybio.pages.dev/assets/img/social/es.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Algoritmos de dinámica de tecleo: de la distancia Manhattan a las redes neuronales","description":"Cómo comparan los algoritmos de dinámica de tecleo dos formas de escribir: distancia Manhattan escalada, medidas R y A de Gunetti y Picardi, umbrales, EER y aprendizaje profundo.","inLanguage":"es","datePublished":"2026-11-08","dateModified":"2026-11-08","author":{"@type":"Person","name":"Álvaro Ruiz","url":"https://github.com/ryt0n18"},"publisher":{"@type":"Person","name":"Álvaro Ruiz","url":"https://github.com/ryt0n18"},"image":"https://keybio.pages.dev/assets/img/social/es.png","mainEntityOfPage":"https://keybio.pages.dev/guias/algoritmos-dinamica-de-tecleo","about":{"@type":"SoftwareApplication","name":"KeyBio","url":"https://keybio.pages.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KeyBio","item":"https://keybio.pages.dev/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://keybio.pages.dev/guias/"},{"@type":"ListItem","position":3,"name":"Algoritmos de dinámica de tecleo: de la distancia Manhattan a las redes neuronales","item":"https://keybio.pages.dev/guias/algoritmos-dinamica-de-tecleo"}]}]}</script>
+  <link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="module" src="../assets/js/site.js"></script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M7.5 19.5c1-2 1.5-4.2 1.5-7.5a3 3 0 0 1 6 0c0 1.2-.1 2.4-.3 3.5"/><path d="M12 12c0 3.4-.7 6.3-2 8.5M4.5 16c.6-1.3 1-2.6 1-4a6.5 6.5 0 0 1 11.3-4.4"/><path d="M18.3 10.5c.1.5.2 1 .2 1.5 0 2.7-.4 5.3-1.4 7.5M14.4 20.5c.4-1 .7-2 .9-3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <!-- Las guías cuelgan de la portada de su idioma: «../» es esa portada. -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../" aria-label="KeyBio, inicio">
+        <img src="../assets/img/icon.svg" alt="" width="28" height="28">
+        <span>KeyBio</span>
+      </a>
+      <nav class="nav" aria-label="Secciones">
+        <a href="../#demo">Pruébalo</a>
+        <a href="./">Guías</a>
+        <a href="../#descargar">Descargar</a>
+        <a href="../#contacto">Contacto</a>
+      </nav>
+      <details class="lang-menu"><summary aria-label="Idioma" title="Idioma"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg><span>ES</span></summary><ul><li><a href="../guias/algoritmos-dinamica-de-tecleo.html" hreflang="es" lang="es" data-lang="es" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>Español</a></li><li><a href="../en/guides/keystroke-dynamics-algorithms.html" hreflang="en" lang="en" data-lang="en"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.4"/></svg>English</a></li></ul></details>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambiar tema">
+        <svg class="icon only-light" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon only-dark" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container prose guide">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación"><a href="../">KeyBio</a><span aria-hidden="true">›</span><a href="./">Guías</a></nav>
+    <article>
+      <h1>Algoritmos de dinámica de tecleo: de la distancia Manhattan a las redes neuronales</h1>
+      <p class="guide-meta">Por <a href="https://github.com/ryt0n18" rel="author">Álvaro Ruiz</a> · actualizado el <time datetime="2026-11-08">8 de noviembre de 2026</time> · 6 min de lectura</p>
+      <p class="lead">Un sistema de <a href="dinamica-de-tecleo.html">dinámica de tecleo</a> tiene que responder a una pregunta: <strong>¿esta forma de escribir se parece lo bastante a la de esta persona?</strong> Esta guía repasa cómo se contesta, desde las distancias clásicas hasta las redes neuronales, y cómo se mide si un algoritmo funciona.</p>
+<nav class="toc" aria-label="En esta guía"><p>En esta guía</p><ol><li><a href="#vector">De pulsaciones a números</a></li><li><a href="#distancias">Texto fijo: distancias</a></li><li><a href="#texto-libre">Texto libre: las medidas R y A</a></li><li><a href="#umbral">El umbral: cuándo decir que sí</a></li><li><a href="#aprendizaje">Aprendizaje automático y redes neuronales</a></li><li><a href="#evaluar">Cómo evaluar bien un algoritmo</a></li><li><a href="#keybio">Cómo lo hace KeyBio</a></li></ol></nav>
+
+<h2 id="vector">De pulsaciones a números</h2>
+<p>El punto de partida es una lista de eventos: para cada tecla, el instante en que se pulsa y el instante en que se suelta. Con ellos se calculan los tiempos de pulsación (<em>dwell</em>), los intervalos entre teclas (DD y UD) y la duración de cada combinación de letras (dígrafos y trígrafos).</p>
+<p>Si todo el mundo escribe <strong>el mismo texto</strong> (una contraseña, por ejemplo), cada muestra se convierte en un vector de números siempre igual de largo: el tiempo de la primera tecla, el intervalo entre la primera y la segunda, y así sucesivamente. Si el texto es <strong>libre</strong>, no hay posiciones fijas que comparar, y se trabaja con las combinaciones de teclas que aparecen en las dos muestras.</p>
+
+<h2 id="distancias">Texto fijo: distancias</h2>
+<p>La forma más sencilla de comparar es medir la distancia entre la muestra nueva <code>x</code> y la media del perfil <code>μ</code>:</p>
+<ul>
+  <li><strong>Euclídea:</strong> la distancia «en línea recta», <code>√Σ(xᵢ − μᵢ)²</code>. Castiga mucho las diferencias grandes.</li>
+  <li><strong>Manhattan:</strong> la suma de las diferencias, <code>Σ|xᵢ − μᵢ|</code>. Es más robusta frente a una tecla aislada muy lenta.</li>
+  <li><strong>Manhattan escalada:</strong> <code>Σ|xᵢ − μᵢ| / aᵢ</code>, donde <code>aᵢ</code> es la desviación media de esa medida en el perfil. Divide cada diferencia por lo que suele variar esa persona en esa tecla, así que una tecla muy irregular pesa menos.</li>
+  <li><strong>Mahalanobis:</strong> tiene en cuenta además cómo se relacionan las medidas entre sí, pero necesita muchas muestras para estimarlo bien.</li>
+</ul>
+<p>En la comparación de referencia de la Universidad Carnegie Mellon (Killourhy y Maxion, 2009), 51 personas teclearon 400 veces la contraseña <code>.tie5Roanl</code> en ocho sesiones. De los catorce detectores probados, el mejor fue la <strong>Manhattan escalada</strong>, con una tasa de error igual del 9,6 %: un método de una línea batía a otros mucho más complejos.</p>
+
+<h2 id="texto-libre">Texto libre: las medidas R y A</h2>
+<p>Con texto libre, el trabajo clásico es el de Daniele Gunetti y Claudia Picardi (<em>Keystroke analysis of free text</em>, 2005). Proponen comparar dos muestras usando solo los dígrafos y trígrafos que tienen <strong>en común</strong>, con dos medidas:</p>
+<h3>Medida R: el orden relativo</h3>
+<p>Se ordenan las combinaciones comunes de la más rápida a la más lenta en cada muestra y se mide cuánto difieren esas ordenaciones. Por ejemplo:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Posición</th><th>Muestra A</th><th>Muestra B</th></tr></thead>
+  <tbody>
+    <tr><td>1 (más rápido)</td><td>de</td><td>en</td></tr>
+    <tr><td>2</td><td>en</td><td>de</td></tr>
+    <tr><td>3</td><td>la</td><td>es</td></tr>
+    <tr><td>4 (más lento)</td><td>es</td><td>la</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Cada combinación se ha movido un puesto, así que el desorden es 1 + 1 + 1 + 1 = 4. El desorden máximo posible con 4 elementos es 8, de modo que <strong>R = 4 / 8 = 0,5</strong>. Lo interesante de R es que no le afecta la velocidad absoluta: si un día escribes todo un poco más lento, el orden se mantiene.</p>
+<h3>Medida A: las duraciones</h3>
+<p>Complementa a R mirando los tiempos: es la proporción de combinaciones comunes cuya duración difiere más de un cierto margen (en el trabajo original, un 25 %). Cuanto más baja, más se parecen las dos muestras.</p>
+<p>Las dos medidas se calculan para dígrafos, trígrafos y, si se quiere, para los tiempos de cada tecla, y se combinan en una sola distancia. Con textos de varios cientos de caracteres, este enfoque logró tasas de error muy bajas.</p>
+
+<h2 id="umbral">El umbral: cuándo decir que sí</h2>
+<p>Una distancia no sirve de nada sin un umbral. Hay dos estrategias:</p>
+<ul>
+  <li><strong>Umbral global:</strong> el mismo para todos. Es sencillo, pero algunas personas son mucho más regulares que otras.</li>
+  <li><strong>Umbral propio de cada persona:</strong> se calcula cuánto se parece cada persona a sí misma. Una técnica habitual es la validación <strong>deja‑uno‑fuera</strong>: se aparta cada muestra del registro, se compara con el resto y se obtienen la media <code>m</code> y la desviación <code>s</code> de esas distancias. Se acepta si <code>distancia ≤ m + K·s</code>, donde <code>K</code> marca lo estricto que es el sistema.</li>
+</ul>
+<p>Mover el umbral cambia los dos errores a la vez: las <strong>falsas aceptaciones</strong> (FAR) y los <strong>falsos rechazos</strong> (FRR). El punto en que se igualan es la <strong>tasa de error igual</strong> (EER). La curva que muestra todos los equilibrios posibles se llama curva DET (o ROC).</p>
+
+<h2 id="aprendizaje">Aprendizaje automático y redes neuronales</h2>
+<p>Además de las distancias, se han usado casi todas las técnicas de aprendizaje automático: vecinos más cercanos (k‑NN), máquinas de vectores de soporte de una clase, bosques aleatorios y redes neuronales. Las de una clase son útiles porque en la práctica casi nunca hay muestras de impostores con las que entrenar.</p>
+<p>El gran salto llegó con el <strong>aprendizaje profundo</strong> y los conjuntos de datos masivos. En 2018, un equipo de la Universidad Aalto publicó un estudio con 136 millones de pulsaciones de unos 168.000 voluntarios. Con datos así, investigadores de la Universidad Autónoma de Madrid entrenaron <strong>TypeNet</strong>, una red recurrente que convierte cualquier fragmento de texto libre en un vector y compara vectores entre sí, lo que permite reconocer a personas que la red nunca había visto durante el entrenamiento y escalar a cientos de miles de usuarios.</p>
+<p>La contrapartida es que estos modelos necesitan muchos datos para entrenarse y son más difíciles de explicar. Para un programa local con pocas personas, los métodos clásicos bien calibrados siguen siendo muy competitivos.</p>
+
+<h2 id="evaluar">Cómo evaluar bien un algoritmo</h2>
+<ul>
+  <li><strong>Usa sesiones distintas.</strong> Comparar muestras escritas en la misma sesión da resultados demasiado optimistas: la persona estaba en las mismas condiciones.</li>
+  <li><strong>Separa registro y prueba.</strong> Nunca compruebes con las mismas muestras con las que creaste el perfil.</li>
+  <li><strong>Incluye impostores que intenten imitar.</strong> No es lo mismo un desconocido cualquiera que alguien que intenta copiar tu ritmo.</li>
+  <li><strong>Da las dos tasas de error,</strong> no solo la precisión: un sistema que rechaza a todo el mundo tiene un 0 % de falsas aceptaciones.</li>
+</ul>
+
+<h2 id="keybio">Cómo lo hace KeyBio</h2>
+<p>KeyBio combina varias de estas ideas:</p>
+<ol>
+  <li>Las <strong>medidas R y A</strong> sobre dígrafos, trígrafos, tiempos de pulsación y tiempos de vuelo, entre la muestra nueva y cada muestra del perfil.</li>
+  <li>La <strong>distancia Manhattan escalada</strong> sobre rasgos globales: velocidad, pausas, uso de las mayúsculas, correcciones.</li>
+  <li>Un <strong>umbral propio de cada persona</strong> con validación deja‑uno‑fuera (apartando sesiones enteras cuando hay varias) y una sensibilidad ajustable que puede calibrarse sola con los datos del equipo.</li>
+  <li>Una <strong>decisión progresiva</strong>: a partir de 60 pulsaciones puede responder antes si el resultado ya está claro.</li>
+  <li>Una <strong>detección de suplantaciones</strong> que rechaza ritmos robóticos, tiempos repetidos exactos y réplicas de muestras guardadas.</li>
+</ol>
+<p>La <a href="../#demo">demo de la web</a> usa el mismo algoritmo, traducido a JavaScript, y te enseña la comparación rasgo a rasgo. Pruébala y mira qué combinaciones de letras te delatan.</p>
+    </article>
+
+    <aside class="card guide-cta">
+      <h2>Pruébalo con tu forma de escribir</h2>
+      <p>La demo de KeyBio crea tu huella de tecleo con dos frases y luego intenta reconocerte. Funciona entera en tu navegador: tus pulsaciones no se envían a ningún sitio.</p>
+      <div class="actions">
+        <a class="btn primary" href="../#demo"><svg class="icon" aria-hidden="true"><use href="#i-fingerprint"/></svg>Probar la demo</a>
+        <a class="btn" href="../#descargar"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Descargar</a>
+      </div>
+    </aside>
+
+    <h2>Más guías</h2>
+    <ul class="guide-list"><li class="card"><h3><a href="dinamica-de-tecleo.html">Dinámica de tecleo (keystroke dynamics): qué es y cómo funciona</a></h3><p>Qué es la dinámica de tecleo, qué tiempos se miden al escribir, cómo reconoce a una persona, qué precisión tiene, para qué se usa y qué dice el RGPD.</p><p class="small muted">7 min de lectura</p></li><li class="card"><h3><a href="biometria-del-comportamiento.html">Biometría del comportamiento: qué es, tipos y ejemplos</a></h3><p>Qué es la biometría del comportamiento (o conductual), en qué se diferencia de la física, qué tipos hay, para qué se usa y qué riesgos tiene para la privacidad.</p><p class="small muted">4 min de lectura</p></li></ul>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span data-config="year"></span> KeyBio · <span data-config="owner" data-fallback="[responsable pendiente]"></span>. Todos los derechos reservados.</p>
+      <p><a href="../privacidad.html">Privacidad y aviso legal</a> · <a href="../">Volver al inicio</a></p>
+    </div>
+  </footer>
+  <script type="application/json" id="i18n">{"lang":"es","locale":"es-ES","js":{"theme.toLight":"Cambiar a tema claro","theme.toDark":"Cambiar a tema oscuro","lang.suggest":"Esta página también está disponible en español.","lang.switch":"Ver en español","lang.dismiss":"No, gracias","common.soon":"Disponible próximamente.","common.sending":"Enviando…","ratings.stars":"{n} de {total} estrellas","ratings.none":"Todavía no hay valoraciones. ¡Sé la primera persona en opinar!","ratings.count_one":"{n} valoración","ratings.count_other":"{n} valoraciones","ratings.anonymous":"Anónimo","ratings.closed":"Las valoraciones se abrirán cuando la web esté publicada.","ratings.captchaError":"No se ha podido cargar la comprobación antispam. Revisa tu conexión.","ratings.chooseStars":"Elige de 1 a 5 estrellas.","ratings.waitCaptcha":"Espera a que termine la comprobación antispam.","ratings.sendError":"No se ha podido enviar la valoración.","ratings.thanksPending":"¡Gracias! Tu comentario aparecerá cuando se revise.","ratings.thanks":"¡Gracias por tu valoración!","ratings.error.not_configured":"Las valoraciones no están configuradas.","ratings.error.origin":"Origen no permitido.","ratings.error.format":"Formato no válido.","ratings.error.too_long":"La valoración es demasiado larga.","ratings.error.stars":"Elige entre 1 y 5 estrellas.","ratings.error.lengths":"El nombre admite hasta {name} caracteres y el comentario hasta {comment}.","ratings.error.captcha":"No se ha podido comprobar que no eres un robot. Inténtalo de nuevo.","ratings.error.daily_limit":"Ya has enviado una valoración hoy. ¡Gracias!","contact.closed":"El formulario se activará cuando la web esté publicada.","contact.sendError":"No se ha podido enviar el mensaje. Inténtalo más tarde.","contact.needCaptcha":"Marca la casilla de la comprobación antispam antes de enviar.","contact.sent":"¡Mensaje enviado! Te responderé lo antes posible.","demo.unit.cpm":"puls./min","demo.unit.per100chars":"/100 car.","demo.unit.per100keys":"/100 teclas","demo.trait.speed":"Velocidad","demo.trait.speed.help":"Pulsaciones por minuto, sin contar las pausas largas.","demo.trait.dwell":"Pulsación","demo.trait.dwell.help":"Tiempo medio que mantienes pulsada cada tecla.","demo.trait.flight":"Vuelo","demo.trait.flight.help":"Tiempo medio entre soltar una tecla y pulsar la siguiente.","demo.trait.overlap":"Solapamiento","demo.trait.overlap.help":"Veces que pulsas la siguiente tecla antes de soltar la anterior.","demo.trait.regularity":"Regularidad","demo.trait.regularity.help":"Lo constante que es tu ritmo (100 % sería un metrónomo).","demo.trait.errors":"Errores","demo.trait.errors.help":"Caracteres equivocados por cada 100 escritos (aunque los corrijas).","demo.key.tab":"Tab","demo.key.enter":"Intro","demo.key.caps":"Bloq","demo.key.shift":"Shift","demo.key.ctrl":"Ctrl","demo.heatmap.label":"Mapa de calor del teclado: tiempo de pulsación de cada tecla","demo.heatmap.key":"{key}: {ms} ms de media ({n} pulsaciones)","demo.heatmap.shorter":"más corta","demo.heatmap.longer":"más larga","demo.heatmap.caption":"tiempo que mantienes pulsada cada tecla","demo.typing.label":"Escribe este texto: {text}","demo.typing.start":"Empieza a escribir cuando quieras","demo.typing.caps":"Tienes activado Bloq Mayús.","demo.typing.early":"Resultado claro: no hace falta terminar la frase.","demo.typing.blur":"Has salido del cuadro de texto. Haz clic en él para seguir escribiendo.","demo.typing.speed":"{n} pulsaciones/min","demo.noStorage":"Este navegador no permite guardar datos: las huellas se perderán al cerrar la página.","demo.touch":"La demo necesita un teclado físico: en un móvil o tableta sin teclado no se pueden medir las pulsaciones.","demo.intro.step1":"Crea tu huella.","demo.intro.step1.text":"Escribe {n} frases cortas (un minuto y medio, más o menos).","demo.intro.step2":"Ponla a prueba.","demo.intro.step2.text":"Escribe una frase nueva y KeyBio intentará reconocerte.","demo.intro.step3":"Juega a «adivina quién».","demo.intro.step3.text":"Que más personas se registren en este ordenador y comprobad si os distingue.","demo.create":"Crear mi huella","demo.local":"Las pulsaciones se quedan en este navegador: no se envían a ningún sitio.","demo.samples_one":"{n} muestra","demo.samples_other":"{n} muestras","demo.deletePerson":"Borrar a {name}","demo.delete":"Borrar","demo.home.title":"Personas registradas en este navegador","demo.home.one":"Escribe una frase nueva y comprueba si KeyBio te reconoce. Con más personas registradas, podréis jugar a «adivina quién».","demo.home.many":"Que alguien escriba una frase sin decir quién es: KeyBio intentará adivinarlo.","demo.recognizeMe":"¿Me reconoce?","demo.whoTypes":"¿Quién escribe?","demo.addPerson":"Añadir persona","demo.addAnother":"Añadir otra persona","demo.clearAll":"Borrar todos los datos","demo.confirmDelete":"¿Borrar la huella de {name}?","demo.confirmClear":"¿Borrar todas las huellas guardadas en este navegador?","demo.name.placeholder":"Por ejemplo, Lucía","demo.name.empty":"Escribe un nombre o un apodo.","demo.name.taken":"Ya hay alguien con ese nombre.","demo.name.label":"¿Cómo te llamas?","demo.name.help":"Solo se usa para mostrar los resultados en esta pantalla.","demo.start":"Empezar","demo.cancel":"Cancelar","demo.back":"Volver","demo.again":"Probar otra vez","demo.enroll.step":"Frase {i} de {n}","demo.enroll.intro":"Hola, {name}. Copia el texto de abajo a tu ritmo normal: no hace falta ir rápido y los errores se pueden corregir.","demo.enroll.retry":"Vuelve a escribir esta frase.","demo.print.ready":"¡Listo, {name}! Esta es tu huella de tecleo.","demo.print.addHint":"¿Sois más? Registra a otra persona y comprobad si KeyBio os distingue.","demo.print.title":"Huella de {name}","demo.print.fastest":"Tus combinaciones más rápidas","demo.print.slowest":"Las que más te cuestan","demo.identify.step":"Frase nueva","demo.identify.one":"Escribe esta frase, que no estaba en el registro. KeyBio comparará tu forma de escribir con tu huella.","demo.identify.many":"Que una de las personas registradas (o alguien nuevo) escriba esta frase. KeyBio dirá quién cree que es.","demo.identify.retry":"Vuelve a intentarlo.","demo.result.robot":"Esto no parece escrito por una persona","demo.result.youAre":"Eres {name}","demo.result.confidence":"Confianza del {n} %. Tu forma de escribir encaja con su huella.","demo.result.ambiguous":"Ojo: también se parece bastante a otra persona, así que el resultado es poco concluyente.","demo.result.notYou":"No pareces {name}","demo.result.unknown":"No te reconozco","demo.result.closest":"A quien más te pareces es a {name}, pero no lo bastante para decir que eres esa persona.","demo.result.noData":"No hay suficientes datos para comparar.","demo.result.threshold":"El umbral de aceptación está en el 50 %","demo.result.ranking":"Parecido con cada huella","demo.result.early":"Decidido con {n} pulsaciones: el resultado estaba claro y no ha hecho falta terminar la frase.","demo.result.disclaimer":"Con frases cortas y pocas muestras, la demo se equivoca más que el programa, que usa textos más largos, varias sesiones y se adapta con el uso.","demo.why.title":"¿Por qué? Comparación con la huella de {name}","demo.why.similar":"Lo que más se parece","demo.why.different":"Lo que más difiere","demo.why.note":"Además de estos rasgos, KeyBio compara el orden de rapidez de cada combinación de teclas (medidas R y A).","demo.why.values":"{now} ahora · {print} en la huella","demo.feature.dwell_med":"Tiempo de pulsación","demo.feature.dwell_iqr":"Variabilidad de pulsación","demo.feature.dd_med":"Intervalo entre teclas","demo.feature.dd_iqr":"Variabilidad del intervalo","demo.feature.ud_med":"Tiempo de vuelo","demo.feature.overlap":"Solapamiento de teclas","demo.feature.space_dwell":"Pulsación de la barra espaciadora","demo.feature.dd_to_space":"Letra → espacio","demo.feature.dd_from_space":"Espacio → letra","demo.feature.speed_cpm":"Velocidad","demo.feature.pause_rate":"Frecuencia de pausas","demo.feature.bs_rate":"Frecuencia de retrocesos","demo.feature.err_rate":"Frecuencia de errores","demo.feature.shift_right":"Uso del shift derecho","demo.feature.shift_lead":"Shift → letra","demo.feature.shift_hold":"Duración del shift","demo.feature.bs_dwell":"Pulsación del retroceso","demo.feature.bs_latency":"Reacción ante un error","demo.check.robotic":"Ritmo demasiado regular para una persona.","demo.check.repeated":"Muchas pulsaciones duran exactamente lo mismo.","demo.check.instant":"Teclas que se sueltan instantáneamente.","demo.check.accuracy":"La precisión ha sido del {accuracy} % (mínimo {min} %).","demo.check.fewKeys":"Se han registrado muy pocas pulsaciones.","demo.check.focus":"No se han podido medir los tiempos de pulsación (¿se perdió el foco?)."},"texts":{"enroll":["Esta mañana he salido a correr por el parque. Hacía frío, pero el sol ya calentaba un poco y había mucha gente paseando con sus perros.","Mi abuela guarda las recetas en una caja de latón. Algunas están escritas a mano, con letra pequeña, y tienen manchas de aceite y harina.","El autobús número doce pasa cada quince minutos. Si lo pierdes, lo mejor es ir andando hasta la plaza y coger allí el metro hacia el centro.","Para montar la estantería solo necesitas un destornillador. Primero coloca los laterales, después las baldas y, por último, aprieta los tornillos.","Los domingos por la tarde vemos una película en casa. Cada semana elige alguien distinto, así que a veces toca comedia y otras, ciencia ficción.","Nuestro equipo ganó el partido en el último minuto. Lucía marcó de cabeza después de un córner y todo el estadio se levantó para celebrarlo."],"verify":["Ayer encontré una librería antigua en una calle estrecha. El dueño me recomendó una novela de aventuras y me la llevé sin pensarlo dos veces.","Cuando llueve, el gato se sube a la ventana y mira las gotas durante horas. Luego se queda dormido en el sofá, encima de la manta de cuadros.","En verano vamos al pueblo a ver a mis primos. Por la noche salimos a la plaza, jugamos a las cartas y comemos helado hasta muy tarde.","El museo de ciencias tiene una sala con un péndulo enorme. Los niños se quedan mirando cómo cambia de dirección a lo largo del día."]},"languages":[{"code":"es","name":"Español","suggest":"Esta página también está disponible en español.","switch":"Ver en español","dismiss":"No, gracias"},{"code":"en","name":"English","suggest":"This page is also available in English.","switch":"View in English","dismiss":"No, thanks"},{"code":"ca","name":"Català","suggest":"Aquesta pàgina també està disponible en català.","switch":"Mostra-la en català","dismiss":"No, gràcies"},{"code":"gl","name":"Galego","suggest":"Esta páxina tamén está dispoñible en galego.","switch":"Ver en galego","dismiss":"Non, grazas"},{"code":"eu","name":"Euskara","suggest":"Orri hau euskaraz ere badago.","switch":"Ikusi euskaraz","dismiss":"Ez, eskerrik asko"},{"code":"fr","name":"Français","suggest":"Cette page est aussi disponible en français.","switch":"Voir en français","dismiss":"Non, merci"},{"code":"pt","name":"Português","suggest":"Esta página também está disponível em português.","switch":"Ver em português","dismiss":"Não, obrigado"},{"code":"de","name":"Deutsch","suggest":"Diese Seite gibt es auch auf Deutsch.","switch":"Auf Deutsch ansehen","dismiss":"Nein, danke"},{"code":"it","name":"Italiano","suggest":"Questa pagina è disponibile anche in italiano.","switch":"Vedi in italiano","dismiss":"No, grazie"}]}</script>
+</body>
+</html>

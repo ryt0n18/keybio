@@ -45,3 +45,58 @@ def test_analytics_only_on_the_published_site():
     config = (ROOT / "web" / "public" / "assets" / "js" / "config.js").read_text(encoding="utf-8")
     host = re.search(r'analytics: \{[^}]*host: "([^"]+)"', config).group(1)
     assert f"https://{host}" == build.SITE_URL
+
+
+def _guide_folders():
+    guides = build.load_guides()
+    return [build.guides_folder(code, guides) for code in guides]
+
+
+def test_sitemap_lists_every_indexed_page():
+    """Cada página con dirección canónica está en sitemap.xml, y robots.txt apunta a él."""
+    public = ROOT / "web" / "public"
+    sitemap = (public / "sitemap.xml").read_text(encoding="utf-8")
+    listed = set(re.findall(r"<loc>(.*?)</loc>", sitemap))
+    canonical = set()
+    for page in public.rglob("*.html"):
+        m = re.search(r'<link rel="canonical" href="([^"]+)">', page.read_text(encoding="utf-8"))
+        if m:
+            canonical.add(m.group(1))
+    assert canonical and canonical == listed
+    assert f"Sitemap: {build.SITE_URL}/sitemap.xml" in (public / "robots.txt").read_text(encoding="utf-8")
+
+
+def test_guides_are_linked_to_their_translations():
+    """Una guía enlaza (hreflang) con sus traducciones, y solo con las que existen."""
+    public = ROOT / "web" / "public"
+    for folder in _guide_folders():
+        for page in (public / folder).glob("*.html"):
+            text = page.read_text(encoding="utf-8")
+            for href in re.findall(r'hreflang="\w+" href="([^"]+)"', text):
+                path = href.removeprefix(build.SITE_URL)
+                target = public / (path.lstrip("/") + ("index.html" if path.endswith("/") else ".html"))
+                assert target.exists(), f"{page.relative_to(public)} enlaza con {href}, que no existe"
+
+
+def test_ads_only_in_the_guides():
+    """Los anuncios solo pueden cargarse en las guías: la portada (con la demo) y la privacidad
+    mantienen la política de seguridad estricta, y cada carpeta de guías tiene su regla propia."""
+    public = ROOT / "web" / "public"
+    folders = _guide_folders()
+    for page in public.rglob("*.html"):
+        rel = page.relative_to(public).as_posix()
+        if not any(rel.startswith(f) for f in folders):
+            assert "data-ads-client" not in page.read_text(encoding="utf-8"), rel
+    headers = (public / "_headers").read_text(encoding="utf-8")
+    strict = re.search(r"^/\*\n  Content-Security-Policy: (.*)$", headers, re.M).group(1)
+    assert "unsafe-inline" not in strict and "https:;" not in strict
+    for folder in folders:
+        rule = re.search(rf"^/{re.escape(folder)}\*\n((?:  .*\n)+)", headers, re.M)
+        assert rule, f"falta la regla /{folder}* en _headers"
+        assert "! Content-Security-Policy" in rule.group(1)
+
+
+def test_social_images_exist():
+    """La imagen para redes sociales de cada idioma (web/i18n/social.py)."""
+    for code, _, _ in build.LANGUAGES:
+        assert (ROOT / "web" / "public" / "assets" / "img" / "social" / f"{code}.png").exists()

@@ -7,6 +7,7 @@
   <meta name="description" content="{{privacy.meta.description|attr}}">
   <meta name="color-scheme" content="light dark">
   {{@alternates}}
+  {{@seo}}
   <link rel="icon" href="{{@root}}assets/img/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="{{@root}}assets/css/site.css">
   <script type="module" src="{{@root}}assets/js/site.js"></script>
@@ -22,6 +23,7 @@
       <nav class="nav" aria-label="{{common.sections|attr}}">
         <a href="./#demo">{{common.nav.demo}}</a>
         <a href="./#descargar">{{common.nav.download}}</a>
+        {{@guidesnav}}
         <a href="./#contacto">{{common.nav.contact}}</a>
       </nav>
       {{@langmenu}}
@@ -45,8 +47,8 @@
       <li>{{privacy.data.contact}}</li>
       <li>{{privacy.data.preferences}}</li>
     </ul>
-    <p>{{privacy.data.noTracking}}</p>
-
+    <p>{{@noTracking}}</p>
+{{@adsSection}}
     <h2>{{privacy.purposes.title}}</h2>
     <ul>
       <li>{{privacy.purposes.ratings}}</li>
@@ -61,7 +63,7 @@
     <ul>
       <li>{{privacy.providers.cloudflare}}</li>
       <li>{{privacy.providers.web3forms}}</li>
-      <li>{{privacy.providers.hcaptcha}}</li>
+      <li>{{privacy.providers.hcaptcha}}</li>{{@adsProvider}}
     </ul>
     <p>{{privacy.providers.transfers}}</p>
 

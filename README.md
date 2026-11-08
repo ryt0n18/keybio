@@ -10,6 +10,8 @@
 </p>
 
 <p align="center">
+  <a href="https://keybio.pages.dev">Web y demo</a> ·
+  <a href="https://keybio.pages.dev/guias/">Guías</a> ·
   <a href="#descargar">Descargar</a> ·
   <a href="#funciones">Funciones</a> ·
   <a href="docs/funcionamiento.md">Cómo funciona</a> ·
@@ -29,7 +31,7 @@ internet si pulsas «Buscar actualizaciones».
 ## Descargar
 
 Los ejecutables de cada versión están en
-[*Releases*](https://github.com/ryt0n18/keybio/releases/latest) y en la web del proyecto. No
+[*Releases*](https://github.com/ryt0n18/keybio/releases/latest) y en la [web del proyecto](https://keybio.pages.dev). No
 hace falta instalar Python.
 
 | Sistema | Fichero | Cómo abrirlo |
