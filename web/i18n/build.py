@@ -42,7 +42,7 @@ from ksb import flags  # noqa: E402 (banderas compartidas con el programa)
 # Dirección definitiva de la web: enlaces canónicos y hreflang, mapa del sitio y robots.txt.
 SITE_URL = "https://keybio.pages.dev"
 # Google Search Console: el valor de «content» de la etiqueta HTML de verificación. Vacío: no se pone.
-GOOGLE_SITE_VERIFICATION = ""
+GOOGLE_SITE_VERIFICATION = "lL4GGpe9A3IzhxJicUZHmfnYnKR1zXxR4ecwjxcmyhY"
 # Google AdSense: el identificador de editor («ca-pub-…»). Vacío: sin anuncios. Con él, las guías
 # cargan los anuncios, se genera ads.txt y la política de privacidad lo explica (docs/promocion.md).
 # La portada nunca los lleva: ahí está la demo, donde se teclea.
