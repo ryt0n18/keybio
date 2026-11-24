@@ -1,0 +1,78 @@
+<!--
+id: biometric-accuracy
+slug: far-frr-eer-biometric-accuracy
+title: FAR, FRR and EER: how biometric accuracy is measured · KeyBio
+heading: FAR, FRR and EER: how the accuracy of a biometric system is measured
+description: What the false acceptance rate (FAR), false rejection rate (FRR) and equal error rate (EER) mean, how the threshold is chosen and why a single accuracy figure is never enough.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead">When a biometric system claims to be "99% accurate", that figure tells you very little. To know whether a fingerprint reader, a face recognition system or a <strong>keystroke dynamics</strong> system really works, you have to look at <strong>two different errors</strong>, how they trade off as the threshold moves and what data they were measured on. This guide explains, with examples, what FAR, FRR and EER are and how to read them without being misled.</p>
+
+<h2 id="two-errors">The two errors of every biometric system</h2>
+<p>A biometric system does not answer "yes" or "no" directly: it compares a new sample with a stored profile and computes a <strong>similarity score</strong> (or a distance). It then applies a <strong>threshold</strong>: if the sample is similar enough, it accepts; otherwise, it rejects. That decision can go wrong in two ways:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Error</th><th>What happens</th><th>Who it hurts</th></tr></thead>
+  <tbody>
+    <tr><td><strong>False acceptance</strong> (FAR, or FMR in the standards)</td><td>Someone who is not the enrolled person is accepted.</td><td>Security: an impostor gets in.</td></tr>
+    <tr><td><strong>False rejection</strong> (FRR, or FNMR in the standards)</td><td>The right person is rejected.</td><td>Convenience: the genuine user has to try again or use another route.</td></tr>
+  </tbody>
+</table>
+</div>
+<p>The <strong>false acceptance rate</strong> is the number of accepted impostor attempts divided by all impostor attempts. The <strong>false rejection rate</strong> is the number of rejected genuine attempts divided by all genuine attempts. They are two independent percentages: a system can have a tiny FAR and an unbearable FRR, or the other way round.</p>
+<p>The international standard on how to measure biometric performance, <strong>ISO/IEC 19795-1</strong>, distinguishes FMR/FNMR (errors made by the algorithm when comparing a sample with a template) from FAR/FRR (errors of the whole system, which include, for instance, samples that could not even be captured). In practice, and in this guide, they are used almost interchangeably.</p>
+
+<h2 id="threshold">The threshold: the lever that decides everything</h2>
+<p>Imagine the system scores from 0 to 100 how similar a sample is to the profile. Samples from the right person usually score high and impostors' samples score low, but the two clouds of points <strong>overlap</strong>: some days the person types oddly, and some impostors happen to resemble them.</p>
+<ul>
+  <li>With a <strong>high threshold</strong> (strict), hardly any impostor gets through: FAR goes down. But the right person is rejected more often: FRR goes up.</li>
+  <li>With a <strong>low threshold</strong> (lenient), the genuine user is almost never rejected, but more impostors slip through.</li>
+</ul>
+<p>No threshold removes both errors at once. Choosing it is a <strong>design decision</strong> that depends on which error is worse in each case: a bank authorising transfers would rather annoy its customers than let a fraudster in; a personal laptop that is unlocked a hundred times a day prefers the opposite and keeps a fallback method.</p>
+
+<h2 id="eer">The equal error rate (EER)</h2>
+<p>If you sweep the threshold and plot FAR and FRR, you get two curves that cross: one falls while the other rises. The point where <strong>both rates are equal</strong> is the <strong>equal error rate</strong>, or EER.</p>
+<p>The EER is useful because it sums up in a single number how well a method separates genuine users from impostors: the lower, the better. That is why it is the figure most research papers use to compare algorithms. But it has two catches:</p>
+<ul>
+  <li><strong>Real systems rarely operate at that point.</strong> They pick a stricter or more lenient threshold depending on their use, so the EER does not tell you which errors users will actually see.</li>
+  <li><strong>It depends on the data.</strong> An EER measured with 20 volunteers typing the same password in a single afternoon cannot be compared with one measured on thousands of people over several months.</li>
+</ul>
+<p>As a reference, on the Carnegie Mellon University password dataset (Killourhy and Maxion, 2009), in which 51 people typed the same password 400 times over eight sessions, the best of the fourteen classic methods they compared had an EER of 9.6%. That is high compared with a fingerprint, but bear in mind it is a password of only ten characters. With longer texts, samples from several days and modern methods, errors drop considerably. We explain why in the guide to <a href="keystroke-dynamics-algorithms.html">keystroke dynamics algorithms</a>.</p>
+
+<h2 id="curves">ROC and DET curves: every threshold at once</h2>
+<p>To avoid relying on a single point, studies usually show a curve covering <strong>every possible threshold</strong>:</p>
+<ul>
+  <li>The <strong>ROC curve</strong> plots the false acceptance rate on one axis and the true acceptance rate (1 − FRR) on the other. The closer it hugs the top-left corner, the better.</li>
+  <li>The <strong>DET curve</strong> plots FAR against FRR on scales that stretch the region of small errors. Biometrics prefers it because it shows the differences between good systems more clearly.</li>
+</ul>
+<p>With one of these curves you can answer the question that really matters: "if I want to accept no more than one impostor in a thousand, how many genuine users will I reject?".</p>
+
+<h2 id="other-rates">Other figures worth checking</h2>
+<ul>
+  <li><strong>Failure to enrol (FTE):</strong> how many people cannot create a valid profile. With typing, this can happen to people who make a huge number of mistakes or type with one finger and very long pauses.</li>
+  <li><strong>Failure to acquire (FTA):</strong> how often a sample is not even usable for a comparison, for example because it is too short.</li>
+  <li><strong>Time to decision:</strong> in continuous authentication, what matters is how many keystrokes the system needs to notice that the person has changed.</li>
+</ul>
+
+<h2 id="identification">Verification is not identification</h2>
+<p>Everything above applies to <strong>verification (1:1)</strong>: "are you Anna?". The sample is compared with a single profile. In <strong>identification (1:N)</strong>, "which of everyone are you?", the sample is compared with every profile, and errors add up.</p>
+<p>A simple calculation shows it. If the probability of an impostor matching one particular profile is 1%, the probability of matching none of 100 profiles is 0.99 to the power of 100, about 37%. In other words, roughly <strong>63% of the time</strong> some profile would wrongly accept them. That is why a system that identifies among many people needs stricter thresholds, more text per sample or a second check.</p>
+
+<h2 id="impostors">What kind of impostor was tested</h2>
+<p>A "zero-effort" impostor who simply types is not the same as one who has watched the victim type, has practised, or uses a program to mimic their timings. Many studies test only the first case, which is the easiest to reject. A serious evaluation states which attacks were tried: human imitation, replay of a recorded sample or keystrokes generated by a program. In the guide on <a href="detecting-bots-by-typing.html">how to detect bots by the way they type</a> we explain how systems defend against the last two.</p>
+
+<h2 id="reading-figures">How to read an accuracy figure without being fooled</h2>
+<p>Before trusting a percentage, look for the answer to these questions:</p>
+<ol>
+  <li><strong>Which error is it?</strong> False acceptance, false rejection, EER, or an "accuracy" that mixes both?</li>
+  <li><strong>At what threshold?</strong> A very low FAR without the FRR that goes with it means nothing.</li>
+  <li><strong>How many people, and over how long?</strong> Few people and a single session give optimistic figures.</li>
+  <li><strong>Were enrolment and testing done on the same day?</strong> Typing changes from day to day; testing only with same-day samples inflates the results.</li>
+  <li><strong>Verification or identification?</strong> With many enrolled people, errors grow.</li>
+  <li><strong>Which impostors?</strong> Only strangers typing naturally, or imitations and automated attacks too?</li>
+</ol>
+
+<h2 id="keybio">How KeyBio measures it</h2>
+<p>The KeyBio desktop app includes a <strong>system evaluation using your own samples</strong>. For genuine users, it takes each sample out of its profile and checks whether it is still recognised (a technique called "leave one out"). For impostors, it presents each sample to the other users' profiles <em>without its own</em>, as if it came from a stranger, and counts how often a profile accepts it. Using those same trials, <strong>automatic calibration</strong> looks for the sensitivity that makes the fewest errors with that computer's data instead of a generic value.</p>
+<p>For a quick feel, in the <a href="../#demo">web demo</a> you can enrol with two sentences, ask someone else to try to pass as you and see how close each attempt is to your profile.</p>

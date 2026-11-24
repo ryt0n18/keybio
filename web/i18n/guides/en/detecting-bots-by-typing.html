@@ -1,0 +1,79 @@
+<!--
+id: typing-bot-detection
+slug: detecting-bots-by-typing
+title: How to detect bots by the way they type · KeyBio
+heading: How to tell a person from a bot by the way they type
+description: Why a program that types by itself gives itself away through its timings, which signals reveal robotic rhythm, replays or pasted text, and where this kind of detection reaches its limits.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead">Filling in forms, trying stolen passwords or creating fake accounts in bulk are jobs done by <strong>programs that type by themselves</strong>. They can type the right text, but they find it very hard to type it <strong>the way a person would</strong>. This guide explains what is special about human typing, which signals give a bot away and how far this kind of detection can go.</p>
+
+<h2 id="why-it-works">Why typing gives a program away</h2>
+<p>A person typing is a physical system: fingers of different strength and length, a brain planning words a few at a time and a keyboard with keys at different distances. The result is a rhythm that is <strong>irregular but structured</strong>:</p>
+<ul>
+  <li>The intervals between keys vary a lot from one keystroke to the next: familiar combinations ("th", "the", "ing") come out fast, while awkward ones or those typed with the same finger take longer.</li>
+  <li>Each key is held down for around a tenth of a second, never zero, and slightly differently every time.</li>
+  <li>There are pauses before long words, after punctuation and while thinking about what to write.</li>
+  <li>When typing fast, people often press the next key <strong>before releasing the previous one</strong> (overlap).</li>
+  <li>Mistakes are made and corrected with backspace.</li>
+</ul>
+<p>A simple program does exactly the opposite: it sends letters at fixed intervals, with no hold time or the same one for every key, and never makes a mistake. That difference is the basis of detection. If you want to know the measurements in detail, see the guide to <a href="keystroke-dynamics.html">what keystroke dynamics is</a>.</p>
+
+<h2 id="signals">Signs of a bot</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Signal</th><th>What you see</th><th>Why it is suspicious</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Robotic rhythm</strong></td><td>Intervals between keys that are almost identical.</td><td>A person varies far more. It is measured with the <em>coefficient of variation</em>: the standard deviation divided by the mean.</td></tr>
+    <tr><td><strong>Exact repeated timings</strong></td><td>Many keys held for exactly the same number of milliseconds.</td><td>Automation tools usually use a fixed delay.</td></tr>
+    <tr><td><strong>Instant keystrokes</strong></td><td>Keys released at the same moment they are pressed.</td><td>A finger physically cannot press and release in less than a few milliseconds.</td></tr>
+    <tr><td><strong>Replay</strong></td><td>A sample with exactly the same timings as an earlier one.</td><td>Nobody repeats a text with that precision: it is a recording being sent again.</td></tr>
+    <tr><td><strong>Pasted text</strong></td><td>Text appears with no keystrokes, or with a single paste event.</td><td>There is no rhythm to analyse; in a typing check it is suspicious at the very least.</td></tr>
+    <tr><td><strong>No mistakes or pauses</strong></td><td>Long texts without a single correction or thinking pause.</td><td>Possible, but rare for a person; a hint, not proof.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="variation">The coefficient of variation, explained</h2>
+<p>Suppose someone types with an average interval of 180 ms between keys and a standard deviation of 90 ms. Their coefficient of variation is 90 / 180 = 0.5, or 50%. In real people it is usually well above 20%. A program that types every 100 ms give or take 5 ms has a coefficient of variation of about 3%.</p>
+<p>This measure has one big advantage: <strong>it does not depend on speed</strong>. A very fast typist and a slow one can have the same relative variation, so the same limit works for both.</p>
+
+<h2 id="replay">Replay attacks</h2>
+<p>A slightly smarter attacker does not invent timings: they <strong>record a real session</strong> from the victim, for instance with spyware, and play it back later. The timings are human, so the signals above do not fire. What gives a replay away is its very perfection: compared with stored samples of the same text, if the differences are one or two milliseconds on almost every key, it cannot be a person typing again. That is why systems that defend against this securely keep a summary of earlier samples to compare against.</p>
+
+<h2 id="smart-bots">Bots that imitate human noise</h2>
+<p>More sophisticated bots add <strong>random noise</strong> to their timings to look human. That is enough to pass the coefficient of variation test, but it leaves other traces:</p>
+<ul>
+  <li>Random noise has no <strong>structure</strong>: the bot takes as long on average for "th" as for "qz", whereas a person has very marked easy and hard combinations.</li>
+  <li>The timings follow a distribution that is too clean (a perfect bell curve, for instance), while humans have long tails caused by pauses.</li>
+  <li>There is no realistic overlap between keys and no mistakes followed by corrections.</li>
+</ul>
+<p>Research goes further. In 2012, Deian Stefan, Xiaokui Shu and Danfeng Yao studied attacks using synthetic keystrokes generated from a victim's statistics and showed they can fool some keystroke dynamics systems. The usual conclusion is that typing-based bot detection <strong>greatly raises the cost of an attack</strong>, but is not an absolute barrier.</p>
+
+<h2 id="captcha">Can it replace a CAPTCHA?</h2>
+<p>Partly. Many fraud prevention platforms analyse in the background how forms are filled in, with keyboard and mouse, to decide whether to show an extra check. It has a big advantage over the classic CAPTCHA: the person does not have to do anything. But it also has drawbacks:</p>
+<ul>
+  <li>It needs <strong>quite a lot of text</strong>: with a twenty-character email address the decision is much less reliable than with a paragraph.</li>
+  <li>It can penalise people who type in unusual ways, for example with an <strong>on-screen keyboard, a screen reader, voice dictation</strong> or an assistive device. Good design always offers another route.</li>
+  <li>It involves analysing users' behaviour, so privacy rules apply. We cover that in the guide to <a href="keystroke-biometrics-privacy-gdpr.html">privacy and the GDPR</a>.</li>
+</ul>
+
+<h2 id="keybio">What KeyBio checks</h2>
+<p>The KeyBio desktop app checks every sample before accepting it and rejects it if it finds:</p>
+<ul>
+  <li>a <strong>rhythm that is too regular</strong>: a coefficient of variation of the intervals below 12%, with at least 40 intervals to judge it on;</li>
+  <li><strong>more than 35% of keystrokes with exactly the same duration</strong>, rounded to the millisecond;</li>
+  <li><strong>more than 25% of keys released in under 8 ms</strong>;</li>
+  <li>a <strong>replay</strong> of another stored sample of the same text, with median differences of just a few milliseconds.</li>
+</ul>
+<p>It also prevents pasting and out-of-order editing during the tests, and warns if someone tries it several times. It is not foolproof, and the app says so, but it stops the simplest attacks, which are also the most common. With <strong>challenge mode</strong> you can ask someone to try to imitate another person and check whether the system is fooled.</p>
+
+<h2 id="limits">Limits and good practice</h2>
+<ul>
+  <li><strong>Use it as one more layer</strong>, alongside attempt limits, strong passwords or a second factor, not as the only defence.</li>
+  <li><strong>Ask for enough text</strong>: decisions based on very few keystrokes are unreliable.</li>
+  <li><strong>Do not simply punish</strong> people who type differently: when in doubt, offer an alternative check.</li>
+  <li><strong>Review false positives</strong>: if many real people are flagged as bots, the limits are too strict.</li>
+</ul>
+<p>You can see your own key-by-key timings in the <a href="../#demo">KeyBio demo</a>: after you enrol, the heat map shows which keys take you longest and how much your rhythm varies.</p>

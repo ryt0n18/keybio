@@ -1,0 +1,64 @@
+<!--
+id: keystroke-use-cases
+slug: keystroke-dynamics-use-cases
+title: Keystroke dynamics use cases: banking, exams, health and more · KeyBio
+heading: What keystroke dynamics is used for: real-world examples
+description: Where keystroke dynamics is used today: fraud prevention in banking, continuous authentication, online learning, bot detection, medical research and forensics, with their benefits and limits.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead"><strong>Keystroke dynamics</strong> has been in research labs for decades, but today it is in far more places than you might think: on your bank's website, on some online course platforms and in medical studies. This guide reviews its real uses, the problem each one solves and the precautions each one requires.</p>
+
+<h2 id="banking">Banking and fraud prevention</h2>
+<p>This is the most widespread use. Many financial institutions use <strong>behavioural biometrics</strong> platforms that analyse, in the background, how people type, move the mouse or hold their phone while using online banking. They do not replace login: they add a <strong>risk signal</strong> throughout the visit.</p>
+<p>What they look for:</p>
+<ul>
+  <li><strong>Account takeover:</strong> the password is correct, but the typing does not match the account holder's.</li>
+  <li><strong>Bots:</strong> programs trying leaked passwords or opening accounts in bulk. They type with a rhythm no person has.</li>
+  <li><strong>Phone scams:</strong> a fraudster persuades the victim to make a transfer themselves. The person is the right one, but they type hesitantly, stop and re-enter details someone is dictating. That pattern can be a red flag.</li>
+  <li><strong>Remote control:</strong> when someone operates the victim's computer remotely, rhythm and movements change in characteristic ways.</li>
+</ul>
+<p>In Europe, the European Banking Authority recognises keystroke dynamics as a possible "something you are" element in strong payment authentication. We cover this in the comparison with <a href="keystroke-dynamics-vs-passwords-2fa-passkeys.html">passwords, 2FA and passkeys</a>.</p>
+
+<h2 id="continuous">Continuous authentication at work</h2>
+<p>In sensitive environments such as hospitals, public administrations or companies handling confidential data, a common problem is the computer left with an open session. <strong>Continuous authentication</strong> checks while people work that the same person is still typing and, if not, locks the session or asks for the password again.</p>
+<p>Privacy is key here. Checking who is typing is one thing; monitoring how much each employee works or inferring their mood is something else entirely, and in the European Union it is heavily restricted (we explain this in the guide to <a href="keystroke-biometrics-privacy-gdpr.html">privacy, the GDPR and the AI Act</a>). The responsible approach is to analyse only timings, on the device itself, and store only the result.</p>
+
+<h2 id="education">Online learning and exams</h2>
+<p>How do you know that the person taking an online course is the one who will be certified? In 2013, Coursera launched Signature Track, a verified certificate programme that combined a photo with a <strong>typing profile</strong>: students typed a sentence when signing up and again when submitting each assignment. Other online exam platforms have used similar ideas.</p>
+<p>Advantages: it is cheap and needs no camera. Drawbacks: with short sentences errors are frequent, switching laptops can cause rejections, and it does not stop someone else from dictating the answers. That is why it is usually combined with other methods.</p>
+
+<h2 id="bots">Bot detection on websites and forms</h2>
+<p>Signing up, commenting, buying tickets or voting in a poll are actions bots repeat thousands of times. Analysing how a form is filled in makes it possible to separate people from programs <strong>without making them solve a CAPTCHA</strong>. It is a low-risk application for privacy if it is used only for that decision and not to identify anyone. We explain how in the guide on <a href="detecting-bots-by-typing.html">how to detect bots by the way they type</a>.</p>
+
+<h2 id="health">Medical research</h2>
+<p>Because typing is a fine motor task, changes in the way someone types can reflect changes in the nervous system. Some research examples:</p>
+<ul>
+  <li><strong>Parkinson's disease:</strong> the neuroQWERTY project, involving MIT, reported in 2016 that the variation in key hold times during natural typing helped distinguish people with early-stage Parkinson's.</li>
+  <li><strong>Other conditions:</strong> studies have explored typing as an indicator of cognitive decline, mood, or the effects of fatigue and some medications.</li>
+</ul>
+<p>These are research results, not diagnostic tools. And they are a reminder that typing timings can contain <strong>health data</strong>, so they should never be collected without a clear reason and the person's consent.</p>
+
+<h2 id="forensics">Forensics and authorship</h2>
+<p>If there are keystroke logs from a session, keystroke dynamics can help answer questions like "was this message typed by the same person who normally uses this account?". It is not conclusive proof on its own, but it can guide an internal investigation, for example when someone is suspected of using a colleague's account.</p>
+
+<h2 id="accessibility">Accessibility and learning</h2>
+<p>The same data that recognises someone can also help them: spotting which key combinations they find hardest, suggesting tailored typing exercises or adapting keyboard repeat delays for people with tremors. In these uses identity does not matter; the rhythm of each key does.</p>
+
+<h2 id="summary">Summary: which uses fit best</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Use</th><th>Fit</th><th>What to watch</th></tr></thead>
+  <tbody>
+    <tr><td>Risk signal in banking</td><td>Very good</td><td>Transparency with customers and an alternative if they are rejected.</td></tr>
+    <tr><td>Bot detection</td><td>Very good</td><td>Not penalising people who use adapted keyboards or dictation.</td></tr>
+    <tr><td>Second factor for sensitive access</td><td>Good</td><td>Enough text and a real second lock behind it.</td></tr>
+    <tr><td>Continuous authentication</td><td>Good</td><td>Workers' privacy; not drifting into surveillance.</td></tr>
+    <tr><td>Online exams</td><td>Limited</td><td>Short sentences, device changes and other ways to cheat.</td></tr>
+    <tr><td>Health</td><td>Research</td><td>It is health data: consent and medical use.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="keybio">Try it with KeyBio</h2>
+<p>KeyBio was created so that anyone can see up close how this technology works without sending their data to anyone. In the <a href="../#demo">web demo</a> you build your typing fingerprint with two sentences and check whether it recognises you. The desktop app adds free-text identification, access verification for sensitive systems and a challenge mode in which someone else tries to imitate you. If you would rather start with the concepts, read the guide to <a href="keystroke-dynamics.html">what keystroke dynamics is</a>.</p>

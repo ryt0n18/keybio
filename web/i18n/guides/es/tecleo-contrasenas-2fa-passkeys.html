@@ -1,0 +1,65 @@
+<!--
+id: keystroke-vs-passwords
+slug: tecleo-contrasenas-2fa-passkeys
+title: Biometría de tecleo frente a contraseñas, 2FA y passkeys · KeyBio
+heading: Biometría de tecleo frente a contraseñas, doble factor y passkeys
+description: Qué aporta la dinámica de tecleo frente a las contraseñas, los códigos de doble factor y las passkeys, en qué casos encaja, en cuáles no y cómo combinarla con otros métodos.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead">¿Puede la forma de escribir sustituir a la contraseña? Respuesta corta: <strong>no, pero puede reforzarla</strong>. La dinámica de tecleo tiene ventajas que ningún otro método ofrece, como funcionar sin que la persona haga nada distinto, y debilidades que la hacen poco adecuada como única cerradura. Esta guía la compara con las contraseñas, el doble factor y las passkeys para ver dónde encaja cada uno.</p>
+
+<h2 id="factores">Los tres tipos de factor</h2>
+<p>En seguridad se suele hablar de tres formas de demostrar quién eres:</p>
+<ul>
+  <li><strong>Algo que sabes:</strong> una contraseña, un PIN o la respuesta a una pregunta.</li>
+  <li><strong>Algo que tienes:</strong> el móvil que recibe un código, una llave de seguridad USB o una tarjeta.</li>
+  <li><strong>Algo que eres:</strong> la huella dactilar, la cara, la voz… o la forma en que escribes.</li>
+</ul>
+<p>La <strong>autenticación de doble factor</strong> (2FA) combina dos tipos distintos, de forma que robar uno no basta. La dinámica de tecleo pertenece al tercer grupo, el de la <strong>biometría</strong>, y en concreto a la <a href="biometria-del-comportamiento.html">biometría del comportamiento</a>: no mide una parte del cuerpo, sino un hábito.</p>
+
+<h2 id="comparacion">Comparación rápida</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Método</th><th>Puntos fuertes</th><th>Puntos débiles</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Contraseña</strong></td><td>Universal, barata, se puede cambiar.</td><td>Se olvida, se reutiliza, se roba con engaños (<em>phishing</em>) y con filtraciones.</td></tr>
+    <tr><td><strong>Código por SMS o aplicación</strong></td><td>Añade un segundo factor fácil de entender.</td><td>El SMS se puede interceptar o desviar con un duplicado de la SIM; los códigos se pueden pedir con engaños.</td></tr>
+    <tr><td><strong>Passkeys y llaves FIDO2</strong></td><td>Resistentes al <em>phishing</em>: la clave solo funciona en la web legítima y nunca sale del dispositivo.</td><td>Dependen de un dispositivo o una cuenta que las sincronice; no todos los servicios las admiten.</td></tr>
+    <tr><td><strong>Dinámica de tecleo</strong></td><td>Invisible para el usuario, no necesita hardware y puede comprobar toda la sesión, no solo la entrada.</td><td>Es probabilística, cambia con el teclado o el cansancio y no se puede «cambiar» si se filtra el perfil.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="probabilistica">La gran diferencia: sí o no frente a «se parece»</h2>
+<p>Una contraseña es correcta o no lo es. Una passkey, o firma el desafío, o no lo firma. La dinámica de tecleo, en cambio, da una <strong>puntuación</strong>: tu forma de escribir de hoy se parece más o menos a la que se guardó. Siempre habrá algún falso rechazo y alguna falsa aceptación, y el equilibrio entre ambos lo decide un umbral. Lo explicamos en la guía sobre <a href="far-frr-eer-precision-biometrica.html">FAR, FRR y EER</a>.</p>
+<p>Esto tiene una consecuencia práctica: la dinámica de tecleo <strong>no debería ser la única barrera</strong> para nada importante. Sí es muy útil como señal adicional que, si algo no cuadra, pide una comprobación más.</p>
+
+<h2 id="contrasena-reforzada">Contraseña reforzada con el ritmo</h2>
+<p>La idea de combinar ambas cosas es antigua. En 1990, Rick Joyce y Gopal Gupta propusieron comprobar, además de la contraseña, el ritmo con el que se escribe. Y en 1999, Fabian Monrose, Michael Reiter y Susanne Wetzel presentaron el «endurecimiento de contraseñas» (<em>password hardening</em>), que usaba los tiempos de tecleo para que una contraseña robada fuese más difícil de usar.</p>
+<p>La ventaja es evidente: el usuario no hace nada nuevo, sigue escribiendo su contraseña. La limitación también: una contraseña tiene pocos caracteres y da poca información de ritmo, así que la comprobación es menos fiable que con un texto más largo.</p>
+
+<h2 id="continua">La ventaja única: la autenticación continua</h2>
+<p>Las contraseñas, los códigos y las passkeys comprueban la identidad <strong>una vez, al entrar</strong>. Si después alguien se sienta en un ordenador con la sesión abierta o toma el control de una sesión robada, nada lo detecta. La dinámica de tecleo puede seguir comprobando, en segundo plano y mientras se escribe, que la persona es la misma. Por eso se usa en banca y en entornos sensibles para detectar:</p>
+<ul>
+  <li>que un tercero ha tomado el control de la cuenta tras el inicio de sesión;</li>
+  <li>que quien escribe es un programa y no una persona (lo vemos en la guía sobre <a href="detectar-bots-por-el-tecleo.html">cómo detectar bots</a>);</li>
+  <li>comportamientos raros, como teclear con dudas un número de cuenta que se dicta por teléfono, una señal que algunos sistemas antifraude usan para detectar estafas de suplantación.</li>
+</ul>
+
+<h2 id="psd2">El caso de la banca europea</h2>
+<p>La directiva europea de servicios de pago (PSD2) obliga a usar la <strong>autenticación reforzada de clientes</strong>, con dos factores de tipos distintos, en muchos pagos electrónicos. En su opinión de junio de 2019 sobre los elementos de esa autenticación, la Autoridad Bancaria Europea (EBA) citó la <strong>dinámica de tecleo</strong> entre los elementos de «inherencia» (algo que eres) que pueden cumplir los requisitos, junto con otros datos biométricos del comportamiento. Esto no significa que cualquier sistema valga, pero sí que la técnica tiene un sitio reconocido en la seguridad bancaria.</p>
+
+<h2 id="passkeys">¿Y las passkeys?</h2>
+<p>Las passkeys, basadas en los estándares FIDO2 y WebAuthn, son probablemente el mejor método actual para iniciar sesión: no hay nada que escribir, no se pueden robar con una web falsa y no se filtran si el servicio sufre un ataque. Su llegada reduce la importancia de la contraseña, y con ella la de la dinámica de tecleo <em>en el inicio de sesión</em>.</p>
+<p>Pero las passkeys no resuelven todo: protegen la entrada, no lo que pasa después, y se desbloquean con el método del dispositivo (PIN, huella o cara). La dinámica de tecleo sigue teniendo sentido para la <strong>comprobación continua</strong>, en equipos compartidos y como segunda cerradura en sistemas que todavía dependen de contraseñas.</p>
+
+<h2 id="cuando">Cuándo tiene sentido usarla</h2>
+<ul>
+  <li><strong>Sí:</strong> como segundo factor invisible en accesos sensibles, para vigilar sesiones largas, para frenar bots en formularios y como señal de riesgo en sistemas antifraude.</li>
+  <li><strong>Con cuidado:</strong> en el trabajo y en educación, donde hay que justificar que es necesaria y respetar la privacidad (lo explicamos en la guía de <a href="biometria-de-tecleo-privacidad-rgpd.html">privacidad y RGPD</a>).</li>
+  <li><strong>No:</strong> como único método para proteger algo valioso, con textos muy cortos o cuando la persona cambia a menudo de teclado o dispositivo.</li>
+</ul>
+
+<h2 id="keybio">Cómo lo plantea KeyBio</h2>
+<p>La verificación de acceso de KeyBio es justamente una <strong>segunda cerradura</strong>: pide una frase corta solo al iniciar sesión en un sistema sensible y devuelve si la identidad se confirma. No bloquea archivos ni programas por sí misma, así que se pone delante de algo que ya tiene su propia protección, como la contraseña del programa o una carpeta cifrada. Si la comprobación falla, pide una verificación adicional y deja un aviso al administrador. Puedes probar cómo te reconoce con tu forma de escribir en la <a href="../#demo">demo de la web</a>.</p>

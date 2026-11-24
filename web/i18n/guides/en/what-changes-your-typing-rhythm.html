@@ -1,0 +1,61 @@
+<!--
+id: typing-rhythm-factors
+slug: what-changes-your-typing-rhythm
+title: What changes your typing rhythm and how it affects biometrics · KeyBio
+heading: What changes the way you type: keyboard, tiredness, language and time
+description: Why you type differently depending on the keyboard, the time of day, tiredness, language or posture, how that affects keystroke biometrics and how to enrol so the system recognises you better.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead">The way you type is fairly stable, but it is not fixed like a fingerprint. It changes a little every day and quite a lot depending on the <strong>keyboard</strong>, <strong>tiredness</strong>, <strong>language</strong> or even <strong>posture</strong>. Understanding what makes it vary helps explain why a keystroke dynamics system sometimes fails to recognise you and how to make it more accurate.</p>
+
+<h2 id="stable">What is stable and what is not</h2>
+<p>Some aspects of your typing stay the same for years: which letter combinations come out fast, which hand you use for Shift or whether you tend to overlap keys. Others change easily: average speed, the length of pauses or how many mistakes you make. A good system gives more weight to the former, but it <strong>can never ignore the latter completely</strong>, which is why every system makes some errors. We look at that in the guide on <a href="far-frr-eer-biometric-accuracy.html">how accuracy is measured</a>.</p>
+
+<h2 id="keyboard">The keyboard</h2>
+<p>This is probably the biggest factor. Every keyboard has a different key travel, actuation force and spacing between keys:</p>
+<ul>
+  <li><strong>Laptop vs desktop:</strong> laptop keys usually have less travel, which shortens hold times.</li>
+  <li><strong>Mechanical vs membrane:</strong> on a mechanical keyboard the key actuates halfway down, which changes when the press and release are registered.</li>
+  <li><strong>Layout:</strong> switching from a UK to a US, Spanish or French keyboard moves keys such as symbols, quotes or accented letters, and combinations that use them become slower.</li>
+  <li><strong>On-screen or phone keyboard:</strong> almost a different biometric altogether, with one or two fingers and no physical key feel.</li>
+</ul>
+<p>Tip: enrol with the <strong>same keyboard</strong> you will use the system with. If you regularly use two keyboards, enrol samples on both.</p>
+
+<h2 id="tiredness">Tiredness, time of day and mood</h2>
+<p>At the end of a long day we tend to type more slowly and make more mistakes. Studies on typing and internal states have found links with fatigue, lack of sleep, stress and mood, although the effect varies a lot from person to person. Some research has also observed changes with alcohol and certain medications.</p>
+<p>For biometrics this means a sample taken first thing on Monday may look less like your profile than one taken mid-morning on Wednesday. That is why the profile should include <strong>samples from different moments</strong>.</p>
+
+<h2 id="language">Language and type of text</h2>
+<p>You type the words and combinations you use most faster. A bilingual person has different rhythms in each language because the frequent digraphs differ: "th" and "ing" in English, "que" or "de" in Spanish, "ch" or "ou" in French. The type of text matters too:</p>
+<ul>
+  <li>a <strong>copied sentence</strong> has a different rhythm from text you compose as you go, with pauses to decide what to say;</li>
+  <li><strong>passwords</strong> are typed from muscle memory, often very fast and always the same way;</li>
+  <li><strong>numbers and symbols</strong> are typed more slowly than letters.</li>
+</ul>
+<p>A free-text system that compares the same digraphs in both texts, like the one described in the guide to <a href="keystroke-dynamics-algorithms.html">algorithms</a>, is more robust to these changes, but it still works best if you enrol in the language you will be typing in.</p>
+
+<h2 id="posture">Posture, injuries and cold</h2>
+<ul>
+  <li><strong>Posture:</strong> typing on the sofa with a laptop on your knees is not the same as typing at a desk.</li>
+  <li><strong>Injuries:</strong> a bandaged finger, tendinitis or a wrist brace completely change the rhythm of certain keys.</li>
+  <li><strong>Cold:</strong> with cold hands, fingers are slower and less precise.</li>
+  <li><strong>Distractions:</strong> typing while talking or looking at another screen multiplies pauses.</li>
+</ul>
+
+<h2 id="ageing">Over time: learning and template ageing</h2>
+<p>Typing also changes in the long run. Someone who learns to touch-type, or changes job and types much more, becomes faster and more regular; with age, some people slow down. In biometrics this is called <strong>template ageing</strong>: a profile created a year ago looks less like the way you type today.</p>
+<p>The usual solution is <strong>adaptation</strong>: when the system is very confident it is you, it adds that sample to your profile and drops the oldest ones. The profile thus follows your evolution without you having to enrol again. The risk is adapting to an impostor, so only very confident checks should be used.</p>
+
+<h2 id="tips">How to enrol so it recognises you better</h2>
+<ol>
+  <li><strong>Use your usual keyboard</strong> and sit the way you normally do.</li>
+  <li><strong>Type naturally.</strong> Do not try to go faster or slower than usual: the system learns what you show it.</li>
+  <li><strong>Spread enrolment over several days</strong> or at least several times of day.</li>
+  <li><strong>Use the language you will type in</strong> afterwards.</li>
+  <li><strong>Do not worry about the odd typo</strong>, but redo samples with lots of them.</li>
+  <li><strong>Add samples</strong> if you change keyboard, injure a hand or notice the system rejecting you more than before.</li>
+</ol>
+
+<h2 id="keybio">How KeyBio handles it</h2>
+<p>KeyBio enrols each person with several short texts in the language of their choice and discards samples with too many mistakes or a rhythm that does not look human. Afterwards, <strong>automatic adaptation</strong> adds very confident checks with enough text to the profile, and undoes itself if you mark a result as wrong. The dashboard shows the <strong>quality of each profile</strong> and suggests adding samples when needed. To see how your rhythm varies from one attempt to the next, try the <a href="../#demo">web demo</a> several times at different times of day and compare the results.</p>

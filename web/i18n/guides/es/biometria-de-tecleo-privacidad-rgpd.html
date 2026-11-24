@@ -1,0 +1,82 @@
+<!--
+id: keystroke-privacy
+slug: biometria-de-tecleo-privacidad-rgpd
+title: Biometría de tecleo y privacidad: riesgos, RGPD y ley de IA · KeyBio
+heading: Biometría de tecleo y privacidad: qué revela tu forma de escribir y qué dice la ley
+description: Qué información se puede sacar de tus tiempos de tecleo, qué riesgos tiene para la privacidad, qué exigen el RGPD y el Reglamento europeo de IA y cómo usarla de forma responsable.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead">Tu forma de escribir puede servir para reconocerte, y eso la convierte en un <strong>dato personal muy delicado</strong>: no se puede cambiar como una contraseña y se puede recoger sin que te des cuenta. Esta guía explica qué se puede deducir de los tiempos de tecleo, qué riesgos hay, qué dicen el <strong>RGPD</strong> y el <strong>Reglamento europeo de inteligencia artificial</strong> y qué buenas prácticas reducen el problema.</p>
+
+<h2 id="que-revela">Qué revelan tus tiempos de tecleo</h2>
+<p>Un sistema de dinámica de tecleo no necesita saber <em>qué</em> escribes, solo <em>cuándo</em> pulsas y sueltas cada tecla. Aun así, esos tiempos dicen mucho:</p>
+<ul>
+  <li><strong>Quién eres.</strong> Es su uso principal: con suficiente texto, el ritmo identifica a una persona entre muchas.</li>
+  <li><strong>Que eres la misma persona en sitios distintos.</strong> Si dos servicios analizan tu tecleo, en teoría podrían saber que la misma persona está detrás de dos cuentas, aunque uses nombres diferentes.</li>
+  <li><strong>Cómo estás.</strong> Hay estudios que relacionan los cambios de ritmo con el cansancio, el estrés o el estado de ánimo. En 2011, un equipo de la Universidad de Saskatchewan (Epp, Lippold y Mandryk) clasificó algunos estados emocionales a partir del tecleo con una precisión moderada.</li>
+  <li><strong>Datos de salud.</strong> El proyecto neuroQWERTY, del MIT y otros centros, publicó en 2016 que el tiempo de pulsación de las teclas podía ayudar a detectar signos tempranos de párkinson. Es una línea de investigación prometedora para la medicina, y a la vez un aviso: los tiempos de tecleo pueden contener información de salud.</li>
+  <li><strong>Pistas sobre el contenido.</strong> Las combinaciones de letras tienen tiempos característicos. En 2001, Song, Wagner y Tian demostraron que los intervalos entre pulsaciones de una sesión SSH cifrada daban pistas sobre las contraseñas escritas. Por eso los tiempos de tecleo deben tratarse con el mismo cuidado que el texto.</li>
+</ul>
+
+<h2 id="riesgos">Los riesgos principales</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Riesgo</th><th>Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Recogida invisible</strong></td><td>Una web registra cómo escribes en un formulario sin avisar. A diferencia de una huella dactilar, no tienes que poner el dedo en ningún sitio.</td></tr>
+    <tr><td><strong>No se puede cambiar</strong></td><td>Si se filtra tu contraseña, la cambias. Si se filtra tu perfil de tecleo, no puedes cambiar tu forma de escribir de un día para otro.</td></tr>
+    <tr><td><strong>Seguimiento</strong></td><td>El perfil sirve para relacionar cuentas o visitas, como una cookie que no se puede borrar.</td></tr>
+    <tr><td><strong>Usos secundarios</strong></td><td>Datos recogidos para la seguridad acaban usándose para medir la productividad o deducir el estado de ánimo de los trabajadores.</td></tr>
+    <tr><td><strong>Decisiones injustas</strong></td><td>Un sistema rechaza más a menudo a personas con una discapacidad motora, que usan un teclado adaptado o que escriben en un idioma que no es el suyo.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="rgpd">Qué dice el RGPD</h2>
+<p>El Reglamento General de Protección de Datos (RGPD) de la Unión Europea define los <strong>datos biométricos</strong> como los datos personales obtenidos a partir de un tratamiento técnico específico, relativos a las características físicas, fisiológicas o <strong>conductuales</strong> de una persona, que permitan o confirmen su identificación única (artículo 4.14). La forma de teclear entra en esa definición cuando se usa para reconocer a alguien.</p>
+<p>Cuando los datos biométricos se tratan <strong>para identificar de forma unívoca</strong> a una persona, pasan a ser una <strong>categoría especial de datos</strong> (artículo 9). Su tratamiento está prohibido salvo que se cumpla una de las excepciones del propio artículo, la más habitual el <strong>consentimiento explícito</strong>. Además, se aplican los principios generales:</p>
+<ul>
+  <li><strong>Información clara</strong> de qué se recoge, para qué, durante cuánto tiempo y quién lo trata.</li>
+  <li><strong>Limitación de la finalidad:</strong> lo que se recoge para la seguridad no se puede reutilizar para otra cosa sin más.</li>
+  <li><strong>Minimización:</strong> guardar solo lo imprescindible, por ejemplo un perfil con estadísticas en lugar de todas las pulsaciones.</li>
+  <li><strong>Protección de datos desde el diseño</strong> (artículo 25) y medidas de seguridad adecuadas, como el cifrado.</li>
+  <li><strong>Evaluación de impacto</strong> (artículo 35) cuando el tratamiento pueda suponer un alto riesgo, lo que suele ocurrir con datos biométricos a gran escala o de trabajadores.</li>
+</ul>
+
+<h2 id="trabajo">En el trabajo: mucho cuidado</h2>
+<p>En una relación laboral, el consentimiento rara vez es libre, porque el trabajador depende de la empresa. Por eso la Agencia Española de Protección de Datos (AEPD), en su guía de 2023 sobre el control de presencia con sistemas biométricos, insiste en que la empresa tiene que justificar que el sistema es <strong>necesario y proporcionado</strong> y que no hay una alternativa menos invasiva, además de hacer una evaluación de impacto. Aunque esa guía se centra en fichar la entrada y la salida, el razonamiento se aplica a cualquier biometría en el trabajo.</p>
+<p>Si se usa la dinámica de tecleo para proteger un acceso sensible, lo prudente es:</p>
+<ul>
+  <li>usarla solo para ese acceso y no para vigilar la actividad de la jornada;</li>
+  <li>guardar el resultado de la comprobación, no las pulsaciones ni el texto;</li>
+  <li>ofrecer siempre una alternativa a quien no quiera o no pueda usarla;</li>
+  <li>borrar los registros pasado un plazo corto.</li>
+</ul>
+
+<h2 id="ley-ia">El Reglamento europeo de inteligencia artificial</h2>
+<p>El Reglamento (UE) 2024/1689, conocido como ley de IA, añade otra capa. Desde el 2 de febrero de 2025 están <strong>prohibidos</strong>, entre otros, los sistemas que <strong>infieren las emociones</strong> de una persona en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad, y los que <strong>clasifican a las personas</strong> por sus datos biométricos para deducir datos sensibles como su origen, sus opiniones políticas o su orientación sexual.</p>
+<p>Usar la forma de escribir para verificar que una persona es quien dice ser no entra en esas prohibiciones. Pero usarla para medir el estrés de los empleados o el interés de los alumnos en un examen, sí podría. Fuera de esos casos prohibidos, los sistemas de reconocimiento de emociones y de identificación biométrica a distancia tienen además obligaciones de transparencia y, a menudo, la consideración de <strong>alto riesgo</strong>.</p>
+
+<h2 id="buenas-practicas">Buenas prácticas para quien diseña un sistema</h2>
+<ol>
+  <li><strong>Procesar en local.</strong> Si las pulsaciones nunca salen del equipo, desaparece gran parte del riesgo de filtración y de seguimiento.</li>
+  <li><strong>Guardar plantillas, no grabaciones.</strong> Un perfil con medias y variaciones es mucho menos útil para un atacante que la lista completa de pulsaciones con su texto.</li>
+  <li><strong>Cifrar los perfiles</strong> y protegerlos con contraseña.</li>
+  <li><strong>Pedir permiso antes de registrar a nadie</strong> y explicar en lenguaje claro qué se hace.</li>
+  <li><strong>Permitir borrar el perfil</strong> en cualquier momento.</li>
+  <li><strong>No inferir nada más.</strong> Si el objetivo es reconocer a la persona, no se calcula su estado de ánimo ni nada parecido.</li>
+  <li><strong>Evaluar el sesgo:</strong> comprobar que el sistema no rechaza mucho más a ciertos grupos.</li>
+</ol>
+
+<h2 id="usuario">Qué puedes hacer como usuario</h2>
+<ul>
+  <li><strong>Lee la política de privacidad</strong> de los servicios de banca o de seguridad que uses: muchos mencionan la «biometría del comportamiento».</li>
+  <li><strong>Ejerce tus derechos:</strong> el RGPD te permite pedir acceso a tus datos, su supresión y oponerte a ciertos tratamientos.</li>
+  <li><strong>Reduce la precisión de los tiempos.</strong> Algunos navegadores con protección contra la huella digital, como Tor Browser o Firefox con la protección reforzada activada, reducen la precisión de los relojes que usan las páginas. También existen extensiones que alteran ligeramente los tiempos de tecleo.</li>
+  <li><strong>Desconfía de las «pruebas» de tecleo</strong> en webs que no explican qué hacen con los datos.</li>
+</ul>
+
+<h2 id="keybio">Cómo lo hace KeyBio</h2>
+<p>KeyBio se ha diseñado con estas ideas desde el principio. El programa de escritorio <strong>guarda todo en el equipo</strong>, con la opción de cifrarlo con contraseña, y pide permiso a la persona antes de registrarla. En la verificación de acceso para sistemas sensibles <strong>guarda solo la puntuación</strong> de la comprobación, nunca las pulsaciones, el texto, la dirección IP ni el nombre del equipo, y esos registros se borran solos a los 30 días. La <a href="../#demo">demo de esta web</a> funciona entera en el navegador: tus pulsaciones no se envían a ningún servidor. Los detalles están en la <a href="../privacidad.html">página de privacidad</a>.</p>
+<p>Esta guía es divulgativa y no sustituye al asesoramiento jurídico. Si vas a usar biometría en una empresa o un centro educativo, consulta con la persona delegada de protección de datos.</p>

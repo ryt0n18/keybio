@@ -1,0 +1,78 @@
+<!--
+id: biometric-accuracy
+slug: far-frr-eer-precision-biometrica
+title: FAR, FRR y EER: cómo se mide la precisión biométrica · KeyBio
+heading: FAR, FRR y EER: cómo se mide la precisión de un sistema biométrico
+description: Qué significan la tasa de falsa aceptación (FAR), la de falso rechazo (FRR) y la tasa de error igual (EER), cómo se elige el umbral y por qué una sola cifra de precisión no basta.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead">Cuando un sistema biométrico anuncia que «acierta el 99 %», esa cifra dice muy poco. Para saber si un lector de huellas, un reconocimiento facial o un sistema de <strong>dinámica de tecleo</strong> funciona de verdad hay que mirar <strong>dos errores distintos</strong>, cómo se reparten según el umbral y con qué datos se midieron. Esta guía explica, con ejemplos, qué son la FAR, la FRR y la EER y cómo leerlas sin dejarse engañar.</p>
+
+<h2 id="dos-errores">Los dos errores de cualquier sistema biométrico</h2>
+<p>Un sistema biométrico no da un «sí» o un «no» directamente: compara la muestra nueva con un perfil guardado y calcula una <strong>puntuación de parecido</strong> (o una distancia). Después aplica un <strong>umbral</strong>: si la muestra se parece lo suficiente, acepta; si no, rechaza. Con esa decisión puede equivocarse de dos maneras:</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Error</th><th>Qué pasa</th><th>A quién perjudica</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Falsa aceptación</strong> (FAR, o FMR en las normas)</td><td>Se acepta a alguien que no es la persona registrada.</td><td>A la seguridad: entra un impostor.</td></tr>
+    <tr><td><strong>Falso rechazo</strong> (FRR, o FNMR en las normas)</td><td>Se rechaza a la persona correcta.</td><td>A la comodidad: el usuario legítimo tiene que repetir o buscar otra vía.</td></tr>
+  </tbody>
+</table>
+</div>
+<p>La <strong>tasa de falsa aceptación</strong> se calcula dividiendo los intentos de impostores que se aceptaron entre todos los intentos de impostores. La <strong>tasa de falso rechazo</strong>, dividiendo los intentos legítimos rechazados entre todos los intentos legítimos. Son dos porcentajes independientes: un sistema puede tener una FAR bajísima y una FRR insoportable, o al revés.</p>
+<p>La norma internacional que define cómo medir el rendimiento biométrico, la <strong>ISO/IEC 19795‑1</strong>, distingue entre FMR/FNMR (errores del algoritmo al comparar una muestra con una plantilla) y FAR/FRR (errores del sistema completo, que incluyen, por ejemplo, las muestras que ni siquiera se pudieron capturar). En la práctica, y en esta guía, se usan casi como sinónimos.</p>
+
+<h2 id="umbral">El umbral: la palanca que lo decide todo</h2>
+<p>Imagina que el sistema puntúa de 0 a 100 cuánto se parece una muestra al perfil. Las muestras de la persona correcta suelen sacar notas altas, y las de los impostores, bajas, pero las dos nubes de puntos <strong>se solapan</strong>: hay días en que la persona escribe raro y hay impostores que, por casualidad, se le parecen.</p>
+<ul>
+  <li>Con un <strong>umbral alto</strong> (exigente), casi ningún impostor pasa: baja la FAR. Pero también se rechaza más a menudo a la persona correcta: sube la FRR.</li>
+  <li>Con un <strong>umbral bajo</strong> (permisivo), el usuario legítimo casi nunca es rechazado, pero se cuelan más impostores.</li>
+</ul>
+<p>No existe un umbral que elimine los dos errores a la vez. Elegirlo es una <strong>decisión de diseño</strong> que depende de qué es peor en cada caso: un banco que autoriza transferencias prefiere molestar a sus clientes antes que dejar pasar a un estafador; un portátil personal que se desbloquea cien veces al día prefiere lo contrario y deja otro método de respaldo.</p>
+
+<h2 id="eer">La tasa de error igual (EER)</h2>
+<p>Si se va moviendo el umbral y se dibujan la FAR y la FRR, aparecen dos curvas que se cruzan: una baja y la otra sube. El punto en el que <strong>las dos tasas son iguales</strong> es la <strong>tasa de error igual</strong> o EER (<em>equal error rate</em>).</p>
+<p>La EER es útil porque resume en una sola cifra lo bien que un método separa a las personas correctas de los impostores: cuanto más baja, mejor. Por eso es la cifra que más se usa en los artículos científicos para comparar algoritmos. Pero tiene dos trampas:</p>
+<ul>
+  <li><strong>Casi nunca se trabaja en ese punto.</strong> Los sistemas reales eligen un umbral más exigente o más permisivo según su uso, así que la EER no dice qué errores verá el usuario.</li>
+  <li><strong>Depende de los datos.</strong> Una EER medida con 20 voluntarios que escriben la misma contraseña en una sola tarde no es comparable con otra medida con miles de personas durante meses.</li>
+</ul>
+<p>Como referencia, en el conjunto de datos de contraseñas de la Universidad Carnegie Mellon (Killourhy y Maxion, 2009), con 51 personas que escribieron la misma contraseña 400 veces en ocho sesiones, el mejor de los catorce métodos clásicos que compararon tuvo una EER del 9,6 %. Es una cifra alta comparada con una huella dactilar, pero hay que tener en cuenta que se trata de una contraseña de solo diez caracteres. Con textos más largos, muestras de varios días y métodos modernos, los errores bajan bastante. Lo explicamos en la guía de <a href="algoritmos-dinamica-de-tecleo.html">algoritmos de dinámica de tecleo</a>.</p>
+
+<h2 id="curvas">Curvas ROC y DET: ver todos los umbrales a la vez</h2>
+<p>Para no quedarse con un solo punto, los estudios suelen mostrar una curva con <strong>todos los umbrales posibles</strong>:</p>
+<ul>
+  <li>La <strong>curva ROC</strong> pone en un eje la tasa de falsa aceptación y en el otro la de aciertos (1 − FRR). Cuanto más se pega a la esquina superior izquierda, mejor.</li>
+  <li>La <strong>curva DET</strong> pone la FAR frente a la FRR en escalas que estiran las zonas de errores pequeños. Es la que se prefiere en biometría porque deja ver mejor las diferencias entre sistemas buenos.</li>
+</ul>
+<p>Con una de estas curvas se puede responder a la pregunta que de verdad importa: «si no quiero aceptar a más de un impostor de cada mil, ¿a cuántos usuarios legítimos voy a rechazar?».</p>
+
+<h2 id="otras-tasas">Otras cifras que conviene mirar</h2>
+<ul>
+  <li><strong>Fallo de registro (FTE, <em>failure to enrol</em>):</strong> cuántas personas no consiguen crear un perfil válido. En tecleo puede pasar con quien escribe con muchísimos errores o con un solo dedo y pausas enormes.</li>
+  <li><strong>Fallo de captura (FTA, <em>failure to acquire</em>):</strong> cuántas veces la muestra no sirve ni para compararla, por ejemplo porque es demasiado corta.</li>
+  <li><strong>Tiempo hasta decidir:</strong> en la autenticación continua importa cuántas pulsaciones necesita el sistema para darse cuenta de que ha cambiado la persona.</li>
+</ul>
+
+<h2 id="identificacion">Verificar no es lo mismo que identificar</h2>
+<p>Todo lo anterior vale para la <strong>verificación (1:1)</strong>: «¿eres Ana?». Se compara la muestra con un solo perfil. En la <strong>identificación (1:N)</strong>, «¿quién de todos eres?», la muestra se compara con todos los perfiles, y los errores se acumulan.</p>
+<p>Un cálculo sencillo lo muestra. Si la probabilidad de que un impostor se confunda con un perfil concreto es del 1 %, la probabilidad de que no se confunda con ninguno de 100 perfiles es 0,99 elevado a 100, alrededor del 37 %. Es decir, en torno a un <strong>63 % de las veces</strong> algún perfil lo aceptaría por error. Por eso un sistema que identifica entre muchas personas necesita umbrales más estrictos, más texto por muestra o una segunda comprobación.</p>
+
+<h2 id="impostores">Qué tipo de impostor se ha probado</h2>
+<p>No es lo mismo un impostor que escribe sin más («de esfuerzo cero») que uno que ha visto escribir a su víctima, ha practicado o usa un programa para imitar sus tiempos. Muchos estudios solo prueban el primer caso, que es el más fácil de rechazar. Una evaluación seria indica qué ataques se han probado: imitación humana, réplica de una muestra grabada o pulsaciones generadas por un programa. En la guía sobre <a href="detectar-bots-por-el-tecleo.html">cómo detectar bots por su forma de teclear</a> contamos cómo se defienden los sistemas de estos dos últimos.</p>
+
+<h2 id="leer-cifras">Cómo leer una cifra de precisión sin que te engañen</h2>
+<p>Antes de fiarte de un porcentaje, busca la respuesta a estas preguntas:</p>
+<ol>
+  <li><strong>¿Qué error es?</strong> ¿Falsa aceptación, falso rechazo, EER o una «precisión» que mezcla las dos cosas?</li>
+  <li><strong>¿Con qué umbral?</strong> Una FAR muy baja sin decir la FRR que la acompaña no significa nada.</li>
+  <li><strong>¿Con cuántas personas y durante cuánto tiempo?</strong> Pocas personas y una sola sesión dan cifras optimistas.</li>
+  <li><strong>¿Se registró y se probó el mismo día?</strong> La forma de escribir cambia de un día a otro; probar solo con muestras del mismo día infla los resultados.</li>
+  <li><strong>¿Verificación o identificación?</strong> Con muchas personas registradas, los errores crecen.</li>
+  <li><strong>¿Qué impostores?</strong> ¿Solo desconocidos que escriben a su aire o también imitaciones y ataques automáticos?</li>
+</ol>
+
+<h2 id="keybio">Cómo lo mide KeyBio</h2>
+<p>El programa de escritorio de KeyBio incluye una <strong>evaluación del sistema con vuestras propias muestras</strong>. Para los usuarios legítimos aparta cada muestra de su perfil y comprueba si se la sigue reconociendo (lo que se llama «deja uno fuera»). Para los impostores presenta cada muestra a los perfiles de los demás <em>sin el suyo</em>, como si fuera un desconocido, y cuenta cuántas veces algún perfil la acepta. Con esos mismos ensayos, la <strong>calibración automática</strong> busca la sensibilidad que comete menos errores con los datos de ese equipo en lugar de usar un valor genérico.</p>
+<p>Si quieres hacerte una idea rápida, en la <a href="../#demo">demo de la web</a> puedes registrarte con dos frases, pedir a otra persona que intente pasar por ti y ver cuánto se parece cada intento a tu perfil.</p>

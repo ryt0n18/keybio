@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biometría de tecleo y privacidad: riesgos, RGPD y ley de IA · KeyBio</title>
+  <meta name="description" content="Qué información se puede sacar de tus tiempos de tecleo, qué riesgos tiene para la privacidad, qué exigen el RGPD y el Reglamento europeo de IA y cómo usarla de forma responsable.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Biometría de tecleo y privacidad: riesgos, RGPD y ley de IA · KeyBio">
+  <meta property="og:description" content="Qué información se puede sacar de tus tiempos de tecleo, qué riesgos tiene para la privacidad, qué exigen el RGPD y el Reglamento europeo de IA y cómo usarla de forma responsable.">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_ES">
+  <meta property="article:published_time" content="2026-11-24">
+  <meta property="article:modified_time" content="2026-11-24">
+  <link rel="alternate" hreflang="es" href="https://keybio.pages.dev/guias/biometria-de-tecleo-privacidad-rgpd">
+  <link rel="alternate" hreflang="en" href="https://keybio.pages.dev/en/guides/keystroke-biometrics-privacy-gdpr">
+  <link rel="alternate" hreflang="x-default" href="https://keybio.pages.dev/guias/biometria-de-tecleo-privacidad-rgpd">
+  <link rel="canonical" href="https://keybio.pages.dev/guias/biometria-de-tecleo-privacidad-rgpd">
+  <meta property="og:url" content="https://keybio.pages.dev/guias/biometria-de-tecleo-privacidad-rgpd">
+  <meta property="og:site_name" content="KeyBio">
+  <meta property="og:image" content="https://keybio.pages.dev/assets/img/social/es.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="google-site-verification" content="lL4GGpe9A3IzhxJicUZHmfnYnKR1zXxR4ecwjxcmyhY">
+  <meta name="google-adsense-account" content="ca-pub-1330395831191911">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"TechArticle","headline":"Biometría de tecleo y privacidad: qué revela tu forma de escribir y qué dice la ley","description":"Qué información se puede sacar de tus tiempos de tecleo, qué riesgos tiene para la privacidad, qué exigen el RGPD y el Reglamento europeo de IA y cómo usarla de forma responsable.","inLanguage":"es","datePublished":"2026-11-24","dateModified":"2026-11-24","author":{"@type":"Person","name":"Álvaro Ruiz","url":"https://github.com/ryt0n18"},"publisher":{"@type":"Person","name":"Álvaro Ruiz","url":"https://github.com/ryt0n18"},"image":"https://keybio.pages.dev/assets/img/social/es.png","mainEntityOfPage":"https://keybio.pages.dev/guias/biometria-de-tecleo-privacidad-rgpd","about":{"@type":"SoftwareApplication","name":"KeyBio","url":"https://keybio.pages.dev/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KeyBio","item":"https://keybio.pages.dev/"},{"@type":"ListItem","position":2,"name":"Guías","item":"https://keybio.pages.dev/guias/"},{"@type":"ListItem","position":3,"name":"Biometría de tecleo y privacidad: qué revela tu forma de escribir y qué dice la ley","item":"https://keybio.pages.dev/guias/biometria-de-tecleo-privacidad-rgpd"}]}]}</script>
+  <link rel="icon" href="../assets/img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script type="module" src="../assets/js/site.js"></script>
+</head>
+<body data-ads-client="ca-pub-1330395831191911">
+  <svg class="sprite" aria-hidden="true">
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M7.5 19.5c1-2 1.5-4.2 1.5-7.5a3 3 0 0 1 6 0c0 1.2-.1 2.4-.3 3.5"/><path d="M12 12c0 3.4-.7 6.3-2 8.5M4.5 16c.6-1.3 1-2.6 1-4a6.5 6.5 0 0 1 11.3-4.4"/><path d="M18.3 10.5c.1.5.2 1 .2 1.5 0 2.7-.4 5.3-1.4 7.5M14.4 20.5c.4-1 .7-2 .9-3"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <!-- Las guías cuelgan de la portada de su idioma: «../» es esa portada. -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="../" aria-label="KeyBio, inicio">
+        <img src="../assets/img/icon.svg" alt="" width="28" height="28">
+        <span>KeyBio</span>
+      </a>
+      <nav class="nav" aria-label="Secciones">
+        <a href="../#demo">Pruébalo</a>
+        <a href="./">Guías</a>
+        <a href="../#descargar">Descargar</a>
+        <a href="../#contacto">Contacto</a>
+      </nav>
+      <details class="lang-menu"><summary aria-label="Idioma" title="Idioma"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg><span>ES</span></summary><ul><li><a href="../guias/biometria-de-tecleo-privacidad-rgpd.html" hreflang="es" lang="es" data-lang="es" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg>Español</a></li><li><a href="../en/guides/keystroke-biometrics-privacy-gdpr.html" hreflang="en" lang="en" data-lang="en"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="flag" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#C8102E" stroke-width="3.4"/></svg>English</a></li></ul></details>
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambiar tema">
+        <svg class="icon only-light" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon only-dark" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="container prose guide">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación"><a href="../">KeyBio</a><span aria-hidden="true">›</span><a href="./">Guías</a></nav>
+    <article>
+      <h1>Biometría de tecleo y privacidad: qué revela tu forma de escribir y qué dice la ley</h1>
+      <p class="guide-meta">Por <a href="https://github.com/ryt0n18" rel="author">Álvaro Ruiz</a> · actualizado el <time datetime="2026-11-24">24 de noviembre de 2026</time> · 6 min de lectura</p>
+      <p class="lead">Tu forma de escribir puede servir para reconocerte, y eso la convierte en un <strong>dato personal muy delicado</strong>: no se puede cambiar como una contraseña y se puede recoger sin que te des cuenta. Esta guía explica qué se puede deducir de los tiempos de tecleo, qué riesgos hay, qué dicen el <strong>RGPD</strong> y el <strong>Reglamento europeo de inteligencia artificial</strong> y qué buenas prácticas reducen el problema.</p>
+<nav class="toc" aria-label="En esta guía"><p>En esta guía</p><ol><li><a href="#que-revela">Qué revelan tus tiempos de tecleo</a></li><li><a href="#riesgos">Los riesgos principales</a></li><li><a href="#rgpd">Qué dice el RGPD</a></li><li><a href="#trabajo">En el trabajo: mucho cuidado</a></li><li><a href="#ley-ia">El Reglamento europeo de inteligencia artificial</a></li><li><a href="#buenas-practicas">Buenas prácticas para quien diseña un sistema</a></li><li><a href="#usuario">Qué puedes hacer como usuario</a></li><li><a href="#keybio">Cómo lo hace KeyBio</a></li></ol></nav>
+
+<h2 id="que-revela">Qué revelan tus tiempos de tecleo</h2>
+<p>Un sistema de dinámica de tecleo no necesita saber <em>qué</em> escribes, solo <em>cuándo</em> pulsas y sueltas cada tecla. Aun así, esos tiempos dicen mucho:</p>
+<ul>
+  <li><strong>Quién eres.</strong> Es su uso principal: con suficiente texto, el ritmo identifica a una persona entre muchas.</li>
+  <li><strong>Que eres la misma persona en sitios distintos.</strong> Si dos servicios analizan tu tecleo, en teoría podrían saber que la misma persona está detrás de dos cuentas, aunque uses nombres diferentes.</li>
+  <li><strong>Cómo estás.</strong> Hay estudios que relacionan los cambios de ritmo con el cansancio, el estrés o el estado de ánimo. En 2011, un equipo de la Universidad de Saskatchewan (Epp, Lippold y Mandryk) clasificó algunos estados emocionales a partir del tecleo con una precisión moderada.</li>
+  <li><strong>Datos de salud.</strong> El proyecto neuroQWERTY, del MIT y otros centros, publicó en 2016 que el tiempo de pulsación de las teclas podía ayudar a detectar signos tempranos de párkinson. Es una línea de investigación prometedora para la medicina, y a la vez un aviso: los tiempos de tecleo pueden contener información de salud.</li>
+  <li><strong>Pistas sobre el contenido.</strong> Las combinaciones de letras tienen tiempos característicos. En 2001, Song, Wagner y Tian demostraron que los intervalos entre pulsaciones de una sesión SSH cifrada daban pistas sobre las contraseñas escritas. Por eso los tiempos de tecleo deben tratarse con el mismo cuidado que el texto.</li>
+</ul>
+
+<h2 id="riesgos">Los riesgos principales</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Riesgo</th><th>Ejemplo</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Recogida invisible</strong></td><td>Una web registra cómo escribes en un formulario sin avisar. A diferencia de una huella dactilar, no tienes que poner el dedo en ningún sitio.</td></tr>
+    <tr><td><strong>No se puede cambiar</strong></td><td>Si se filtra tu contraseña, la cambias. Si se filtra tu perfil de tecleo, no puedes cambiar tu forma de escribir de un día para otro.</td></tr>
+    <tr><td><strong>Seguimiento</strong></td><td>El perfil sirve para relacionar cuentas o visitas, como una cookie que no se puede borrar.</td></tr>
+    <tr><td><strong>Usos secundarios</strong></td><td>Datos recogidos para la seguridad acaban usándose para medir la productividad o deducir el estado de ánimo de los trabajadores.</td></tr>
+    <tr><td><strong>Decisiones injustas</strong></td><td>Un sistema rechaza más a menudo a personas con una discapacidad motora, que usan un teclado adaptado o que escriben en un idioma que no es el suyo.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="rgpd">Qué dice el RGPD</h2>
+<p>El Reglamento General de Protección de Datos (RGPD) de la Unión Europea define los <strong>datos biométricos</strong> como los datos personales obtenidos a partir de un tratamiento técnico específico, relativos a las características físicas, fisiológicas o <strong>conductuales</strong> de una persona, que permitan o confirmen su identificación única (artículo 4.14). La forma de teclear entra en esa definición cuando se usa para reconocer a alguien.</p>
+<p>Cuando los datos biométricos se tratan <strong>para identificar de forma unívoca</strong> a una persona, pasan a ser una <strong>categoría especial de datos</strong> (artículo 9). Su tratamiento está prohibido salvo que se cumpla una de las excepciones del propio artículo, la más habitual el <strong>consentimiento explícito</strong>. Además, se aplican los principios generales:</p>
+<ul>
+  <li><strong>Información clara</strong> de qué se recoge, para qué, durante cuánto tiempo y quién lo trata.</li>
+  <li><strong>Limitación de la finalidad:</strong> lo que se recoge para la seguridad no se puede reutilizar para otra cosa sin más.</li>
+  <li><strong>Minimización:</strong> guardar solo lo imprescindible, por ejemplo un perfil con estadísticas en lugar de todas las pulsaciones.</li>
+  <li><strong>Protección de datos desde el diseño</strong> (artículo 25) y medidas de seguridad adecuadas, como el cifrado.</li>
+  <li><strong>Evaluación de impacto</strong> (artículo 35) cuando el tratamiento pueda suponer un alto riesgo, lo que suele ocurrir con datos biométricos a gran escala o de trabajadores.</li>
+</ul>
+
+<h2 id="trabajo">En el trabajo: mucho cuidado</h2>
+<p>En una relación laboral, el consentimiento rara vez es libre, porque el trabajador depende de la empresa. Por eso la Agencia Española de Protección de Datos (AEPD), en su guía de 2023 sobre el control de presencia con sistemas biométricos, insiste en que la empresa tiene que justificar que el sistema es <strong>necesario y proporcionado</strong> y que no hay una alternativa menos invasiva, además de hacer una evaluación de impacto. Aunque esa guía se centra en fichar la entrada y la salida, el razonamiento se aplica a cualquier biometría en el trabajo.</p>
+<p>Si se usa la dinámica de tecleo para proteger un acceso sensible, lo prudente es:</p>
+<ul>
+  <li>usarla solo para ese acceso y no para vigilar la actividad de la jornada;</li>
+  <li>guardar el resultado de la comprobación, no las pulsaciones ni el texto;</li>
+  <li>ofrecer siempre una alternativa a quien no quiera o no pueda usarla;</li>
+  <li>borrar los registros pasado un plazo corto.</li>
+</ul>
+
+<h2 id="ley-ia">El Reglamento europeo de inteligencia artificial</h2>
+<p>El Reglamento (UE) 2024/1689, conocido como ley de IA, añade otra capa. Desde el 2 de febrero de 2025 están <strong>prohibidos</strong>, entre otros, los sistemas que <strong>infieren las emociones</strong> de una persona en el lugar de trabajo o en centros educativos, salvo por motivos médicos o de seguridad, y los que <strong>clasifican a las personas</strong> por sus datos biométricos para deducir datos sensibles como su origen, sus opiniones políticas o su orientación sexual.</p>
+<p>Usar la forma de escribir para verificar que una persona es quien dice ser no entra en esas prohibiciones. Pero usarla para medir el estrés de los empleados o el interés de los alumnos en un examen, sí podría. Fuera de esos casos prohibidos, los sistemas de reconocimiento de emociones y de identificación biométrica a distancia tienen además obligaciones de transparencia y, a menudo, la consideración de <strong>alto riesgo</strong>.</p>
+
+<h2 id="buenas-practicas">Buenas prácticas para quien diseña un sistema</h2>
+<ol>
+  <li><strong>Procesar en local.</strong> Si las pulsaciones nunca salen del equipo, desaparece gran parte del riesgo de filtración y de seguimiento.</li>
+  <li><strong>Guardar plantillas, no grabaciones.</strong> Un perfil con medias y variaciones es mucho menos útil para un atacante que la lista completa de pulsaciones con su texto.</li>
+  <li><strong>Cifrar los perfiles</strong> y protegerlos con contraseña.</li>
+  <li><strong>Pedir permiso antes de registrar a nadie</strong> y explicar en lenguaje claro qué se hace.</li>
+  <li><strong>Permitir borrar el perfil</strong> en cualquier momento.</li>
+  <li><strong>No inferir nada más.</strong> Si el objetivo es reconocer a la persona, no se calcula su estado de ánimo ni nada parecido.</li>
+  <li><strong>Evaluar el sesgo:</strong> comprobar que el sistema no rechaza mucho más a ciertos grupos.</li>
+</ol>
+
+<h2 id="usuario">Qué puedes hacer como usuario</h2>
+<ul>
+  <li><strong>Lee la política de privacidad</strong> de los servicios de banca o de seguridad que uses: muchos mencionan la «biometría del comportamiento».</li>
+  <li><strong>Ejerce tus derechos:</strong> el RGPD te permite pedir acceso a tus datos, su supresión y oponerte a ciertos tratamientos.</li>
+  <li><strong>Reduce la precisión de los tiempos.</strong> Algunos navegadores con protección contra la huella digital, como Tor Browser o Firefox con la protección reforzada activada, reducen la precisión de los relojes que usan las páginas. También existen extensiones que alteran ligeramente los tiempos de tecleo.</li>
+  <li><strong>Desconfía de las «pruebas» de tecleo</strong> en webs que no explican qué hacen con los datos.</li>
+</ul>
+
+<h2 id="keybio">Cómo lo hace KeyBio</h2>
+<p>KeyBio se ha diseñado con estas ideas desde el principio. El programa de escritorio <strong>guarda todo en el equipo</strong>, con la opción de cifrarlo con contraseña, y pide permiso a la persona antes de registrarla. En la verificación de acceso para sistemas sensibles <strong>guarda solo la puntuación</strong> de la comprobación, nunca las pulsaciones, el texto, la dirección IP ni el nombre del equipo, y esos registros se borran solos a los 30 días. La <a href="../#demo">demo de esta web</a> funciona entera en el navegador: tus pulsaciones no se envían a ningún servidor. Los detalles están en la <a href="../privacidad.html">página de privacidad</a>.</p>
+<p>Esta guía es divulgativa y no sustituye al asesoramiento jurídico. Si vas a usar biometría en una empresa o un centro educativo, consulta con la persona delegada de protección de datos.</p>
+    </article>
+
+    <aside class="card guide-cta">
+      <h2>Pruébalo con tu forma de escribir</h2>
+      <p>La demo de KeyBio crea tu huella de tecleo con dos frases y luego intenta reconocerte. Funciona entera en tu navegador: tus pulsaciones no se envían a ningún sitio.</p>
+      <div class="actions">
+        <a class="btn primary" href="../#demo"><svg class="icon" aria-hidden="true"><use href="#i-fingerprint"/></svg>Probar la demo</a>
+        <a class="btn" href="../#descargar"><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Descargar</a>
+      </div>
+    </aside>
+
+    <h2>Más guías</h2>
+    <ul class="guide-list"><li class="card"><h3><a href="dinamica-de-tecleo.html">Dinámica de tecleo (keystroke dynamics): qué es y cómo funciona</a></h3><p>Qué es la dinámica de tecleo, qué tiempos se miden al escribir, cómo reconoce a una persona, qué precisión tiene, para qué se usa y qué dice el RGPD.</p><p class="small muted">7 min de lectura</p></li><li class="card"><h3><a href="biometria-del-comportamiento.html">Biometría del comportamiento: qué es, tipos y ejemplos</a></h3><p>Qué es la biometría del comportamiento (o conductual), en qué se diferencia de la física, qué tipos hay, para qué se usa y qué riesgos tiene para la privacidad.</p><p class="small muted">4 min de lectura</p></li><li class="card"><h3><a href="algoritmos-dinamica-de-tecleo.html">Algoritmos de dinámica de tecleo: de la distancia Manhattan a las redes neuronales</a></h3><p>Cómo comparan los algoritmos de dinámica de tecleo dos formas de escribir: distancia Manhattan escalada, medidas R y A de Gunetti y Picardi, umbrales, EER y aprendizaje profundo.</p><p class="small muted">6 min de lectura</p></li><li class="card"><h3><a href="far-frr-eer-precision-biometrica.html">FAR, FRR y EER: cómo se mide la precisión de un sistema biométrico</a></h3><p>Qué significan la tasa de falsa aceptación (FAR), la de falso rechazo (FRR) y la tasa de error igual (EER), cómo se elige el umbral y por qué una sola cifra de precisión no basta.</p><p class="small muted">7 min de lectura</p></li><li class="card"><h3><a href="que-cambia-tu-ritmo-de-tecleo.html">Qué cambia tu forma de escribir: teclado, cansancio, idioma y tiempo</a></h3><p>Por qué escribes distinto según el teclado, la hora, el cansancio, el idioma o la postura, cómo afecta eso a la biometría de tecleo y cómo registrarte para que el sistema te reconozca mejor.</p><p class="small muted">5 min de lectura</p></li><li class="card"><h3><a href="usos-de-la-dinamica-de-tecleo.html">Para qué se usa la dinámica de tecleo: ejemplos reales</a></h3><p>Dónde se usa hoy la dinámica de tecleo: prevención del fraude en banca, autenticación continua, formación en línea, detección de bots, investigación médica y análisis forense, con sus ventajas y sus límites.</p><p class="small muted">5 min de lectura</p></li><li class="card"><h3><a href="tecleo-contrasenas-2fa-passkeys.html">Biometría de tecleo frente a contraseñas, doble factor y passkeys</a></h3><p>Qué aporta la dinámica de tecleo frente a las contraseñas, los códigos de doble factor y las passkeys, en qué casos encaja, en cuáles no y cómo combinarla con otros métodos.</p><p class="small muted">5 min de lectura</p></li><li class="card"><h3><a href="detectar-bots-por-el-tecleo.html">Cómo distinguir a una persona de un bot por su forma de teclear</a></h3><p>Por qué un programa que escribe solo se delata por sus tiempos, qué señales delatan un ritmo robótico, una réplica o un texto pegado y cuáles son los límites de esta detección.</p><p class="small muted">6 min de lectura</p></li></ul>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span data-config="year"></span> KeyBio · <span data-config="owner" data-fallback="[responsable pendiente]"></span>. Todos los derechos reservados.</p>
+      <p><a href="../privacidad.html">Privacidad y aviso legal</a> · <a href="../">Volver al inicio</a></p>
+    </div>
+  </footer>
+  <script type="application/json" id="i18n">{"lang":"es","locale":"es-ES","js":{"theme.toLight":"Cambiar a tema claro","theme.toDark":"Cambiar a tema oscuro","lang.suggest":"Esta página también está disponible en español.","lang.switch":"Ver en español","lang.dismiss":"No, gracias","common.soon":"Disponible próximamente.","common.sending":"Enviando…","ratings.stars":"{n} de {total} estrellas","ratings.none":"Todavía no hay valoraciones. ¡Sé la primera persona en opinar!","ratings.count_one":"{n} valoración","ratings.count_other":"{n} valoraciones","ratings.anonymous":"Anónimo","ratings.closed":"Las valoraciones se abrirán cuando la web esté publicada.","ratings.captchaError":"No se ha podido cargar la comprobación antispam. Revisa tu conexión.","ratings.chooseStars":"Elige de 1 a 5 estrellas.","ratings.waitCaptcha":"Espera a que termine la comprobación antispam.","ratings.sendError":"No se ha podido enviar la valoración.","ratings.thanksPending":"¡Gracias! Tu comentario aparecerá cuando se revise.","ratings.thanks":"¡Gracias por tu valoración!","ratings.error.not_configured":"Las valoraciones no están configuradas.","ratings.error.origin":"Origen no permitido.","ratings.error.format":"Formato no válido.","ratings.error.too_long":"La valoración es demasiado larga.","ratings.error.stars":"Elige entre 1 y 5 estrellas.","ratings.error.lengths":"El nombre admite hasta {name} caracteres y el comentario hasta {comment}.","ratings.error.captcha":"No se ha podido comprobar que no eres un robot. Inténtalo de nuevo.","ratings.error.daily_limit":"Ya has enviado una valoración hoy. ¡Gracias!","contact.closed":"El formulario se activará cuando la web esté publicada.","contact.sendError":"No se ha podido enviar el mensaje. Inténtalo más tarde.","contact.needCaptcha":"Marca la casilla de la comprobación antispam antes de enviar.","contact.sent":"¡Mensaje enviado! Te responderé lo antes posible.","demo.unit.cpm":"puls./min","demo.unit.per100chars":"/100 car.","demo.unit.per100keys":"/100 teclas","demo.trait.speed":"Velocidad","demo.trait.speed.help":"Pulsaciones por minuto, sin contar las pausas largas.","demo.trait.dwell":"Pulsación","demo.trait.dwell.help":"Tiempo medio que mantienes pulsada cada tecla.","demo.trait.flight":"Vuelo","demo.trait.flight.help":"Tiempo medio entre soltar una tecla y pulsar la siguiente.","demo.trait.overlap":"Solapamiento","demo.trait.overlap.help":"Veces que pulsas la siguiente tecla antes de soltar la anterior.","demo.trait.regularity":"Regularidad","demo.trait.regularity.help":"Lo constante que es tu ritmo (100 % sería un metrónomo).","demo.trait.errors":"Errores","demo.trait.errors.help":"Caracteres equivocados por cada 100 escritos (aunque los corrijas).","demo.key.tab":"Tab","demo.key.enter":"Intro","demo.key.caps":"Bloq","demo.key.shift":"Shift","demo.key.ctrl":"Ctrl","demo.heatmap.label":"Mapa de calor del teclado: tiempo de pulsación de cada tecla","demo.heatmap.key":"{key}: {ms} ms de media ({n} pulsaciones)","demo.heatmap.shorter":"más corta","demo.heatmap.longer":"más larga","demo.heatmap.caption":"tiempo que mantienes pulsada cada tecla","demo.typing.label":"Escribe este texto: {text}","demo.typing.start":"Empieza a escribir cuando quieras","demo.typing.caps":"Tienes activado Bloq Mayús.","demo.typing.early":"Resultado claro: no hace falta terminar la frase.","demo.typing.blur":"Has salido del cuadro de texto. Haz clic en él para seguir escribiendo.","demo.typing.speed":"{n} pulsaciones/min","demo.noStorage":"Este navegador no permite guardar datos: las huellas se perderán al cerrar la página.","demo.touch":"La demo necesita un teclado físico: en un móvil o tableta sin teclado no se pueden medir las pulsaciones.","demo.intro.step1":"Crea tu huella.","demo.intro.step1.text":"Escribe {n} frases cortas (un minuto y medio, más o menos).","demo.intro.step2":"Ponla a prueba.","demo.intro.step2.text":"Escribe una frase nueva y KeyBio intentará reconocerte.","demo.intro.step3":"Juega a «adivina quién».","demo.intro.step3.text":"Que más personas se registren en este ordenador y comprobad si os distingue.","demo.create":"Crear mi huella","demo.local":"Las pulsaciones se quedan en este navegador: no se envían a ningún sitio.","demo.samples_one":"{n} muestra","demo.samples_other":"{n} muestras","demo.deletePerson":"Borrar a {name}","demo.delete":"Borrar","demo.home.title":"Personas registradas en este navegador","demo.home.one":"Escribe una frase nueva y comprueba si KeyBio te reconoce. Con más personas registradas, podréis jugar a «adivina quién».","demo.home.many":"Que alguien escriba una frase sin decir quién es: KeyBio intentará adivinarlo.","demo.recognizeMe":"¿Me reconoce?","demo.whoTypes":"¿Quién escribe?","demo.addPerson":"Añadir persona","demo.addAnother":"Añadir otra persona","demo.clearAll":"Borrar todos los datos","demo.confirmDelete":"¿Borrar la huella de {name}?","demo.confirmClear":"¿Borrar todas las huellas guardadas en este navegador?","demo.name.placeholder":"Por ejemplo, Lucía","demo.name.empty":"Escribe un nombre o un apodo.","demo.name.taken":"Ya hay alguien con ese nombre.","demo.name.label":"¿Cómo te llamas?","demo.name.help":"Solo se usa para mostrar los resultados en esta pantalla.","demo.start":"Empezar","demo.cancel":"Cancelar","demo.back":"Volver","demo.again":"Probar otra vez","demo.enroll.step":"Frase {i} de {n}","demo.enroll.intro":"Hola, {name}. Copia el texto de abajo a tu ritmo normal: no hace falta ir rápido y los errores se pueden corregir.","demo.enroll.retry":"Vuelve a escribir esta frase.","demo.print.ready":"¡Listo, {name}! Esta es tu huella de tecleo.","demo.print.addHint":"¿Sois más? Registra a otra persona y comprobad si KeyBio os distingue.","demo.print.title":"Huella de {name}","demo.print.fastest":"Tus combinaciones más rápidas","demo.print.slowest":"Las que más te cuestan","demo.identify.step":"Frase nueva","demo.identify.one":"Escribe esta frase, que no estaba en el registro. KeyBio comparará tu forma de escribir con tu huella.","demo.identify.many":"Que una de las personas registradas (o alguien nuevo) escriba esta frase. KeyBio dirá quién cree que es.","demo.identify.retry":"Vuelve a intentarlo.","demo.result.robot":"Esto no parece escrito por una persona","demo.result.youAre":"Eres {name}","demo.result.confidence":"Confianza del {n} %. Tu forma de escribir encaja con su huella.","demo.result.ambiguous":"Ojo: también se parece bastante a otra persona, así que el resultado es poco concluyente.","demo.result.notYou":"No pareces {name}","demo.result.unknown":"No te reconozco","demo.result.closest":"A quien más te pareces es a {name}, pero no lo bastante para decir que eres esa persona.","demo.result.noData":"No hay suficientes datos para comparar.","demo.result.threshold":"El umbral de aceptación está en el 50 %","demo.result.ranking":"Parecido con cada huella","demo.result.early":"Decidido con {n} pulsaciones: el resultado estaba claro y no ha hecho falta terminar la frase.","demo.result.disclaimer":"Con frases cortas y pocas muestras, la demo se equivoca más que el programa, que usa textos más largos, varias sesiones y se adapta con el uso.","demo.why.title":"¿Por qué? Comparación con la huella de {name}","demo.why.similar":"Lo que más se parece","demo.why.different":"Lo que más difiere","demo.why.note":"Además de estos rasgos, KeyBio compara el orden de rapidez de cada combinación de teclas (medidas R y A).","demo.why.values":"{now} ahora · {print} en la huella","demo.feature.dwell_med":"Tiempo de pulsación","demo.feature.dwell_iqr":"Variabilidad de pulsación","demo.feature.dd_med":"Intervalo entre teclas","demo.feature.dd_iqr":"Variabilidad del intervalo","demo.feature.ud_med":"Tiempo de vuelo","demo.feature.overlap":"Solapamiento de teclas","demo.feature.space_dwell":"Pulsación de la barra espaciadora","demo.feature.dd_to_space":"Letra → espacio","demo.feature.dd_from_space":"Espacio → letra","demo.feature.speed_cpm":"Velocidad","demo.feature.pause_rate":"Frecuencia de pausas","demo.feature.bs_rate":"Frecuencia de retrocesos","demo.feature.err_rate":"Frecuencia de errores","demo.feature.shift_right":"Uso del shift derecho","demo.feature.shift_lead":"Shift → letra","demo.feature.shift_hold":"Duración del shift","demo.feature.bs_dwell":"Pulsación del retroceso","demo.feature.bs_latency":"Reacción ante un error","demo.check.robotic":"Ritmo demasiado regular para una persona.","demo.check.repeated":"Muchas pulsaciones duran exactamente lo mismo.","demo.check.instant":"Teclas que se sueltan instantáneamente.","demo.check.accuracy":"La precisión ha sido del {accuracy} % (mínimo {min} %).","demo.check.fewKeys":"Se han registrado muy pocas pulsaciones.","demo.check.focus":"No se han podido medir los tiempos de pulsación (¿se perdió el foco?)."},"texts":{"enroll":["Esta mañana he salido a correr por el parque. Hacía frío, pero el sol ya calentaba un poco y había mucha gente paseando con sus perros.","Mi abuela guarda las recetas en una caja de latón. Algunas están escritas a mano, con letra pequeña, y tienen manchas de aceite y harina.","El autobús número doce pasa cada quince minutos. Si lo pierdes, lo mejor es ir andando hasta la plaza y coger allí el metro hacia el centro.","Para montar la estantería solo necesitas un destornillador. Primero coloca los laterales, después las baldas y, por último, aprieta los tornillos.","Los domingos por la tarde vemos una película en casa. Cada semana elige alguien distinto, así que a veces toca comedia y otras, ciencia ficción.","Nuestro equipo ganó el partido en el último minuto. Lucía marcó de cabeza después de un córner y todo el estadio se levantó para celebrarlo."],"verify":["Ayer encontré una librería antigua en una calle estrecha. El dueño me recomendó una novela de aventuras y me la llevé sin pensarlo dos veces.","Cuando llueve, el gato se sube a la ventana y mira las gotas durante horas. Luego se queda dormido en el sofá, encima de la manta de cuadros.","En verano vamos al pueblo a ver a mis primos. Por la noche salimos a la plaza, jugamos a las cartas y comemos helado hasta muy tarde.","El museo de ciencias tiene una sala con un péndulo enorme. Los niños se quedan mirando cómo cambia de dirección a lo largo del día."]},"languages":[{"code":"es","name":"Español","suggest":"Esta página también está disponible en español.","switch":"Ver en español","dismiss":"No, gracias"},{"code":"en","name":"English","suggest":"This page is also available in English.","switch":"View in English","dismiss":"No, thanks"},{"code":"ca","name":"Català","suggest":"Aquesta pàgina també està disponible en català.","switch":"Mostra-la en català","dismiss":"No, gràcies"},{"code":"gl","name":"Galego","suggest":"Esta páxina tamén está dispoñible en galego.","switch":"Ver en galego","dismiss":"Non, grazas"},{"code":"eu","name":"Euskara","suggest":"Orri hau euskaraz ere badago.","switch":"Ikusi euskaraz","dismiss":"Ez, eskerrik asko"},{"code":"fr","name":"Français","suggest":"Cette page est aussi disponible en français.","switch":"Voir en français","dismiss":"Non, merci"},{"code":"pt","name":"Português","suggest":"Esta página também está disponível em português.","switch":"Ver em português","dismiss":"Não, obrigado"},{"code":"de","name":"Deutsch","suggest":"Diese Seite gibt es auch auf Deutsch.","switch":"Auf Deutsch ansehen","dismiss":"Nein, danke"},{"code":"it","name":"Italiano","suggest":"Questa pagina è disponibile anche in italiano.","switch":"Vedi in italiano","dismiss":"No, grazie"}]}</script>
+</body>
+</html>

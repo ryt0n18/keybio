@@ -1,0 +1,82 @@
+<!--
+id: keystroke-privacy
+slug: keystroke-biometrics-privacy-gdpr
+title: Keystroke biometrics and privacy: risks, GDPR and the AI Act · KeyBio
+heading: Keystroke biometrics and privacy: what your typing reveals and what the law says
+description: What can be inferred from your typing timings, the privacy risks involved, what the GDPR and the EU AI Act require and how to use keystroke biometrics responsibly.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead">The way you type can be used to recognise you, and that makes it <strong>very sensitive personal data</strong>: you cannot change it like a password, and it can be collected without you noticing. This guide explains what can be inferred from typing timings, the risks involved, what the <strong>GDPR</strong> and the <strong>EU Artificial Intelligence Act</strong> say and which good practices reduce the problem.</p>
+
+<h2 id="what-it-reveals">What your typing timings reveal</h2>
+<p>A keystroke dynamics system does not need to know <em>what</em> you type, only <em>when</em> you press and release each key. Even so, those timings say a lot:</p>
+<ul>
+  <li><strong>Who you are.</strong> That is their main use: with enough text, rhythm identifies one person among many.</li>
+  <li><strong>That you are the same person in different places.</strong> If two services analyse your typing, they could in theory tell that the same person is behind two accounts, even under different names.</li>
+  <li><strong>How you feel.</strong> Studies have linked changes in rhythm to tiredness, stress or mood. In 2011, a team at the University of Saskatchewan (Epp, Lippold and Mandryk) classified some emotional states from typing with moderate accuracy.</li>
+  <li><strong>Health data.</strong> The neuroQWERTY project, involving MIT among others, reported in 2016 that key hold times could help detect early signs of Parkinson's disease. It is a promising line of medical research and, at the same time, a warning: typing timings can contain health information.</li>
+  <li><strong>Clues about the content.</strong> Letter combinations have characteristic timings. In 2001, Song, Wagner and Tian showed that the intervals between keystrokes in an encrypted SSH session leaked clues about the passwords being typed. That is why typing timings deserve the same care as the text itself.</li>
+</ul>
+
+<h2 id="risks">The main risks</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Risk</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Invisible collection</strong></td><td>A website records how you type in a form without telling you. Unlike a fingerprint, you do not have to put your finger anywhere.</td></tr>
+    <tr><td><strong>It cannot be changed</strong></td><td>If your password leaks, you change it. If your typing profile leaks, you cannot change the way you type overnight.</td></tr>
+    <tr><td><strong>Tracking</strong></td><td>The profile can link accounts or visits, like a cookie you cannot delete.</td></tr>
+    <tr><td><strong>Secondary uses</strong></td><td>Data collected for security ends up being used to measure workers' productivity or infer their mood.</td></tr>
+    <tr><td><strong>Unfair decisions</strong></td><td>A system rejects people with a motor disability, an adapted keyboard or who type in a second language more often.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="gdpr">What the GDPR says</h2>
+<p>The EU General Data Protection Regulation (GDPR) defines <strong>biometric data</strong> as personal data resulting from specific technical processing relating to the physical, physiological or <strong>behavioural</strong> characteristics of a person, which allow or confirm their unique identification (Article 4(14)). Typing behaviour falls within that definition when it is used to recognise someone.</p>
+<p>When biometric data is processed <strong>for the purpose of uniquely identifying</strong> a person, it becomes a <strong>special category of data</strong> (Article 9). Processing it is prohibited unless one of that article's exceptions applies, the most common being <strong>explicit consent</strong>. The general principles also apply:</p>
+<ul>
+  <li><strong>Clear information</strong> about what is collected, why, for how long and by whom.</li>
+  <li><strong>Purpose limitation:</strong> what is collected for security cannot simply be reused for something else.</li>
+  <li><strong>Data minimisation:</strong> keep only what is essential, such as a profile of statistics instead of every keystroke.</li>
+  <li><strong>Data protection by design</strong> (Article 25) and appropriate security measures such as encryption.</li>
+  <li><strong>Impact assessment</strong> (Article 35) when the processing is likely to result in a high risk, which is often the case with large-scale or employee biometric data.</li>
+</ul>
+
+<h2 id="workplace">At work: be very careful</h2>
+<p>In an employment relationship, consent is rarely free, because the employee depends on the employer. That is why data protection authorities, such as the Spanish AEPD in its 2023 guidance on biometric time and attendance systems, insist that employers must justify that a system is <strong>necessary and proportionate</strong> and that there is no less intrusive alternative, as well as carrying out an impact assessment. Although that guidance focuses on clocking in and out, the reasoning applies to any biometrics at work.</p>
+<p>If keystroke dynamics is used to protect sensitive access, the prudent approach is to:</p>
+<ul>
+  <li>use it only for that access, not to monitor activity throughout the day;</li>
+  <li>store the result of the check, not the keystrokes or the text;</li>
+  <li>always offer an alternative to anyone who does not want to or cannot use it;</li>
+  <li>delete the records after a short period.</li>
+</ul>
+
+<h2 id="ai-act">The EU Artificial Intelligence Act</h2>
+<p>Regulation (EU) 2024/1689, known as the AI Act, adds another layer. Since 2 February 2025 it has <strong>prohibited</strong>, among other things, systems that <strong>infer people's emotions</strong> in the workplace or in education, except for medical or safety reasons, and systems that <strong>categorise people</strong> by their biometric data to deduce sensitive attributes such as their race, political opinions or sexual orientation.</p>
+<p>Using typing behaviour to verify that someone is who they claim to be is not covered by those bans. Using it to measure employees' stress or students' engagement during an exam could be. Outside the prohibited cases, emotion recognition and remote biometric identification systems also carry transparency obligations and are often classed as <strong>high-risk</strong>.</p>
+
+<h2 id="good-practice">Good practice for system designers</h2>
+<ol>
+  <li><strong>Process locally.</strong> If keystrokes never leave the device, much of the risk of leaks and tracking disappears.</li>
+  <li><strong>Store templates, not recordings.</strong> A profile of averages and variations is far less useful to an attacker than the full list of keystrokes with their text.</li>
+  <li><strong>Encrypt profiles</strong> and protect them with a password.</li>
+  <li><strong>Ask permission before enrolling anyone</strong> and explain in plain language what happens.</li>
+  <li><strong>Let people delete their profile</strong> at any time.</li>
+  <li><strong>Do not infer anything else.</strong> If the goal is to recognise the person, do not compute their mood or anything similar.</li>
+  <li><strong>Check for bias:</strong> make sure the system does not reject certain groups much more often.</li>
+</ol>
+
+<h2 id="users">What you can do as a user</h2>
+<ul>
+  <li><strong>Read the privacy policy</strong> of the banking or security services you use: many mention "behavioural biometrics".</li>
+  <li><strong>Exercise your rights:</strong> the GDPR lets you request access to your data, its erasure and object to certain processing.</li>
+  <li><strong>Reduce timing precision.</strong> Some browsers with anti-fingerprinting protection, such as Tor Browser or Firefox with resist-fingerprinting enabled, reduce the precision of the clocks web pages can use. There are also extensions that slightly alter typing timings.</li>
+  <li><strong>Be wary of typing "tests"</strong> on websites that do not explain what they do with the data.</li>
+</ul>
+
+<h2 id="keybio">How KeyBio does it</h2>
+<p>KeyBio was designed with these ideas from the start. The desktop app <strong>stores everything on the computer</strong>, with the option to encrypt it with a password, and asks for the person's permission before enrolling them. In access verification for sensitive systems it <strong>stores only the check's score</strong>, never the keystrokes, the text, the IP address or the computer's name, and those records are deleted automatically after 30 days. The <a href="../#demo">demo on this site</a> runs entirely in your browser: your keystrokes are not sent to any server. The details are on the <a href="../privacidad.html">privacy page</a>.</p>
+<p>This guide is for general information and is not legal advice. If you plan to use biometrics in a company or a school, consult your data protection officer.</p>

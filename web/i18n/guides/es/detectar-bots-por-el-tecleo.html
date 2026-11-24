@@ -1,0 +1,79 @@
+<!--
+id: typing-bot-detection
+slug: detectar-bots-por-el-tecleo
+title: Cómo detectar bots por su forma de teclear · KeyBio
+heading: Cómo distinguir a una persona de un bot por su forma de teclear
+description: Por qué un programa que escribe solo se delata por sus tiempos, qué señales delatan un ritmo robótico, una réplica o un texto pegado y cuáles son los límites de esta detección.
+published: 2026-11-24
+updated: 2026-11-24
+-->
+<p class="lead">Rellenar formularios, probar contraseñas robadas o crear cuentas falsas en masa son trabajos que hacen <strong>programas que escriben solos</strong>. Pueden escribir el texto correcto, pero les cuesta mucho escribirlo <strong>como lo haría una persona</strong>. Esta guía explica qué tiene de especial el tecleo humano, qué señales delatan a un bot y hasta dónde llega esta detección.</p>
+
+<h2 id="por-que-funciona">Por qué el tecleo delata a un programa</h2>
+<p>Una persona que escribe es un sistema físico: dedos con distinta fuerza y longitud, un cerebro que planifica las palabras de unas en unas y un teclado con teclas a distintas distancias. El resultado es un ritmo <strong>irregular pero con estructura</strong>:</p>
+<ul>
+  <li>Los intervalos entre teclas cambian mucho de una pulsación a otra: se encadenan rápido combinaciones conocidas («de», «que», «ción») y se tarda más en las difíciles o en las que se escriben con el mismo dedo.</li>
+  <li>Cada tecla se mantiene pulsada un tiempo que ronda las décimas de segundo, nunca cero, y que varía un poco cada vez.</li>
+  <li>Hay pausas antes de las palabras largas, después de los signos de puntuación y cuando se piensa qué escribir.</li>
+  <li>Al escribir rápido, a menudo se pulsa la siguiente tecla <strong>antes de soltar la anterior</strong> (solapamiento).</li>
+  <li>Se cometen errores y se corrigen con el retroceso.</li>
+</ul>
+<p>Un programa sencillo hace justo lo contrario: envía las letras a intervalos fijos, sin tiempo de pulsación o con uno idéntico en todas las teclas, y nunca se equivoca. Esa diferencia es la base de la detección. Si quieres conocer las medidas en detalle, están en la guía sobre <a href="dinamica-de-tecleo.html">qué es la dinámica de tecleo</a>.</p>
+
+<h2 id="senales">Las señales de un bot</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Señal</th><th>Qué se observa</th><th>Por qué es sospechoso</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Ritmo robótico</strong></td><td>Intervalos entre teclas casi iguales.</td><td>Una persona varía muchísimo más. Se mide con el <em>coeficiente de variación</em>: la desviación típica dividida entre la media.</td></tr>
+    <tr><td><strong>Tiempos repetidos exactos</strong></td><td>Muchas teclas que duran lo mismo al milisegundo.</td><td>Las herramientas de automatización suelen usar un retardo fijo.</td></tr>
+    <tr><td><strong>Pulsaciones instantáneas</strong></td><td>Teclas que se sueltan a la vez que se pulsan.</td><td>Físicamente, un dedo no pulsa y suelta en menos de unos pocos milisegundos.</td></tr>
+    <tr><td><strong>Réplica</strong></td><td>Una muestra con exactamente los mismos tiempos que otra anterior.</td><td>Nadie repite un texto con la misma precisión: es una grabación que se vuelve a enviar.</td></tr>
+    <tr><td><strong>Texto pegado</strong></td><td>Aparece texto sin pulsaciones o con un solo evento de pegar.</td><td>No hay ritmo que analizar; en una prueba de tecleo es, como mínimo, sospechoso.</td></tr>
+    <tr><td><strong>Sin errores ni pausas</strong></td><td>Textos largos sin una sola corrección ni pausa al pensar.</td><td>Posible, pero raro en una persona; sirve como indicio, no como prueba.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="variacion">El coeficiente de variación, explicado</h2>
+<p>Supón que una persona escribe con intervalos medios de 180 ms entre teclas y una desviación típica de 90 ms. Su coeficiente de variación es 90 / 180 = 0,5, es decir, un 50 %. En personas reales es habitual que esté muy por encima del 20 %. Un programa que escribe cada 100 ms con un margen de ±5 ms tiene un coeficiente de variación de alrededor del 3 %.</p>
+<p>Esta medida tiene una ventaja: <strong>no depende de la velocidad</strong>. Una persona que escribe muy rápido y otra que escribe despacio pueden tener la misma variación relativa, así que el mismo límite vale para las dos.</p>
+
+<h2 id="replica">Ataques de réplica</h2>
+<p>Un atacante algo más listo no inventa los tiempos: <strong>graba una sesión real</strong> de la víctima, por ejemplo con un programa espía, y la reproduce más tarde. Los tiempos son humanos, así que las señales anteriores no saltan. Lo que delata la réplica es justo su perfección: si se compara con las muestras guardadas del mismo texto y las diferencias son de uno o dos milisegundos en casi todas las teclas, no puede ser una persona escribiendo otra vez. Por eso los sistemas que se protegen de esto guardan, de forma segura, un resumen de las muestras anteriores para poder compararlas.</p>
+
+<h2 id="bots-listos">Bots que imitan el ruido humano</h2>
+<p>Los bots más elaborados añaden <strong>ruido aleatorio</strong> a sus tiempos para parecer humanos. Esto basta para pasar la prueba del coeficiente de variación, pero deja otras huellas:</p>
+<ul>
+  <li>El ruido aleatorio no tiene <strong>estructura</strong>: el bot tarda lo mismo de media en «th» que en «qz», mientras que una persona tiene combinaciones fáciles y difíciles muy marcadas.</li>
+  <li>Los tiempos siguen una distribución demasiado limpia (por ejemplo, una campana perfecta), mientras que los humanos tienen colas largas por las pausas.</li>
+  <li>No hay solapamientos realistas entre teclas ni errores con su corrección.</li>
+</ul>
+<p>Hay investigaciones que van más allá. En 2012, Deian Stefan, Xiaokui Shu y Danfeng Yao estudiaron ataques con pulsaciones sintéticas generadas a partir de estadísticas de la víctima y comprobaron que pueden engañar a algunos sistemas de dinámica de tecleo. La conclusión habitual es que la detección de bots por tecleo <strong>sube mucho el coste del ataque</strong>, pero no es una barrera absoluta.</p>
+
+<h2 id="captcha">¿Puede sustituir a un CAPTCHA?</h2>
+<p>En parte. Muchas plataformas de prevención del fraude analizan en segundo plano cómo se rellenan los formularios, con el teclado y el ratón, para decidir si mostrar o no una comprobación adicional. Tiene una gran ventaja frente al CAPTCHA clásico: la persona no tiene que hacer nada. Pero también inconvenientes:</p>
+<ul>
+  <li>Necesita <strong>bastante texto</strong>: con un correo electrónico de veinte caracteres la decisión es mucho menos fiable que con un párrafo.</li>
+  <li>Puede perjudicar a personas que escriben de forma poco común, por ejemplo con un <strong>teclado en pantalla, un lector de pantalla, dictado por voz</strong> o un dispositivo de accesibilidad. Un buen diseño siempre ofrece otra vía.</li>
+  <li>Implica analizar el comportamiento de los usuarios, así que hay que cumplir las normas de privacidad. Lo contamos en la guía sobre <a href="biometria-de-tecleo-privacidad-rgpd.html">privacidad y RGPD</a>.</li>
+</ul>
+
+<h2 id="keybio">Qué comprueba KeyBio</h2>
+<p>El programa de escritorio de KeyBio revisa cada muestra antes de aceptarla y la rechaza si encuentra:</p>
+<ul>
+  <li>un <strong>ritmo demasiado regular</strong>: un coeficiente de variación de los intervalos inferior al 12 %, con al menos 40 intervalos para poder juzgarlo;</li>
+  <li><strong>más de un 35 % de pulsaciones con la misma duración exacta</strong>, redondeada al milisegundo;</li>
+  <li><strong>más de un 25 % de teclas que se sueltan en menos de 8 ms</strong>;</li>
+  <li>una <strong>réplica</strong> de otra muestra guardada del mismo texto, con diferencias medianas de pocos milisegundos.</li>
+</ul>
+<p>Además, impide pegar texto y editar fuera de orden en las pruebas, y avisa si alguien lo intenta varias veces. No es infalible, y el propio programa lo dice, pero frena los ataques más sencillos, que son también los más frecuentes. Con el <strong>modo desafío</strong> se puede pedir a alguien que intente imitar a otra persona para comprobar si el sistema se deja engañar.</p>
+
+<h2 id="limites">Límites y buenas prácticas</h2>
+<ul>
+  <li><strong>Úsalo como una capa más</strong>, junto a límites de intentos, contraseñas robustas o un segundo factor, no como única defensa.</li>
+  <li><strong>Pide texto suficiente</strong>: las decisiones con muy pocas pulsaciones son poco fiables.</li>
+  <li><strong>No castigues sin más</strong> a quien escribe distinto: ante la duda, ofrece una verificación alternativa.</li>
+  <li><strong>Revisa los falsos positivos</strong>: si muchas personas reales son marcadas como bots, los límites son demasiado estrictos.</li>
+</ul>
+<p>Puedes ver tus propios tiempos tecla a tecla en la <a href="../#demo">demo de KeyBio</a>: después de registrarte, el mapa de calor muestra en qué teclas tardas más y cuánto varía tu ritmo.</p>

@@ -16,5 +16,5 @@
   "by": "Por",
   "date": "{d} de {month} de {y}",
   "months": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
-  "order": ["keystroke-dynamics", "behavioral-biometrics", "keystroke-algorithms"]
+  "order": ["keystroke-dynamics", "behavioral-biometrics", "keystroke-algorithms", "biometric-accuracy", "typing-rhythm-factors", "keystroke-use-cases", "keystroke-vs-passwords", "typing-bot-detection", "keystroke-privacy"]
 }

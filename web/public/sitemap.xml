@@ -18,12 +18,24 @@
   <url><loc>https://keybio.pages.dev/pt/privacidad</loc></url>
   <url><loc>https://keybio.pages.dev/de/privacidad</loc></url>
   <url><loc>https://keybio.pages.dev/it/privacidad</loc></url>
-  <url><loc>https://keybio.pages.dev/guias/</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://keybio.pages.dev/guias/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://keybio.pages.dev/guias/dinamica-de-tecleo</loc><lastmod>2026-11-08</lastmod></url>
   <url><loc>https://keybio.pages.dev/guias/biometria-del-comportamiento</loc><lastmod>2026-11-08</lastmod></url>
   <url><loc>https://keybio.pages.dev/guias/algoritmos-dinamica-de-tecleo</loc><lastmod>2026-11-08</lastmod></url>
-  <url><loc>https://keybio.pages.dev/en/guides/</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://keybio.pages.dev/guias/far-frr-eer-precision-biometrica</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/guias/que-cambia-tu-ritmo-de-tecleo</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/guias/usos-de-la-dinamica-de-tecleo</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/guias/tecleo-contrasenas-2fa-passkeys</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/guias/detectar-bots-por-el-tecleo</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/guias/biometria-de-tecleo-privacidad-rgpd</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/en/guides/</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://keybio.pages.dev/en/guides/keystroke-dynamics</loc><lastmod>2026-11-08</lastmod></url>
   <url><loc>https://keybio.pages.dev/en/guides/behavioral-biometrics</loc><lastmod>2026-11-08</lastmod></url>
   <url><loc>https://keybio.pages.dev/en/guides/keystroke-dynamics-algorithms</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://keybio.pages.dev/en/guides/far-frr-eer-biometric-accuracy</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/en/guides/what-changes-your-typing-rhythm</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/en/guides/keystroke-dynamics-use-cases</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/en/guides/keystroke-dynamics-vs-passwords-2fa-passkeys</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/en/guides/detecting-bots-by-typing</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://keybio.pages.dev/en/guides/keystroke-biometrics-privacy-gdpr</loc><lastmod>2026-11-24</lastmod></url>
 </urlset>
